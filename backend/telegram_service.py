@@ -15,7 +15,7 @@ from pyrogram.errors import (
     FloodWait, PhoneCodeInvalid, PhoneCodeExpired, 
     SessionPasswordNeeded, PasswordHashInvalid,
     ChatForbidden, ChatIdInvalid, UserBlocked, PeerIdInvalid,
-    SlowModeWait, ChatWriteForbidden
+    SlowmodeWait, ChatWriteForbidden
 )
 import jinja2
 import aiofiles
@@ -323,14 +323,14 @@ class TelegramService:
             await self.blacklist_manager.add_to_permanent_blacklist(group_link, str(e))
             return {"success": False, "error": str(e), "permanent_error": True}
             
-        except SlowModeWait as e:
-            logger.warning(f"SlowModeWait for {e.value} seconds on {group_link}")
+        except SlowmodeWait as e:
+            logger.warning(f"SlowmodeWait for {e.value} seconds on {group_link}")
             await self.blacklist_manager.add_to_temporary_blacklist(
                 group_link,
                 BlacklistReason.SLOW_MODE,
                 expiry_minutes=e.value // 60 + 1
             )
-            return {"success": False, "error": f"SlowModeWait: {e.value}s", "slow_mode": True}
+            return {"success": False, "error": f"SlowmodeWait: {e.value}s", "slow_mode": True}
             
         except ChatWriteForbidden as e:
             logger.error(f"Write forbidden for {group_link}: {e}")
