@@ -1,0 +1,8 @@
+# Add your Telegram group links here, one per line
+# Example:
+# https://t.me/examplegroup1
+# https://t.me/examplegroup2
+# @examplegroup3
+
+# Lines starting with # are comments and will be ignored
+# You can also use usernames starting with @
