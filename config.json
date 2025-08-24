@@ -23,5 +23,8 @@
     "max_messages_per_day": 200,
     "enable_content_analysis": true,
     "enable_warmup_schedule": true
-  }
+  },
+  "message_delay_min": 30,
+  "message_delay_max": 60,
+  "daily_message_limit": 50
 }
