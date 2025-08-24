@@ -265,14 +265,14 @@ class TelegramAutomationAPITester:
         """Test API security (invalid API key)"""
         print("🔍 Testing API Security...")
         
-        # Test with invalid API key
+        # Test with invalid API key on protected endpoint (auth/status)
         invalid_headers = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer invalid-key'
         }
         
         try:
-            response = requests.get(f"{self.base_url}/api/health", headers=invalid_headers, timeout=10)
+            response = requests.get(f"{self.base_url}/api/auth/status", headers=invalid_headers, timeout=10)
             self.log_test(
                 "API Security (Invalid Key)",
                 response.status_code == 401,
@@ -283,6 +283,21 @@ class TelegramAutomationAPITester:
                 "API Security (Invalid Key)",
                 False,
                 f"Error testing security: {e}"
+            )
+            
+        # Test health endpoint should work without API key (public endpoint)
+        try:
+            response = requests.get(f"{self.base_url}/api/health", timeout=10)
+            self.log_test(
+                "Health Endpoint (Public Access)",
+                response.status_code == 200,
+                f"Status: {response.status_code}, Health endpoint should be public"
+            )
+        except Exception as e:
+            self.log_test(
+                "Health Endpoint (Public Access)",
+                False,
+                f"Error testing health endpoint: {e}"
             )
 
     def run_all_tests(self):
