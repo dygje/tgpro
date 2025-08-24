@@ -29,7 +29,7 @@ class TelegramAutomationAPITester:
         print(f"{status} - {name}")
         if details:
             print(f"   Details: {details}")
-        if not success:
+        if success:
             self.tests_passed += 1
         else:
             self.failed_tests.append(f"{name}: {details}")
