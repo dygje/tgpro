@@ -39,8 +39,8 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!apiId.trim() || !apiHash.trim() || !phoneNumber.trim()) {
-      setError('Please fill in all required fields');
+    if (!apiId.trim() || !apiHash.trim()) {
+      setError('Please fill in both API ID and API Hash');
       return;
     }
 
@@ -51,7 +51,7 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
       const response = await axios.post(`${API}/auth/configure`, {
         api_id: apiId,
         api_hash: apiHash,
-        phone_number: phoneNumber
+        phone_number: "" // Empty for now, will be set during authentication
       }, {
         headers: {
           'Authorization': 'Bearer telegram-automation-key-2025'
