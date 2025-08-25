@@ -5,4 +5,6 @@
 # @examplegroup3
 
 # Lines starting with # are comments and will be ignored
-# You can also use usernames starting with @
+# You can also use usernames starting with @https://t.me/testgroup123
+@testgroup456
+https://t.me/testgroup123
