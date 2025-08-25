@@ -254,9 +254,9 @@ class MongoDBMigrationTester:
             test_group_link = "https://t.me/test_mongodb_delete_group"
             
             # First add the group
-            add_response = self.make_request("POST", "/api/groups", {
+            add_response = self.make_request("POST", "/api/groups/", {
                 "group_link": test_group_link,
-                "metadata": {"test": True}
+                "metadata": {"test": "true"}
             })
             
             # Then delete it
