@@ -379,40 +379,64 @@ const components = {
   }
 };
 
-// Modern Semantic Tokens
+// Linear-style Semantic Tokens
 const semanticTokens = {
   colors: {
+    // Backgrounds
     'bg-canvas': {
-      default: 'gray.50',
-      _dark: 'gray.900',
+      default: 'white',      // Pure white like Linear
+      _dark: 'gray.950',
     },
     'bg-surface': {
       default: 'white',
-      _dark: 'gray.800',
+      _dark: 'gray.900',
     },
     'bg-muted': {
-      default: 'gray.100',
-      _dark: 'gray.700',
+      default: 'gray.50',
+      _dark: 'gray.850',
     },
+    'bg-subtle': {
+      default: 'gray.25',
+      _dark: 'gray.900',
+    },
+    // Text colors
     'text-primary': {
-      default: 'gray.900',
-      _dark: 'gray.100',
+      default: 'gray.900',    // Strong black
+      _dark: 'gray.50',
     },
     'text-secondary': {
-      default: 'gray.600',
-      _dark: 'gray.400',
+      default: 'gray.700',    // Medium gray
+      _dark: 'gray.300',
     },
     'text-muted': {
-      default: 'gray.500',
+      default: 'gray.500',    // Light gray
+      _dark: 'gray.400',
+    },
+    'text-placeholder': {
+      default: 'gray.400',
       _dark: 'gray.500',
     },
+    // Borders
     'border-primary': {
       default: 'gray.200',
-      _dark: 'gray.700',
+      _dark: 'gray.800',
     },
     'border-secondary': {
       default: 'gray.300',
-      _dark: 'gray.600',
+      _dark: 'gray.700',
+    },
+    'border-muted': {
+      default: 'gray.100',
+      _dark: 'gray.850',
+    },
+    // Interactive states
+    'bg-hover': {
+      default: 'gray.50',
+      _dark: 'gray.800',
+    },
+    'bg-active': {
+      default: 'gray.100',
+      _dark: 'gray.700',
     }
   }
 };
