@@ -89,78 +89,98 @@ const space = {
   20: '5rem',      // 80px
 };
 
-// Modern Component Styles
+// Linear-style Component Styles - Minimal & Clean
 const components = {
-  // Modern Card Design
+  // Linear-inspired Card Design
   Card: {
     baseStyle: {
       container: {
         bg: 'white',
-        boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-        borderRadius: 'lg',
+        boxShadow: 'none',
+        borderRadius: '6px', // Smaller radius like Linear
         border: '1px solid',
         borderColor: 'gray.200',
         overflow: 'hidden',
         _dark: {
-          bg: 'gray.800',
-          borderColor: 'gray.700',
-          boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3)',
+          bg: 'gray.900',
+          borderColor: 'gray.800',
         }
       }
     },
     variants: {
       compact: {
         container: {
-          bg: 'surface.secondary',
-          border: 'none',
+          bg: 'gray.50',
+          border: '1px solid',
+          borderColor: 'gray.200',
           boxShadow: 'none',
-          borderRadius: 'md',
+          borderRadius: '4px',
           _dark: {
             bg: 'gray.850',
+            borderColor: 'gray.800',
           }
+        }
+      },
+      subtle: {
+        container: {
+          bg: 'transparent',
+          border: 'none',
+          boxShadow: 'none',
+          borderRadius: '4px',
         }
       }
     }
   },
 
-  // Modern Button Design
+  // Linear-style Button Design
   Button: {
     baseStyle: {
       fontWeight: 500,
-      borderRadius: 'md',
-      fontSize: 'sm',
+      borderRadius: '4px', // Tighter radius
+      fontSize: '13px',    // Smaller text
+      lineHeight: '1.4',
+      transition: 'all 0.15s ease',
       _focus: {
-        boxShadow: 'none',
-        ring: 2,
-        ringColor: 'brand.500',
-        ringOpacity: 0.3,
+        boxShadow: '0 0 0 2px rgba(23, 23, 23, 0.1)',
+      },
+      _focusVisible: {
+        outline: '2px solid',
+        outlineColor: 'gray.900',
+        outlineOffset: '1px',
       }
     },
     variants: {
       solid: {
-        bg: 'brand.500',
+        bg: 'gray.900',
         color: 'white',
         _hover: {
-          bg: 'brand.600',
+          bg: 'gray.800',
           _disabled: {
-            bg: 'brand.500',
+            bg: 'gray.900',
           }
         },
         _active: {
-          bg: 'brand.700',
+          bg: 'gray.950',
         }
       },
       ghost: {
-        color: 'gray.600',
+        color: 'gray.700',
+        bg: 'transparent',
         _hover: {
           bg: 'gray.100',
-          color: 'gray.700',
+          color: 'gray.900',
+        },
+        _active: {
+          bg: 'gray.200',
         },
         _dark: {
           color: 'gray.400',
           _hover: {
+            bg: 'gray.800',
+            color: 'gray.200',
+          },
+          _active: {
             bg: 'gray.700',
-            color: 'gray.300',
           }
         }
       },
@@ -168,35 +188,46 @@ const components = {
         border: '1px solid',
         borderColor: 'gray.300',
         color: 'gray.700',
+        bg: 'transparent',
         _hover: {
           bg: 'gray.50',
           borderColor: 'gray.400',
+          color: 'gray.900',
+        },
+        _active: {
+          bg: 'gray.100',
         },
         _dark: {
-          borderColor: 'gray.600',
+          borderColor: 'gray.700',
           color: 'gray.300',
           _hover: {
-            bg: 'gray.700',
-            borderColor: 'gray.500',
+            bg: 'gray.800',
+            borderColor: 'gray.600',
+            color: 'gray.100',
           }
         }
       }
     },
     sizes: {
+      xs: {
+        h: 6,
+        px: 2,
+        fontSize: '11px',
+      },
       sm: {
-        h: 8,
+        h: 7,
         px: 3,
-        fontSize: 'sm',
+        fontSize: '12px',
       },
       md: {
-        h: 10,
-        px: 4,
-        fontSize: 'sm',
+        h: 8,
+        px: 3,
+        fontSize: '13px',
       },
       lg: {
-        h: 12,
-        px: 6,
-        fontSize: 'md',
+        h: 9,
+        px: 4,
+        fontSize: '14px',
       }
     }
   },
