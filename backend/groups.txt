@@ -7,3 +7,4 @@
 # Example:
 # https://t.me/examplegroup
 # @anothergroup
+https://t.me/test_mongodb_group
