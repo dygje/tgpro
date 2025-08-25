@@ -41,8 +41,15 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 # Pydantic models
+class TelegramAPIConfig(BaseModel):
+    api_id: str = Field(..., description="Telegram API ID from my.telegram.org")
+    api_hash: str = Field(..., description="Telegram API Hash from my.telegram.org")
+    phone_number: str = Field(..., description="Phone number with country code")
+
 class AuthRequest(BaseModel):
     phone_number: str = Field(..., description="Phone number with country code")
+    api_id: Optional[str] = Field(None, description="Telegram API ID")
+    api_hash: Optional[str] = Field(None, description="Telegram API Hash")
     
 class VerifyCodeRequest(BaseModel):
     verification_code: str = Field(..., description="6-digit verification code")
