@@ -279,3 +279,207 @@
 2025-08-25 07:00:21,312 - pyrogram.session.session - INFO - PingTask started
 2025-08-25 07:00:21,445 - telegram_service - ERROR - Error sending verification code: Telegram says: [400 API_ID_INVALID] (caused by "auth.SendCode") Pyrogram 2.3.68 thinks: The api_id/api_hash combination is invalid
 2025-08-25 07:00:21,445 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 10:37:54,468 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:37:54,468 - server - ERROR - Failed to initialize services: 'NoneType' object is not subscriptable
+2025-08-25 10:37:54,468 - server - INFO - Services shutdown completed
+2025-08-25 10:38:14,998 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:38:15,066 - services.db_service - ERROR - Failed to connect to MongoDB: MotorCollection object is not callable. If you meant to call the 'admin.command' method on a MotorCollection object it is failing because no such method exists.
+2025-08-25 10:38:15,066 - server - ERROR - Failed to initialize services: Failed to connect to MongoDB
+2025-08-25 10:38:15,066 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:38:15,066 - server - INFO - Services shutdown completed
+2025-08-25 10:38:35,390 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:38:35,397 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:38:35,593 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:38:35,595 - services.encryption_service - INFO - New encryption key generated and stored
+2025-08-25 10:38:35,595 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:38:35,596 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 10:38:35,597 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 10:38:35,598 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 10:38:35,598 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 10:38:35,599 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 10:38:35,599 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 10:38:35,599 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 10:38:35,600 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 10:38:35,600 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 10:38:35,601 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 10:38:35,604 - services.config_service - ERROR - Error loading config: 2 validation errors for TelegramConfig
+api_id
+  Input should be greater than 0 [type=greater_than, input_value=0, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.9/v/greater_than
+api_hash
+  String should have at least 32 characters [type=string_too_short, input_value='', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_too_short
+2025-08-25 10:38:35,604 - services.config_service - ERROR - Failed to initialize config service: 2 validation errors for TelegramConfig
+api_id
+  Input should be greater than 0 [type=greater_than, input_value=0, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.9/v/greater_than
+api_hash
+  String should have at least 32 characters [type=string_too_short, input_value='', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_too_short
+2025-08-25 10:38:35,604 - server - ERROR - Failed to initialize services: Failed to initialize configuration service
+2025-08-25 10:38:35,605 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:38:35,605 - server - INFO - Services shutdown completed
+2025-08-25 10:39:01,497 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:39:01,566 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:39:01,570 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:39:01,571 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:39:01,571 - services.config_service - INFO - No config.json found, skipping migration
+2025-08-25 10:39:01,575 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:39:01,575 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 10:39:01,577 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 10:39:01,577 - server - INFO - All services initialized successfully
+2025-08-25 10:39:01,580 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:39:25,647 - services.db_service - INFO - Config telegram saved successfully
+2025-08-25 10:39:25,647 - services.config_service - INFO - Telegram configuration updated successfully
+2025-08-25 10:42:08,813 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:42:08,813 - server - INFO - Services shutdown completed
+2025-08-25 10:42:11,100 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:42:11,107 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:42:11,111 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:42:11,112 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:42:11,113 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:42:11,119 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:42:11,120 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:42:11,120 - server - INFO - All services initialized successfully
+2025-08-25 10:42:11,123 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:42:52,646 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:42:52,646 - server - INFO - Services shutdown completed
+2025-08-25 10:42:55,077 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:42:55,085 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:42:55,089 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:42:55,091 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:42:55,092 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:42:55,098 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:42:55,099 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:42:55,099 - server - INFO - All services initialized successfully
+2025-08-25 10:42:55,103 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:43:00,525 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:43:00,525 - server - INFO - Services shutdown completed
+2025-08-25 10:43:07,979 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:43:07,987 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:43:07,991 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:43:07,992 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:43:07,993 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:43:08,000 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:43:08,000 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:43:08,001 - server - INFO - All services initialized successfully
+2025-08-25 10:43:08,016 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:43:11,936 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:43:11,936 - server - INFO - Services shutdown completed
+2025-08-25 10:43:18,991 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:43:18,999 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:43:19,065 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:43:19,067 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:43:19,070 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:43:19,077 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:43:19,077 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:43:19,078 - server - INFO - All services initialized successfully
+2025-08-25 10:43:19,079 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:43:30,702 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:43:30,702 - server - INFO - Services shutdown completed
+2025-08-25 10:43:37,667 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:43:37,674 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:43:37,678 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:43:37,679 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:43:37,680 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:43:37,686 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:43:37,688 - services.auth_service - INFO - New JWT secret generated and stored
+2025-08-25 10:43:37,688 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:43:37,688 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:43:37,689 - server - INFO - All services initialized successfully
+2025-08-25 10:43:37,690 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:43:42,501 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:43:42,501 - server - INFO - Services shutdown completed
+2025-08-25 10:43:49,303 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:43:49,369 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:43:49,373 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:43:49,374 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:43:49,376 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:43:49,383 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:43:49,384 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:43:49,384 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:43:49,384 - server - INFO - All services initialized successfully
+2025-08-25 10:43:49,386 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:43:54,597 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:43:54,598 - server - INFO - Services shutdown completed
+2025-08-25 10:44:01,490 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:44:01,498 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:44:01,503 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:44:01,504 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:44:01,505 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:44:01,511 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:44:01,512 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:44:01,512 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:44:01,512 - server - INFO - All services initialized successfully
+2025-08-25 10:44:01,514 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:44:17,849 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:44:17,849 - server - INFO - Services shutdown completed
+2025-08-25 10:44:25,189 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:44:25,197 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:44:25,201 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:44:25,203 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:44:25,204 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:44:25,210 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:44:25,211 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:44:25,211 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:44:25,212 - server - INFO - All services initialized successfully
+2025-08-25 10:44:25,265 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:44:30,576 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:44:30,576 - server - INFO - Services shutdown completed
+2025-08-25 10:44:32,610 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:44:32,618 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:44:32,622 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:44:32,623 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:44:32,624 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:44:32,630 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:44:32,631 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:44:32,631 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:44:32,632 - server - INFO - All services initialized successfully
+2025-08-25 10:44:32,633 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:44:39,076 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:44:43,793 - services.auth_service - INFO - Created new session: ec0a6889-9fc3-4a2c-b71b-d01880445895 for user: +1234567890
+2025-08-25 10:44:43,793 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 10:44:43,794 - services.auth_service - INFO - Invalidated session: ec0a6889-9fc3-4a2c-b71b-d01880445895
+2025-08-25 10:44:59,301 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:44:59,301 - server - INFO - Services shutdown completed
+2025-08-25 10:45:06,971 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:45:06,979 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:45:06,983 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:45:06,984 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:45:06,985 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:45:06,991 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:45:06,992 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:45:06,992 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:45:06,992 - server - INFO - All services initialized successfully
+2025-08-25 10:45:06,994 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:45:18,723 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 10:45:18,723 - server - INFO - Services shutdown completed
+2025-08-25 10:45:26,167 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 10:45:26,176 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 10:45:26,180 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 10:45:26,181 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 10:45:26,182 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-25 10:45:26,187 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 10:45:26,188 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 10:45:26,189 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 10:45:26,189 - server - INFO - All services initialized successfully
+2025-08-25 10:45:26,190 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 10:55:11,822 - services.db_service - INFO - Config telegram saved successfully
+2025-08-25 10:55:11,822 - services.config_service - INFO - Telegram configuration updated successfully
+2025-08-25 10:55:12,055 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:12,111 - services.auth_service - INFO - Created new session: 2d61666a-5701-4d2c-b47d-ab788ac4e334 for user: +1234567890
+2025-08-25 10:55:12,112 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 10:55:12,112 - services.auth_service - INFO - Invalidated session: 2d61666a-5701-4d2c-b47d-ab788ac4e334
+2025-08-25 10:55:12,164 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:12,215 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:12,324 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:12,381 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:12,927 - server - INFO - Added group: https://t.me/test_mongodb_group
+2025-08-25 10:55:13,485 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:13,547 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:13,712 - services.auth_service - WARNING - Invalid JWT token: Invalid header string: 'utf-8' codec can't decode byte 0x8a in position 0: invalid start byte
+2025-08-25 10:55:13,760 - services.auth_service - WARNING - Invalid JWT token: Signature verification failed
+2025-08-25 10:55:13,817 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:13,867 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:55:18,955 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 10:58:18,721 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
