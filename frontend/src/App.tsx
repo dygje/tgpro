@@ -139,7 +139,6 @@ function App() {
           top={0}
           zIndex={5}
           backdropFilter="blur(10px)"
-          bg={surfaceBg}
         >
           <Flex align="center" justify="space-between">
             <HStack spacing={4}>
