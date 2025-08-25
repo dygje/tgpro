@@ -150,6 +150,30 @@ backend:
           agent: "testing"
           comment: "Database and blacklist management tested successfully. Blacklist API endpoints working: GET /api/blacklist returns permanent and temporary blacklists, POST /api/blacklist/permanent adds entries, DELETE removes entries. File-based storage working properly. MongoDB connection established. All CRUD operations functional."
 
+  - task: "Groups Management API Enhancement"
+    implemented: true
+    working: true
+    file: "server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Enhanced Groups Management API tested successfully. GET /api/groups lists groups from groups.txt (working). POST /api/groups adds new groups with proper validation for https://t.me/ and @ formats, rejects invalid formats and duplicates (working). DELETE /api/groups/{group_link} removes groups from groups.txt with proper error handling for non-existent groups (working). All input validation, error handling, and file operations working correctly. Security measures prevent path traversal attacks."
+
+  - task: "Messages Management API Enhancement"
+    implemented: true
+    working: true
+    file: "server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Enhanced Messages Management API tested successfully. GET /api/messages now includes file content along with metadata (working). POST /api/messages creates new message files with content validation, auto-adds .txt extension, prevents duplicates and path traversal (working). PUT /api/messages/{filename} updates existing files with proper validation (working). DELETE /api/messages/{filename} removes files with proper error handling (working). All CRUD operations, input validation, security measures, and file system operations working correctly."
+
 frontend:
   - task: "React Application Startup"
     implemented: true
