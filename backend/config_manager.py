@@ -85,6 +85,13 @@ class ConfigManager:
         self._save_config()
         logger.info("Configuration updated")
     
+    def save_config(self, config: Dict[str, Any] = None):
+        """Save configuration to file"""
+        if config is not None:
+            self.config = config
+        self._save_config()
+        logger.info("Configuration saved manually")
+    
     def get(self, key_path: str, default=None):
         """Get configuration value by dot-separated path"""
         keys = key_path.split('.')
