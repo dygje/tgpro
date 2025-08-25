@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Dict, Any, Optional, List
 
 # Configuration
-BACKEND_URL = "https://tgpro-refactor.preview.emergentagent.com"
+BACKEND_URL = "https://mtproxy-sender.preview.emergentagent.com"
 API_KEY = "telegram-automation-key-2025"
 
 class BackendMigrationTester:

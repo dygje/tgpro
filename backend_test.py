@@ -15,7 +15,7 @@ from typing import Dict, Any, Optional, List
 from urllib.parse import urlparse
 
 # Configuration
-BACKEND_URL = "https://tgpro-refactor.preview.emergentagent.com"
+BACKEND_URL = "https://mtproxy-sender.preview.emergentagent.com"
 API_KEY = "telegram-automation-key-2025"
 
 # WebSocket URL (convert HTTPS to WSS)
