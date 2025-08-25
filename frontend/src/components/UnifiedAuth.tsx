@@ -166,7 +166,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
         setCurrentStep('2fa');
         setSuccess('Please enter your 2FA password');
       } else {
-        setError(err.message || 'Invalid verification code');
+        const errorMessage = typeof err === 'string' ? err : (err?.message || err?.details?.message || 'Invalid verification code');
+        setError(errorMessage);
       }
     } finally {
       setLoading(false);
