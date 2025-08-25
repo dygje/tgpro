@@ -459,7 +459,7 @@ class MongoDBMigrationTester:
                 "content": "Template to be deleted",
                 "variables": {}
             }
-            create_response = self.make_request("POST", "/api/messages", create_data)
+            create_response = self.make_request("POST", "/api/messages/", create_data)
             
             # Then delete it
             response = self.make_request("DELETE", f"/api/messages/{template_id}")
