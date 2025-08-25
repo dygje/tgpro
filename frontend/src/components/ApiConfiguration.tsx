@@ -21,7 +21,7 @@ import {
   Code,
   Divider,
 } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { FiExternalLink } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
 import { api } from '../lib/api';
 import { ApiConfigurationProps } from '../types/components';
