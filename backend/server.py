@@ -195,8 +195,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include new MongoDB configuration router
+# Include MongoDB routers
 app.include_router(config_router)
+app.include_router(auth_router)
 
 # Health check endpoint
 @app.get("/api/health")
