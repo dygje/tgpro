@@ -86,24 +86,27 @@ const steps = [
 ];
 
 const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
-  // States
+  // Form states - all in one view
+  const [apiId, setApiId] = useState('');
+  const [apiHash, setApiHash] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [twoFactorCode, setTwoFactorCode] = useState('');
+  
+  // Flow control
+  const [currentStep, setCurrentStep] = useState<'setup' | 'phone' | 'verify' | '2fa'>('setup');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isApiConfigured, setIsApiConfigured] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [twoFACode, setTwoFACode] = useState('');
-  const [needsTwoFA, setNeedsTwoFA] = useState(false);
+  
+  // Configuration check
+  const [configStatus, setConfigStatus] = useState<any>(null);
+  const [checkingConfig, setCheckingConfig] = useState(true);
 
-  // Theme colors
-  const bgGradient = useColorModeValue(
-    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    'linear-gradient(135deg, #2d3748 0%, #1a202c 100%)'
-  );
-  const cardBg = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  // Linear-style theme colors
+  const bgColor = useColorModeValue('white', 'gray.950');
+  const cardBg = useColorModeValue('white', 'gray.900');
+  const borderColor = useColorModeValue('gray.200', 'gray.800');
 
   // Forms
   const configForm = useForm<ConfigFormData>();
