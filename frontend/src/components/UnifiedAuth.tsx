@@ -552,7 +552,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
           </Text>
         </VStack>
       </Container>
-    </Box>
+    </Flex>
   );
 };
 
