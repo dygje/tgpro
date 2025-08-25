@@ -439,7 +439,7 @@ class BackendMigrationTester:
     
     def test_create_and_delete_group(self):
         """Test group creation and deletion to verify CRUD operations"""
-        test_group = "https://t.me/migration_test_group_001"
+        test_group = "https://t.me/migration_test_group_002"
         
         try:
             # First, try to create a test group
@@ -448,28 +448,25 @@ class BackendMigrationTester:
             
             if response.status_code == 200:
                 # Group created successfully, now try to delete it
-                import urllib.parse
-                encoded_group = urllib.parse.quote(test_group, safe='')
-                delete_response = self.make_request("DELETE", f"/api/groups/{encoded_group}")
+                # Use the exact group link as path parameter
+                delete_response = self.make_request("DELETE", f"/api/groups/{test_group}")
                 
                 if delete_response.status_code == 200:
                     self.log_test("Group CRUD Operations", True, 
                                 "Group creation and deletion working correctly")
                 else:
                     self.log_test("Group CRUD Operations", False, 
-                                f"Group deletion failed - HTTP {delete_response.status_code}")
+                                f"Group deletion failed - HTTP {delete_response.status_code}: {delete_response.text}")
             elif response.status_code == 400 and "already exists" in response.text:
                 # Group already exists, try to delete it
-                import urllib.parse
-                encoded_group = urllib.parse.quote(test_group, safe='')
-                delete_response = self.make_request("DELETE", f"/api/groups/{encoded_group}")
+                delete_response = self.make_request("DELETE", f"/api/groups/{test_group}")
                 
                 if delete_response.status_code == 200:
                     self.log_test("Group CRUD Operations", True, 
                                 "Group deletion working (group already existed)")
                 else:
                     self.log_test("Group CRUD Operations", False, 
-                                f"Group deletion failed - HTTP {delete_response.status_code}")
+                                f"Group deletion failed - HTTP {delete_response.status_code}: {delete_response.text}")
             else:
                 self.log_test("Group CRUD Operations", False, 
                             f"Group creation failed - HTTP {response.status_code}: {response.text}")
@@ -479,8 +476,8 @@ class BackendMigrationTester:
 
     def test_create_and_delete_message(self):
         """Test message file creation and deletion"""
-        test_filename = "migration_test_message.txt"
-        test_content = "This is a test message for migration testing."
+        test_filename = "migration_test_message_002.txt"
+        test_content = "This is a test message for migration testing - updated."
         
         try:
             # First, try to create a test message file
@@ -496,7 +493,7 @@ class BackendMigrationTester:
                                 "Message creation and deletion working correctly")
                 else:
                     self.log_test("Message CRUD Operations", False, 
-                                f"Message deletion failed - HTTP {delete_response.status_code}")
+                                f"Message deletion failed - HTTP {delete_response.status_code}: {delete_response.text}")
             elif response.status_code == 400 and "already exists" in response.text:
                 # Message already exists, try to delete it
                 delete_response = self.make_request("DELETE", f"/api/messages/{test_filename}")
@@ -506,7 +503,7 @@ class BackendMigrationTester:
                                 "Message deletion working (file already existed)")
                 else:
                     self.log_test("Message CRUD Operations", False, 
-                                f"Message deletion failed - HTTP {delete_response.status_code}")
+                                f"Message deletion failed - HTTP {delete_response.status_code}: {delete_response.text}")
             else:
                 self.log_test("Message CRUD Operations", False, 
                             f"Message creation failed - HTTP {response.status_code}: {response.text}")
