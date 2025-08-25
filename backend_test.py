@@ -128,15 +128,15 @@ class BackendTester:
         self.test_endpoint("POST", "/auth/phone", data=phone_data, expected_status=400,
                           description="Request verification code (expected to fail without real API credentials)")
         
-        # Test verification code (expected to fail)
+        # Test verification code (expected to fail without session_id)
         verify_data = {"verification_code": "123456"}
-        self.test_endpoint("POST", "/auth/verify", data=verify_data, expected_status=500,
-                          description="Verify phone code (expected to fail without active session)")
+        self.test_endpoint("POST", "/auth/verify", data=verify_data, expected_status=400,
+                          description="Verify phone code (expected to fail without session_id)")
         
-        # Test 2FA (expected to fail)
+        # Test 2FA (expected to fail without session_id)
         twofa_data = {"password": "testpassword"}
-        self.test_endpoint("POST", "/auth/2fa", data=twofa_data, expected_status=500,
-                          description="Verify 2FA password (expected to fail without active session)")
+        self.test_endpoint("POST", "/auth/2fa", data=twofa_data, expected_status=400,
+                          description="Verify 2FA password (expected to fail without session_id)")
         
     def test_groups_management(self):
         """Test groups management endpoints"""
