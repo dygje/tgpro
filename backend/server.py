@@ -179,10 +179,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include new MongoDB configuration router
+app.include_router(config_router)
+
 # Health check endpoint
 @app.get("/api/health")
 async def health_check():
-    """Health check endpoint"""
+    """Health check endpoint with MongoDB services status"""
     return {
         "status": "healthy",
         "telegram_initialized": telegram_service.is_initialized() if telegram_service else False,
@@ -190,7 +193,10 @@ async def health_check():
         "services": {
             "config_manager": config_manager is not None,
             "blacklist_manager": blacklist_manager is not None,
-            "telegram_service": telegram_service is not None
+            "telegram_service": telegram_service is not None,
+            "db_service": db_service is not None and db_service.client is not None,
+            "encryption_service": encryption_service is not None and encryption_service._fernet is not None,
+            "config_service": config_service is not None
         }
     }
 
