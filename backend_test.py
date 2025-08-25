@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 """
-Comprehensive Backend Testing for MongoDB + JWT Authentication Implementation
-Testing all new MongoDB services and JWT authentication system
+Comprehensive Backend Testing for Phase 2 (WebSocket Real-time System) and Phase 3 (Async Task Processing)
+Testing WebSocket endpoints, async task management, and real-time integration
 """
 
 import asyncio
 import json
 import requests
 import time
+import websockets
+import threading
 from datetime import datetime
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
+from urllib.parse import urlparse
 
 # Configuration
 BACKEND_URL = "https://telegram-automation.preview.emergentagent.com"
 API_KEY = "telegram-automation-key-2025"
+
+# WebSocket URL (convert HTTPS to WSS)
+parsed_url = urlparse(BACKEND_URL)
+WS_BASE_URL = f"wss://{parsed_url.netloc}"
 
 class BackendTester:
     def __init__(self):
