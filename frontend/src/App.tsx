@@ -117,9 +117,10 @@ function App() {
   }
 
   // Show unified auth if not authenticated
-  if (!isAuthenticated) {
-    return <UnifiedAuth onAuthSuccess={handleAuthSuccess} />;
-  }
+  // Temporarily show dashboard for design preview
+  // if (!isAuthenticated) {
+  //   return <UnifiedAuth onAuthSuccess={handleAuthSuccess} />;
+  // }
 
   // Show main dashboard if authenticated
   return (
