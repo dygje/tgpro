@@ -12,7 +12,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Configuration
-BACKEND_URL = "https://tgpro-visual-update.preview.emergentagent.com/api"
+BACKEND_URL = "https://tgpro-login.preview.emergentagent.com/api"
 API_KEY = "telegram-automation-key-2025"
 HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
