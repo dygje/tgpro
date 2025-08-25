@@ -20,6 +20,13 @@ from telegram_service import TelegramService, MessageTemplate, MessageType
 from config_manager import ConfigManager
 from blacklist_manager import BlacklistManager
 
+# New MongoDB services
+from services.db_service import DatabaseService
+from services.encryption_service import EncryptionService
+from services.config_service import ConfigService
+from routers.config import router as config_router
+from routers import config as config_router_module
+
 # Load environment variables
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
