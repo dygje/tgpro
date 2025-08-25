@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Correct the errors that exist in this entire project, test it until it can be used in the production environment. Make sure everything is in sync and logical and follow the latest best practices. Do not make repairs that result in potential problems in the future for this project."
+user_problem_statement: "Merefaktor proyek tgpro yang ada di https://github.com/dygje/tgpro menjadi aplikasi otomatisasi Telegram yang lebih aman, skalabel, dan user-friendly menggunakan MTProto API (via Pyrofork). Fokus pada migrasi dari file-based storage (seperti groups.txt dan config.json) ke MongoDB dengan enkripsi AES-256 untuk data sensitif seperti API_ID dan API_HASH, sambil meningkatkan modularitas backend dengan FastAPI dan frontend dengan React TypeScript serta Chakra UI untuk UI responsif."
 
 backend:
   - task: "Backend Service Startup"
