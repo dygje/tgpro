@@ -322,6 +322,24 @@ class BackendTester:
                 self.log(f"❌ FAIL: Error checking MongoDB services: {str(e)}", "ERROR")
                 self.failed += 1
     
+    def test_websocket_and_tasks(self):
+        """Test WebSocket and async task endpoints"""
+        self.log("=== TESTING WEBSOCKET & TASK ENDPOINTS ===", "INFO")
+        
+        # Test WebSocket connections endpoint
+        self.test_endpoint("GET", "/ws/connections", description="Get WebSocket connection statistics")
+        
+        # Test task statistics
+        self.test_endpoint("GET", "/tasks/stats/overview", description="Get task statistics overview")
+        
+        # Test task creation (message sending)
+        task_data = {
+            "template_id": "test_template",
+            "recipients": ["https://t.me/testgroup"],
+            "delay_override": {"message_delay": 5}
+        }
+        self.test_endpoint("POST", "/tasks/message-sending", data=task_data, description="Create message sending task")
+        
     def run_all_tests(self):
         """Run all backend API tests"""
         self.log("🚀 STARTING COMPREHENSIVE BACKEND API TESTING", "INFO")
@@ -342,6 +360,7 @@ class BackendTester:
         self.test_logs_endpoint()
         self.test_jwt_authentication()
         self.test_mongodb_integration()
+        self.test_websocket_and_tasks()
         
         end_time = time.time()
         duration = end_time - start_time
