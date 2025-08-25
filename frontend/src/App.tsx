@@ -26,7 +26,6 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isApiConfigured, setIsApiConfigured] = useState(false);
   const [authStatus, setAuthStatus] = useState<AuthStatusType | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
