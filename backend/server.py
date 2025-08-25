@@ -238,20 +238,8 @@ async def request_verification_code(
         current_config = config_manager.config
         telegram_config = current_config.get("telegram", {})
         
-        # If API credentials are provided in the request, update them first
-        if request.api_id and request.api_hash:
-            current_config["telegram"]["api_id"] = request.api_id
-            current_config["telegram"]["api_hash"] = request.api_hash
-            current_config["telegram"]["phone_number"] = request.phone_number
-            config_manager.save_config(current_config)
-            
-            # Reinitialize telegram service
-            telegram_service = TelegramService(config_manager, blacklist_manager)
-            await telegram_service.initialize()
-        
-        # Check if credentials are available (either from config or request)
-        api_id = telegram_config.get("api_id") or request.api_id
-        api_hash = telegram_config.get("api_hash") or request.api_hash
+        api_id = telegram_config.get("api_id")
+        api_hash = telegram_config.get("api_hash")
         
         if not api_id or not api_hash:
             raise HTTPException(
@@ -264,6 +252,10 @@ async def request_verification_code(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Please configure valid Telegram API credentials. Visit my.telegram.org/apps to get your real API credentials."
             )
+        
+        # Update phone number in config during authentication
+        current_config["telegram"]["phone_number"] = request.phone_number
+        config_manager.save_config(current_config)
     
         success = await telegram_service.send_verification_code(request.phone_number)
         
