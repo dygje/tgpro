@@ -126,11 +126,13 @@ async def lifespan(app: FastAPI):
         
         # Initialize MongoDB services
         db_service = DatabaseService()
-        encryption_service = EncryptionService(db_service.client, os.environ.get('DB_NAME', 'tgpro'))
         
-        # Connect to database
+        # Connect to database first
         if not await db_service.connect():
             raise RuntimeError("Failed to connect to MongoDB")
+        
+        # Initialize encryption with connected client
+        encryption_service = EncryptionService(db_service.client, os.environ.get('DB_NAME', 'tgpro'))
         
         # Initialize encryption
         if not await encryption_service.initialize():
