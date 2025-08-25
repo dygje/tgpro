@@ -94,9 +94,12 @@ class TaskStatusResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-# Global services
+# Global services - New MongoDB-based services
+db_service = None
+encryption_service = None
+config_service = None
 telegram_service = None
-config_manager = None
+config_manager = None  # Keep for backward compatibility
 blacklist_manager = None
 
 # Security
@@ -116,17 +119,37 @@ async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(sec
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    global telegram_service, config_manager, blacklist_manager
+    global db_service, encryption_service, config_service, telegram_service, config_manager, blacklist_manager
     
     try:
-        logger.info("Initializing Telegram Automation Service...")
+        logger.info("Initializing Telegram Automation Service with MongoDB...")
         
-        # Initialize managers
+        # Initialize MongoDB services
+        db_service = DatabaseService()
+        encryption_service = EncryptionService(db_service.client, os.environ.get('DB_NAME', 'tgpro'))
+        
+        # Connect to database
+        if not await db_service.connect():
+            raise RuntimeError("Failed to connect to MongoDB")
+        
+        # Initialize encryption
+        if not await encryption_service.initialize():
+            raise RuntimeError("Failed to initialize encryption service")
+        
+        # Initialize configuration service
+        config_service = ConfigService(db_service, encryption_service)
+        if not await config_service.initialize():
+            raise RuntimeError("Failed to initialize configuration service")
+        
+        # Inject config service into router module
+        config_router_module.config_service = config_service
+        
+        # Initialize legacy managers for backward compatibility
         config_manager = ConfigManager()
         blacklist_manager = BlacklistManager()
         telegram_service = TelegramService(config_manager, blacklist_manager)
         
-        logger.info("Services initialized successfully")
+        logger.info("All services initialized successfully")
         yield
         
     except Exception as e:
@@ -136,6 +159,8 @@ async def lifespan(app: FastAPI):
         # Shutdown
         if telegram_service:
             await telegram_service.shutdown()
+        if db_service:
+            await db_service.disconnect()
         logger.info("Services shutdown completed")
 
 app = FastAPI(
