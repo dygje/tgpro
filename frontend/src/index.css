@@ -1,82 +1,79 @@
-/* Import Google Fonts */
+/* Import Google Fonts - Precision Typography */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-/* Base Styles */
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
 }
 
 html {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  line-height: 1.5;
+  font-size: 14px;
 }
 
-/* Monospace Elements */
+/* Monospace Elements - Precision Typography */
 code,
 .code,
 input[type="tel"],
 input[data-mono="true"],
 .phone-input,
 .api-input,
+.verification-input,
 .mono {
-  font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace !important;
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace !important;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.025em;
+  font-weight: 400;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Precision */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 4px;
+  background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #d4d4d4;
+  border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #a3a3a3;
 }
 
 /* Dark mode scrollbar */
-.chakra-ui-dark .custom-scrollbar::-webkit-scrollbar-track {
-  background: #2d3748;
-}
-
 .chakra-ui-dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #4a5568;
+  background: #404040;
 }
 
 .chakra-ui-dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #718096;
+  background: #525252;
 }
 
-/* Utility Classes */
+/* Precision Animation System */
 .fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -85,13 +82,13 @@ input[data-mono="true"],
 }
 
 .slide-in {
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.2s ease-out;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-4px);
   }
   to {
     opacity: 1;
@@ -99,31 +96,115 @@ input[data-mono="true"],
   }
 }
 
-/* Focus Ring Utility */
+.scale-in {
+  animation: scaleIn 0.15s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading Animation */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus Ring Utility - Precision */
 .focus-ring {
   outline: 2px solid transparent;
   outline-offset: 2px;
+  transition: outline-color 0.15s ease;
 }
 
-.focus-ring:focus {
-  outline: 2px solid #3182ce;
+.focus-ring:focus-visible {
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
-/* Text Selection */
+/* Text Selection - Brand Colors */
 ::selection {
-  background-color: #3182ce;
+  background-color: #3b82f6;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #3182ce;
+  background-color: #3b82f6;
   color: white;
+}
+
+/* Utility Classes - Precision Grid */
+.grid-4 { display: grid; gap: 4px; }
+.grid-8 { display: grid; gap: 8px; }
+.grid-12 { display: grid; gap: 12px; }
+.grid-16 { display: grid; gap: 16px; }
+
+.flex-4 { display: flex; gap: 4px; }
+.flex-8 { display: flex; gap: 8px; }
+.flex-12 { display: flex; gap: 12px; }
+.flex-16 { display: flex; gap: 16px; }
+
+/* Spacing Utilities */
+.p-4 { padding: 4px; }
+.p-8 { padding: 8px; }
+.p-12 { padding: 12px; }
+.p-16 { padding: 16px; }
+
+.m-4 { margin: 4px; }
+.m-8 { margin: 8px; }
+.m-12 { margin: 12px; }
+.m-16 { margin: 16px; }
+
+/* Typography Utilities */
+.text-xs { font-size: 12px; line-height: 16px; }
+.text-sm { font-size: 13px; line-height: 18px; }
+.text-md { font-size: 14px; line-height: 20px; }
+.text-lg { font-size: 16px; line-height: 24px; }
+
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+
+/* Interactive States */
+.interactive:hover {
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+.interactive:active {
+  transform: translateY(0);
 }
 
 /* Print Styles */
 @media print {
   .no-print {
+    display: none !important;
+  }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
     display: none !important;
   }
 }

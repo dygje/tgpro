@@ -1,106 +1,106 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 
-// Linear + Vercel Inspired Color Palette - Minimal & Clean
+// Precision-First Color System - Linear/Vercel/Notion Style
 const colors = {
   brand: {
     50: '#fafafa',
-    100: '#f5f5f5',
+    100: '#f5f5f5', 
     200: '#e5e5e5',
     300: '#d4d4d4',
     400: '#a3a3a3',
-    500: '#171717', // Primary brand color - dark like Linear
+    500: '#171717', // Primary brand - deep black like Linear
     600: '#0a0a0a',
     700: '#000000',
     800: '#000000',
     900: '#000000',
   },
   gray: {
-    25: '#fdfdfd',
-    50: '#fafafa',
-    100: '#f5f5f5',
-    200: '#e5e5e5',
-    300: '#d4d4d4',
-    400: '#a3a3a3',
-    500: '#737373',
-    600: '#525252',
-    700: '#404040',
-    800: '#262626',
-    850: '#1a1a1a',
-    900: '#171717',
-    950: '#0a0a0a',
+    25: '#fdfdfd',  // Ultra light backgrounds
+    50: '#fafafa',  // Light surfaces
+    100: '#f5f5f5', // Subtle surfaces
+    200: '#e5e5e5', // Borders
+    300: '#d4d4d4', // Muted borders
+    400: '#a3a3a3', // Placeholder text
+    500: '#737373', // Secondary text
+    600: '#525252', // Primary text (light mode)
+    700: '#404040', // Stronger text
+    800: '#262626', // Dark surfaces
+    850: '#1a1a1a', // Darker surfaces  
+    900: '#171717', // Primary dark
+    950: '#0a0a0a', // Ultra dark
   },
-  // Subtle accent colors
+  // Precise accent colors
   blue: {
-    50: '#f0f9ff',
-    100: '#e0f2fe', 
-    500: '#0ea5e9',
-    600: '#0284c7',
+    50: '#eff6ff',
+    500: '#3b82f6',
+    600: '#2563eb',
   },
   green: {
     50: '#f0fdf4',
-    100: '#dcfce7',
     500: '#22c55e',
     600: '#16a34a',
   },
   red: {
     50: '#fef2f2',
-    100: '#fee2e2',
-    500: '#ef4444',
+    500: '#ef4444', 
     600: '#dc2626',
   },
   orange: {
     50: '#fff7ed',
-    100: '#ffedd5',
     500: '#f97316',
     600: '#ea580c',
   },
-  // Linear-style surfaces
-  surface: {
-    primary: '#ffffff',
-    secondary: '#fafafa',
-    tertiary: '#f5f5f5',
-    quaternary: '#e5e5e5',
+  purple: {
+    50: '#faf5ff',
+    500: '#a855f7',
+    600: '#9333ea',
   }
 };
 
-// Linear-style Typography - Ultra Clean & Minimal
+// Precision Typography System
 const fonts = {
-  heading: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-  body: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-  mono: '"JetBrains Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace',
+  heading: '"Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+  body: '"Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif', 
+  mono: '"JetBrains Mono", "SF Mono", Monaco, Consolas, monospace',
 };
 
-// Tight Spacing System - More compact like Linear
+// Strict 4px Grid System
 const space = {
   px: '1px',
-  0.5: '0.125rem', // 2px
-  1: '0.25rem',    // 4px
-  1.5: '0.375rem', // 6px
-  2: '0.5rem',     // 8px
-  2.5: '0.625rem', // 10px
-  3: '0.75rem',    // 12px
-  4: '1rem',       // 16px
-  5: '1.25rem',    // 20px
-  6: '1.5rem',     // 24px
-  8: '2rem',       // 32px
-  10: '2.5rem',    // 40px
-  12: '3rem',      // 48px
-  16: '4rem',      // 64px
-  20: '5rem',      // 80px
+  0.5: '2px',   // 2px
+  1: '4px',     // 4px  - Base unit
+  1.5: '6px',   // 6px
+  2: '8px',     // 8px  - Small spacing
+  2.5: '10px',  // 10px
+  3: '12px',    // 12px - Medium spacing
+  3.5: '14px',  // 14px
+  4: '16px',    // 16px - Large spacing
+  5: '20px',    // 20px
+  6: '24px',    // 24px - Extra large spacing
+  7: '28px',    // 28px
+  8: '32px',    // 32px - Section spacing
+  9: '36px',    // 36px
+  10: '40px',   // 40px
+  12: '48px',   // 48px - Page spacing
+  14: '56px',   // 56px
+  16: '64px',   // 64px - Major spacing
+  20: '80px',   // 80px
+  24: '96px',   // 96px - Hero spacing
+  32: '128px',  // 128px
 };
 
-// Linear-style Component Styles - Minimal & Clean
+// Precision Component Styles
 const components = {
-  // Linear-inspired Card Design
+  // Ultra-precise Card System
   Card: {
     baseStyle: {
       container: {
         bg: 'white',
-        boxShadow: 'none',
-        borderRadius: '6px', // Smaller radius like Linear
         border: '1px solid',
         borderColor: 'gray.200',
+        borderRadius: '8px', // Consistent 8px radius
         overflow: 'hidden',
+        transition: 'all 0.15s ease',
         _dark: {
           bg: 'gray.900',
           borderColor: 'gray.800',
@@ -113,11 +113,22 @@ const components = {
           bg: 'gray.50',
           border: '1px solid',
           borderColor: 'gray.200',
-          boxShadow: 'none',
-          borderRadius: '4px',
+          borderRadius: '6px',
           _dark: {
-            bg: 'gray.850',
+            bg: 'gray.850', 
             borderColor: 'gray.800',
+          }
+        }
+      },
+      elevated: {
+        container: {
+          shadow: 'sm',
+          _hover: {
+            shadow: 'md',
+            borderColor: 'gray.300',
+            _dark: {
+              borderColor: 'gray.700',
+            }
           }
         }
       },
@@ -125,28 +136,40 @@ const components = {
         container: {
           bg: 'transparent',
           border: 'none',
-          boxShadow: 'none',
-          borderRadius: '4px',
+          borderRadius: '6px',
         }
+      }
+    },
+    sizes: {
+      sm: {
+        container: { borderRadius: '6px' }
+      },
+      md: {
+        container: { borderRadius: '8px' }
+      },
+      lg: {
+        container: { borderRadius: '12px' }
       }
     }
   },
 
-  // Linear-style Button Design
+  // Precision Button System
   Button: {
     baseStyle: {
       fontWeight: 500,
-      borderRadius: '4px', // Tighter radius
-      fontSize: '13px',    // Smaller text
-      lineHeight: '1.4',
+      borderRadius: '8px',
+      fontSize: '14px',
+      lineHeight: '20px',
       transition: 'all 0.15s ease',
       _focus: {
-        boxShadow: '0 0 0 2px rgba(23, 23, 23, 0.1)',
-      },
-      _focusVisible: {
         outline: '2px solid',
-        outlineColor: 'gray.900',
-        outlineOffset: '1px',
+        outlineColor: 'blue.500',
+        outlineOffset: '2px',
+        boxShadow: 'none',
+      },
+      _disabled: {
+        opacity: 0.5,
+        cursor: 'not-allowed',
       }
     },
     variants: {
@@ -155,33 +178,10 @@ const components = {
         color: 'white',
         _hover: {
           bg: 'gray.800',
-          _disabled: {
-            bg: 'gray.900',
-          }
+          _disabled: { bg: 'gray.900' }
         },
         _active: {
           bg: 'gray.950',
-        }
-      },
-      ghost: {
-        color: 'gray.700',
-        bg: 'transparent',
-        _hover: {
-          bg: 'gray.100',
-          color: 'gray.900',
-        },
-        _active: {
-          bg: 'gray.200',
-        },
-        _dark: {
-          color: 'gray.400',
-          _hover: {
-            bg: 'gray.800',
-            color: 'gray.200',
-          },
-          _active: {
-            bg: 'gray.700',
-          }
         }
       },
       outline: {
@@ -206,39 +206,68 @@ const components = {
             color: 'gray.100',
           }
         }
+      },
+      ghost: {
+        color: 'gray.700',
+        bg: 'transparent',
+        _hover: {
+          bg: 'gray.100',
+          color: 'gray.900',
+        },
+        _active: {
+          bg: 'gray.200',
+        },
+        _dark: {
+          color: 'gray.400',
+          _hover: {
+            bg: 'gray.800',
+            color: 'gray.200',
+          },
+          _active: {
+            bg: 'gray.700',
+          }
+        }
       }
     },
     sizes: {
       xs: {
-        h: 6,
-        px: 2,
-        fontSize: '11px',
+        h: '24px',
+        px: '8px',
+        fontSize: '12px',
+        borderRadius: '6px',
       },
       sm: {
-        h: 7,
-        px: 3,
-        fontSize: '12px',
+        h: '32px',
+        px: '12px', 
+        fontSize: '13px',
+        borderRadius: '6px',
       },
       md: {
-        h: 8,
-        px: 3,
-        fontSize: '13px',
+        h: '36px',
+        px: '16px',
+        fontSize: '14px',
+        borderRadius: '8px',
       },
       lg: {
-        h: 9,
-        px: 4,
-        fontSize: '14px',
+        h: '40px',
+        px: '20px',
+        fontSize: '16px',
+        borderRadius: '8px',
       }
     }
   },
 
-  // Linear-style Input Design
+  // Precision Input System  
   Input: {
     baseStyle: {
       field: {
-        borderRadius: '4px',
-        fontSize: '13px',
+        borderRadius: '8px',
+        fontSize: '14px',
         transition: 'all 0.15s ease',
+        _placeholder: {
+          color: 'gray.400',
+          fontSize: '14px',
+        }
       }
     },
     variants: {
@@ -250,16 +279,12 @@ const components = {
             borderColor: 'gray.400',
           },
           _focus: {
-            borderColor: 'gray.900',
-            boxShadow: '0 0 0 1px var(--chakra-colors-gray-900)',
+            borderColor: 'blue.500',
+            boxShadow: '0 0 0 1px var(--chakra-colors-blue-500)',
             _invalid: {
               borderColor: 'red.500',
               boxShadow: '0 0 0 1px var(--chakra-colors-red-500)',
             }
-          },
-          _placeholder: {
-            color: 'gray.400',
-            fontSize: '13px',
           },
           _dark: {
             borderColor: 'gray.700',
@@ -268,25 +293,25 @@ const components = {
               borderColor: 'gray.600',
             },
             _focus: {
-              borderColor: 'gray.400',
-              boxShadow: '0 0 0 1px var(--chakra-colors-gray-400)',
+              borderColor: 'blue.400',
+              boxShadow: '0 0 0 1px var(--chakra-colors-blue-400)',
             }
           }
         }
       },
       filled: {
         field: {
-          bg: 'gray.50',
+          bg: 'gray.100',
           border: '1px solid',
           borderColor: 'gray.200',
           _hover: {
-            bg: 'gray.100',
+            bg: 'gray.50',
             borderColor: 'gray.300',
           },
           _focus: {
             bg: 'white',
-            borderColor: 'gray.900',
-            boxShadow: '0 0 0 1px var(--chakra-colors-gray-900)',
+            borderColor: 'blue.500',
+            boxShadow: '0 0 0 1px var(--chakra-colors-blue-500)',
           },
           _dark: {
             bg: 'gray.800',
@@ -297,7 +322,7 @@ const components = {
             },
             _focus: {
               bg: 'gray.900',
-              borderColor: 'gray.400',
+              borderColor: 'blue.400',
             }
           }
         }
@@ -306,89 +331,113 @@ const components = {
     sizes: {
       sm: {
         field: {
-          h: 7,
-          px: 3,
-          fontSize: '12px',
+          h: '32px',
+          px: '12px',
+          fontSize: '13px',
+          borderRadius: '6px',
         }
       },
       md: {
         field: {
-          h: 8,
-          px: 3,
-          fontSize: '13px',
+          h: '36px',
+          px: '12px',
+          fontSize: '14px',
+          borderRadius: '8px',
         }
       },
       lg: {
         field: {
-          h: 9,
-          px: 4,
-          fontSize: '14px',
+          h: '40px',
+          px: '16px',
+          fontSize: '16px',
+          borderRadius: '8px',
         }
       }
     }
   },
 
-  // Modern Alert Design
+  // Precision Progress System
+  Progress: {
+    baseStyle: {
+      track: {
+        bg: 'gray.200',
+        _dark: {
+          bg: 'gray.700',
+        }
+      },
+      filledTrack: {
+        bg: 'gray.900',
+        _dark: {
+          bg: 'gray.300',
+        }
+      }
+    },
+    sizes: {
+      xs: {
+        track: { h: '2px' }
+      },
+      sm: {
+        track: { h: '4px' }
+      },
+      md: {
+        track: { h: '6px' }
+      },
+      lg: {
+        track: { h: '8px' }
+      }
+    }
+  },
+
+  // Precision Badge System
+  Badge: {
+    baseStyle: {
+      fontSize: '12px',
+      fontWeight: 500,
+      borderRadius: '6px',
+      textTransform: 'none',
+    },
+    sizes: {
+      sm: {
+        px: '6px',
+        py: '2px',
+        fontSize: '11px',
+      },
+      md: {
+        px: '8px',
+        py: '4px', 
+        fontSize: '12px',
+      },
+      lg: {
+        px: '10px',
+        py: '4px',
+        fontSize: '13px',
+      }
+    }
+  },
+
+  // Precision Alert System
   Alert: {
     variants: {
       subtle: {
         container: {
-          borderRadius: 'md',
+          borderRadius: '8px',
           border: '1px solid',
-        }
-      }
-    }
-  },
-
-  // Modern Tabs Design
-  Tabs: {
-    variants: {
-      line: {
-        tablist: {
-          borderBottom: '1px solid',
-          borderColor: 'gray.200',
-          _dark: {
-            borderColor: 'gray.700',
-          }
-        },
-        tab: {
-          color: 'gray.500',
-          fontWeight: 500,
-          fontSize: 'sm',
-          px: 4,
-          py: 3,
-          _hover: {
-            color: 'gray.700',
-          },
-          _selected: {
-            color: 'brand.500',
-            borderBottomColor: 'brand.500',
-          },
-          _dark: {
-            color: 'gray.400',
-            _hover: {
-              color: 'gray.300',
-            },
-            _selected: {
-              color: 'brand.400',
-            }
-          }
         }
       }
     }
   }
 };
 
-// Linear-style Semantic Tokens
+// Precision Semantic Tokens
 const semanticTokens = {
   colors: {
-    // Backgrounds
+    // Background System
     'bg-canvas': {
-      default: 'white',      // Pure white like Linear
+      default: 'white',
       _dark: 'gray.950',
     },
     'bg-surface': {
-      default: 'white',
+      default: 'white', 
       _dark: 'gray.900',
     },
     'bg-muted': {
@@ -399,24 +448,24 @@ const semanticTokens = {
       default: 'gray.25',
       _dark: 'gray.900',
     },
-    // Text colors
+    // Text System
     'text-primary': {
-      default: 'gray.900',    // Strong black
+      default: 'gray.900',
       _dark: 'gray.50',
     },
     'text-secondary': {
-      default: 'gray.700',    // Medium gray
-      _dark: 'gray.300',
+      default: 'gray.600',
+      _dark: 'gray.400',
     },
     'text-muted': {
-      default: 'gray.500',    // Light gray
-      _dark: 'gray.400',
+      default: 'gray.500',
+      _dark: 'gray.500',
     },
     'text-placeholder': {
       default: 'gray.400',
       _dark: 'gray.500',
     },
-    // Borders
+    // Border System  
     'border-primary': {
       default: 'gray.200',
       _dark: 'gray.800',
@@ -429,7 +478,7 @@ const semanticTokens = {
       default: 'gray.100',
       _dark: 'gray.850',
     },
-    // Interactive states
+    // Interactive System
     'bg-hover': {
       default: 'gray.50',
       _dark: 'gray.800',
@@ -447,29 +496,31 @@ const config: ThemeConfig = {
   useSystemColorMode: true,
 };
 
-// Linear-style Global Styles
+// Global Styles - Precision First
 const styles = {
   global: (props: any) => ({
     body: {
-      bg: props.colorMode === 'dark' ? 'gray.950' : 'white', // Pure white like Linear
+      bg: props.colorMode === 'dark' ? 'gray.950' : 'white',
       color: props.colorMode === 'dark' ? 'gray.50' : 'gray.900',
-      fontSize: '13px', // Smaller default font
-      lineHeight: 1.4,   // Tighter line height
-      fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"', // Inter font features
+      fontSize: '14px',
+      lineHeight: '20px',
+      fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
     },
     '*': {
       borderColor: props.colorMode === 'dark' ? 'gray.800' : 'gray.200',
     },
-    // Typography improvements
+    // Typography Precision
     'h1, h2, h3, h4, h5, h6': {
       fontWeight: 600,
-      letterSpacing: '-0.02em', // Tighter letter spacing
+      letterSpacing: '-0.025em',
+      lineHeight: '1.25',
     },
-    // Scrollbar styling
+    // Scrollbar Precision
     '::-webkit-scrollbar': {
       width: '6px',
+      height: '6px',
     },
     '::-webkit-scrollbar-track': {
       bg: 'transparent',
@@ -492,47 +543,59 @@ const theme = extendTheme({
   components,
   semanticTokens,
   styles,
-  // Linear-style shadows - More subtle
+  // Precision Shadows
   shadows: {
     none: 'none',
     xs: '0 1px 2px 0 rgb(0 0 0 / 0.04)',
-    sm: '0 1px 3px 0 rgb(0 0 0 / 0.06)',
-    md: '0 2px 6px 0 rgb(0 0 0 / 0.07)',
-    lg: '0 4px 12px 0 rgb(0 0 0 / 0.08)',
-    xl: '0 8px 24px 0 rgb(0 0 0 / 0.1)',
-    // Linear-specific shadows
-    border: '0 0 0 1px rgb(0 0 0 / 0.08)',
-    focus: '0 0 0 2px rgb(0 0 0 / 0.1)',
+    sm: '0 1px 3px 0 rgb(0 0 0 / 0.06)', 
+    md: '0 2px 6px 0 rgb(0 0 0 / 0.08)',
+    lg: '0 4px 12px 0 rgb(0 0 0 / 0.10)',
+    xl: '0 8px 24px 0 rgb(0 0 0 / 0.12)',
+    // Focus shadows
+    outline: '0 0 0 2px var(--chakra-colors-blue-500)',
+    'outline-gray': '0 0 0 2px var(--chakra-colors-gray-500)',
   },
-  // Smaller border radius like Linear
+  // Precision Border Radius
   radii: {
     none: '0',
-    sm: '2px',
-    md: '4px',
-    lg: '6px',
-    xl: '8px',
-    '2xl': '12px',
+    sm: '4px',
+    md: '6px', 
+    lg: '8px',
+    xl: '12px',
+    '2xl': '16px',
+    '3xl': '24px',
     full: '9999px',
   },
-  // Linear-style font sizes
+  // Precision Font Sizes
   fontSizes: {
-    xs: '11px',
-    sm: '12px',
-    md: '13px',
-    lg: '14px',
-    xl: '16px',
-    '2xl': '18px',
+    xs: '12px',
+    sm: '13px', 
+    md: '14px',
+    lg: '16px',
+    xl: '18px',
+    '2xl': '20px',
     '3xl': '24px',
     '4xl': '32px',
+    '5xl': '48px',
   },
-  // Tighter line heights
+  // Precision Line Heights
   lineHeights: {
-    shorter: 1.2,
-    short: 1.3,
-    base: 1.4,
-    tall: 1.5,
-    taller: 1.6,
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
   },
+  // Precision Letter Spacing
+  letterSpacings: {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+  }
 });
 
 export default theme;
