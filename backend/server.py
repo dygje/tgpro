@@ -335,6 +335,78 @@ async def get_telegram_configuration(api_key: str = Depends(verify_api_key)):
             detail=str(e)
         )
 
+@app.post("/api/auth/telegram-login")
+async def verify_telegram_login(
+    login_data: TelegramLoginRequest,
+    api_key: str = Depends(verify_api_key)
+):
+    """Verify Telegram Login Widget authentication"""
+    try:
+        # Get bot token from environment or config
+        bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
+        if not bot_token:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Telegram bot token not configured. Please configure your bot token."
+            )
+        
+        # Verify the authentication data
+        if not verify_telegram_login_data(login_data.model_dump(), bot_token):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid Telegram authentication data"
+            )
+        
+        # Authentication verified successfully
+        # Store user session or token here if needed
+        logger.info(f"Telegram login successful for user: {login_data.first_name} (ID: {login_data.id})")
+        
+        return {
+            "success": True,
+            "message": f"Welcome, {login_data.first_name}! Please complete your API configuration.",
+            "user": {
+                "id": login_data.id,
+                "first_name": login_data.first_name,
+                "last_name": login_data.last_name,
+                "username": login_data.username,
+                "photo_url": login_data.photo_url
+            }
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error verifying Telegram login: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to verify Telegram login: {str(e)}"
+        )
+
+def verify_telegram_login_data(data: dict, bot_token: str) -> bool:
+    """Verify Telegram Login Widget authentication data"""
+    try:
+        # Extract the hash
+        received_hash = data.pop('hash')
+        
+        # Create data string
+        data_check_arr = []
+        for key, value in sorted(data.items()):
+            if value is not None:
+                data_check_arr.append(f"{key}={value}")
+        
+        data_check_string = "\n".join(data_check_arr)
+        
+        # Calculate expected hash
+        secret_key = hashlib.sha256(bot_token.encode()).digest()
+        calculated_hash = hmac.new(secret_key, data_check_string.encode(), hashlib.sha256).hexdigest()
+        
+        # Verify hash matches
+        return hmac.compare_digest(received_hash, calculated_hash)
+        
+    except Exception as e:
+        logger.error(f"Error verifying Telegram login data: {e}")
+        return False
+
 @app.post("/api/auth/phone")
 async def request_verification_code(
     request: AuthRequest,
