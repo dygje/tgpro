@@ -27,6 +27,7 @@ import {
   IconButton,
   Tooltip,
   Progress,
+  Code,
 } from '@chakra-ui/react';
 import { 
   FiExternalLink, 
@@ -37,7 +38,8 @@ import {
   FiCheck,
   FiInfo,
   FiUser,
-  FiHash
+  FiHash,
+  FiLock,
 } from 'react-icons/fi';
 import { api } from '../lib/api';
 
@@ -63,7 +65,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
   const [configStatus, setConfigStatus] = useState<any>(null);
   const [checkingConfig, setCheckingConfig] = useState(true);
 
-  // Linear-style theme colors
+  // Precision theme colors
   const bgColor = useColorModeValue('white', 'gray.950');
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('gray.200', 'gray.800');
@@ -230,140 +232,158 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
 
   if (checkingConfig) {
     return (
-      <Flex minH="100vh" bg={bgColor} align="center" justify="center">
-        <VStack spacing={4}>
-          <Box 
-            w={8} 
-            h={8} 
-            bg="gray.900" 
-            borderRadius="md" 
-            display="flex" 
-            alignItems="center" 
-            justifyContent="center"
-          >
+      <Flex minH="100vh" bg={bgColor} align="center" justify="center" p={6}>
+        <Box
+          bg={cardBg}
+          p={8}
+          borderRadius="2xl"
+          shadow="lg"
+          border="1px solid"
+          borderColor={borderColor}
+          w="400px"
+          textAlign="center"
+        >
+          <VStack spacing={6}>
             <Box
-              w={4}
-              h={4}
-              border="2px solid"
-              borderColor="white"
-              borderTopColor="transparent"
-              borderRadius="full"
-              animation="spin 1s linear infinite"
-            />
-          </Box>
-          <Text fontSize="sm" color={textMuted}>
-            Loading TGPro...
-          </Text>
-        </VStack>
+              w={16}
+              h={16}
+              bg="gray.900"
+              borderRadius="xl"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              _dark={{ bg: "gray.100" }}
+            >
+              <Box
+                w={6}
+                h={6}
+                border="3px solid"
+                borderColor="white"
+                borderTopColor="transparent"
+                borderRadius="full"
+                animation="spin 1s linear infinite"
+                _dark={{ borderColor: "black", borderTopColor: "transparent" }}
+              />
+            </Box>
+            <VStack spacing={2}>
+              <Text fontWeight={600} fontSize="xl" color={textPrimary}>
+                TGPro
+              </Text>
+              <Text color={textSecondary} fontSize="sm">
+                Loading automation platform...
+              </Text>
+            </VStack>
+          </VStack>
+        </Box>
       </Flex>
     );
   }
 
   return (
-    <Flex minH="100vh" bg={bgColor} align="center" justify="center" p={4}>
-      <Container maxW="sm">
-        <VStack spacing={8}>
+    <Flex minH="100vh" bg={bgColor} align="center" justify="center" p={6}>
+      <Container maxW="lg">
+        <VStack spacing={10}>
           {/* Header */}
-          <VStack spacing={3} textAlign="center">
-            <Box 
-              w={10} 
-              h={10} 
-              bg="gray.900" 
-              borderRadius="md" 
-              display="flex" 
-              alignItems="center" 
+          <VStack spacing={4} textAlign="center">
+            <Box
+              w={16}
+              h={16}
+              bg="gray.900"
+              borderRadius="xl"
+              display="flex"
+              alignItems="center"
               justifyContent="center"
+              _dark={{ bg: "gray.100" }}
             >
-              <FiShield color="white" size={20} />
+              <FiShield color={useColorModeValue("white", "black")} size={32} />
             </Box>
-            <VStack spacing={1}>
-              <Heading size="lg" color={textPrimary} fontWeight={600}>
+            <VStack spacing={2}>
+              <Heading size="xl" color={textPrimary} fontWeight={700}>
                 TGPro
               </Heading>
-              <Text fontSize="sm" color={textSecondary}>
-                Telegram Automation Dashboard
+              <Text fontSize="lg" color={textSecondary} fontWeight={500}>
+                Telegram Automation Platform
               </Text>
+              <Badge colorScheme="blue" variant="subtle" px={3} py={1} borderRadius="full">
+                Secure MTProto Authentication
+              </Badge>
             </VStack>
           </VStack>
 
           {/* Main Card */}
-          <Card w="full" bg={cardBg} borderColor={borderColor} shadow="sm">
-            <CardBody p={6}>
-              <VStack spacing={6}>
+          <Card w="full" maxW="md" shadow="xl" borderRadius="2xl" border="1px solid" borderColor={borderColor}>
+            <CardBody p={8}>
+              <VStack spacing={8}>
                 {/* Progress */}
                 <Box w="full">
                   <HStack justify="space-between" mb={3}>
-                    <Text fontSize="sm" fontWeight={500} color={textPrimary}>
+                    <Text fontSize="md" fontWeight={600} color={textPrimary}>
                       {stepInfo.title}
                     </Text>
-                    <Text fontSize="xs" color={textMuted}>
+                    <Text fontSize="sm" color={textMuted}>
                       {stepInfo.progress}%
                     </Text>
                   </HStack>
                   <Progress 
                     value={stepInfo.progress} 
-                    size="sm" 
+                    size="lg"
                     borderRadius="full" 
                     bg={useColorModeValue('gray.100', 'gray.800')}
-                    colorScheme="gray"
                     sx={{
                       '& > div': {
-                        bg: 'gray.900',
-                        _dark: {
-                          bg: 'gray.200',
-                        }
+                        bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                       }
                     }}
                   />
-                  <Text fontSize="xs" color={textSecondary} mt={2}>
+                  <Text fontSize="sm" color={textSecondary} mt={3}>
                     {stepInfo.description}
                   </Text>
                 </Box>
 
                 {/* Messages */}
                 {error && (
-                  <Alert status="error" borderRadius="md" size="sm" fontSize="sm">
-                    <AlertIcon boxSize={4} />
-                    <AlertDescription>{error}</AlertDescription>
+                  <Alert status="error" borderRadius="xl" bg="red.50" borderColor="red.200" borderWidth="1px">
+                    <AlertIcon />
+                    <AlertDescription fontSize="sm">{error}</AlertDescription>
                   </Alert>
                 )}
 
                 {success && (
-                  <Alert status="success" borderRadius="md" size="sm" fontSize="sm">
-                    <AlertIcon boxSize={4} />
-                    <AlertDescription>{success}</AlertDescription>
+                  <Alert status="success" borderRadius="xl" bg="green.50" borderColor="green.200" borderWidth="1px">
+                    <AlertIcon />
+                    <AlertDescription fontSize="sm">{success}</AlertDescription>
                   </Alert>
                 )}
 
                 {/* Step Content */}
                 {currentStep === 'setup' && (
-                  <VStack spacing={4} w="full">
+                  <VStack spacing={6} w="full">
                     {/* Info Box */}
                     <Box 
-                      p={3} 
+                      p={4} 
                       bg={inputBg} 
-                      borderRadius="md" 
+                      borderRadius="xl" 
                       border="1px solid" 
                       borderColor={borderColor}
                       w="full"
                     >
-                      <HStack spacing={2} mb={2}>
-                        <FiInfo size={14} />
-                        <Text fontSize="xs" fontWeight={500} color={textPrimary}>
+                      <HStack spacing={3} mb={3}>
+                        <Icon as={FiInfo} boxSize={4} color="blue.500" />
+                        <Text fontSize="sm" fontWeight={600} color={textPrimary}>
                           Get API Credentials
                         </Text>
                       </HStack>
-                      <VStack spacing={1} align="start" fontSize="xs" color={textSecondary}>
+                      <VStack spacing={2} align="start" fontSize="sm" color={textSecondary}>
                         <Text>
                           1. Visit{' '}
                           <Link 
                             href="https://my.telegram.org/apps" 
                             isExternal 
-                            color="gray.900"
-                            _dark={{ color: 'gray.200' }}
-                            fontWeight={500}
+                            color="blue.500"
+                            _dark={{ color: 'blue.300' }}
+                            fontWeight={600}
                           >
-                            my.telegram.org/apps
+                            my.telegram.org/apps <Icon as={FiExternalLink} display="inline" boxSize={3} />
                           </Link>
                         </Text>
                         <Text>2. Create a new application</Text>
@@ -372,14 +392,14 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                     </Box>
 
                     {/* API Inputs */}
-                    <SimpleGrid columns={2} spacing={3} w="full">
+                    <SimpleGrid columns={2} spacing={4} w="full">
                       <FormControl>
-                        <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                        <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                           API ID
                         </FormLabel>
-                        <InputGroup size="md">
-                          <InputLeftElement pointerEvents="none">
-                            <FiHash size={14} color="gray" />
+                        <InputGroup>
+                          <InputLeftElement>
+                            <Icon as={FiHash} color={textMuted} boxSize={4} />
                           </InputLeftElement>
                           <Input
                             placeholder="12345678"
@@ -388,16 +408,18 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                             variant="filled"
                             fontSize="sm"
                             fontFamily="mono"
+                            bg={inputBg}
+                            borderRadius="xl"
                           />
                         </InputGroup>
                       </FormControl>
                       <FormControl>
-                        <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                        <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                           API Hash
                         </FormLabel>
-                        <InputGroup size="md">
-                          <InputLeftElement pointerEvents="none">
-                            <FiKey size={14} color="gray" />
+                        <InputGroup>
+                          <InputLeftElement>
+                            <Icon as={FiKey} color={textMuted} boxSize={4} />
                           </InputLeftElement>
                           <Input
                             placeholder="abcd1234..."
@@ -406,6 +428,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                             variant="filled"
                             fontSize="sm"
                             fontFamily="mono"
+                            bg={inputBg}
+                            borderRadius="xl"
                           />
                         </InputGroup>
                       </FormControl>
@@ -413,12 +437,12 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
 
                     {/* Phone Number */}
                     <FormControl>
-                      <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                      <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                         Phone Number
                       </FormLabel>
-                      <InputGroup size="md">
-                        <InputLeftElement pointerEvents="none">
-                          <FiPhone size={14} color="gray" />
+                      <InputGroup>
+                        <InputLeftElement>
+                          <Icon as={FiPhone} color={textMuted} boxSize={4} />
                         </InputLeftElement>
                         <Input
                           placeholder="+1234567890"
@@ -426,6 +450,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                           onChange={(e) => setPhoneNumber(e.target.value)}
                           variant="filled"
                           fontSize="sm"
+                          bg={inputBg}
+                          borderRadius="xl"
                         />
                       </InputGroup>
                     </FormControl>
@@ -433,25 +459,35 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                     <Button
                       onClick={handleApiConfig}
                       isLoading={loading}
-                      loadingText="Setting up..."
+                      loadingText="Configuring..."
                       w="full"
-                      size="md"
+                      size="lg"
+                      borderRadius="xl"
+                      bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                      color="white"
+                      _hover={{
+                        bg: "linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)",
+                        transform: "translateY(-1px)",
+                      }}
+                      _active={{
+                        transform: "translateY(0)",
+                      }}
                       rightIcon={<FiArrowRight />}
                     >
-                      Continue
+                      Continue Setup
                     </Button>
                   </VStack>
                 )}
 
                 {currentStep === 'phone' && (
-                  <VStack spacing={4} w="full">
+                  <VStack spacing={6} w="full">
                     <FormControl>
-                      <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                      <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                         Phone Number
                       </FormLabel>
-                      <InputGroup size="md">
-                        <InputLeftElement pointerEvents="none">
-                          <FiPhone size={14} color="gray" />
+                      <InputGroup>
+                        <InputLeftElement>
+                          <Icon as={FiPhone} color={textMuted} boxSize={4} />
                         </InputLeftElement>
                         <Input
                           placeholder="+1234567890"
@@ -459,6 +495,9 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                           onChange={(e) => setPhoneNumber(e.target.value)}
                           variant="filled"
                           fontSize="sm"
+                          bg={inputBg}
+                          borderRadius="xl"
+                          size="lg"
                         />
                       </InputGroup>
                     </FormControl>
@@ -468,7 +507,14 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                       isLoading={loading}
                       loadingText="Sending code..."
                       w="full"
-                      size="md"
+                      size="lg"
+                      borderRadius="xl"
+                      bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                      color="white"
+                      _hover={{
+                        bg: "linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)",
+                        transform: "translateY(-1px)",
+                      }}
                       rightIcon={<FiArrowRight />}
                     >
                       Send Verification Code
@@ -477,13 +523,13 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                 )}
 
                 {currentStep === 'verify' && (
-                  <VStack spacing={4} w="full">
+                  <VStack spacing={6} w="full">
                     <Text fontSize="sm" color={textSecondary} textAlign="center">
-                      We sent a verification code to <strong>{phoneNumber}</strong>
+                      We sent a verification code to <Code fontSize="sm">{phoneNumber}</Code>
                     </Text>
 
                     <FormControl>
-                      <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                      <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                         Verification Code
                       </FormLabel>
                       <Input
@@ -491,12 +537,14 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                         value={verificationCode}
                         onChange={(e) => setVerificationCode(e.target.value)}
                         variant="filled"
-                        fontSize="lg"
+                        fontSize="2xl"
                         fontFamily="mono"
                         textAlign="center"
-                        letterSpacing="wide"
+                        letterSpacing="wider"
                         size="lg"
                         maxLength={6}
+                        bg={inputBg}
+                        borderRadius="xl"
                       />
                     </FormControl>
 
@@ -505,7 +553,14 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                       isLoading={loading}
                       loadingText="Verifying..."
                       w="full"
-                      size="md"
+                      size="lg"
+                      borderRadius="xl"
+                      bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                      color="white"
+                      _hover={{
+                        bg: "linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)",
+                        transform: "translateY(-1px)",
+                      }}
                       rightIcon={<FiArrowRight />}
                     >
                       Verify Code
@@ -514,24 +569,31 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                 )}
 
                 {currentStep === '2fa' && (
-                  <VStack spacing={4} w="full">
+                  <VStack spacing={6} w="full">
                     <Text fontSize="sm" color={textSecondary} textAlign="center">
                       Your account has two-factor authentication enabled
                     </Text>
 
                     <FormControl>
-                      <FormLabel fontSize="xs" color={textSecondary} mb={1}>
+                      <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
                         2FA Password
                       </FormLabel>
-                      <Input
-                        type="password"
-                        placeholder="Your 2FA password"
-                        value={twoFactorCode}
-                        onChange={(e) => setTwoFactorCode(e.target.value)}
-                        variant="filled"
-                        fontSize="sm"
-                        size="md"
-                      />
+                      <InputGroup>
+                        <InputLeftElement>
+                          <Icon as={FiLock} color={textMuted} boxSize={4} />
+                        </InputLeftElement>
+                        <Input
+                          type="password"
+                          placeholder="Your 2FA password"
+                          value={twoFactorCode}
+                          onChange={(e) => setTwoFactorCode(e.target.value)}
+                          variant="filled"
+                          fontSize="sm"
+                          size="lg"
+                          bg={inputBg}
+                          borderRadius="xl"
+                        />
+                      </InputGroup>
                     </FormControl>
 
                     <Button
@@ -539,10 +601,17 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
                       isLoading={loading}
                       loadingText="Authenticating..."
                       w="full"
-                      size="md"
+                      size="lg"
+                      borderRadius="xl"
+                      bg="linear-gradient(135deg, #10b981 0%, #059669 100%)"
+                      color="white"
+                      _hover={{
+                        bg: "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)",
+                        transform: "translateY(-1px)",
+                      }}
                       rightIcon={<FiCheck />}
                     >
-                      Complete Login
+                      Complete Authentication
                     </Button>
                   </VStack>
                 )}
@@ -551,8 +620,9 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
           </Card>
 
           {/* Footer */}
-          <Text fontSize="xs" color={textMuted} textAlign="center">
-            Secure authentication powered by Telegram MTProto
+          <Text fontSize="sm" color={textMuted} textAlign="center" maxW="md">
+            Secure authentication powered by Telegram MTProto protocol. 
+            Your credentials are encrypted and stored securely.
           </Text>
         </VStack>
       </Container>
