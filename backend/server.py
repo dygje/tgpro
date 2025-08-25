@@ -175,6 +175,8 @@ async def lifespan(app: FastAPI):
         groups_router_module.db_service = db_service
         messages_router_module.db_service = db_service
         migration_router_module.db_service = db_service
+        websocket_router_module.websocket_manager = websocket_manager
+        websocket_router_module.db_service = db_service
         
         # Initialize legacy managers for backward compatibility
         config_manager = ConfigManager()
