@@ -284,6 +284,19 @@ class BackendTester:
         except Exception as e:
             self.log(f"❌ FAIL: Error testing missing Authorization header: {str(e)}", "ERROR")
             self.failed += 1
+            
+        # Test JWT-based auth status endpoint (should fail without valid JWT)
+        try:
+            response = requests.get(f"{BACKEND_URL}/auth/status", headers=HEADERS, timeout=10)
+            if response.status_code == 401:
+                self.log("✅ PASS: JWT auth status properly requires valid JWT token (Status: 401)", "SUCCESS")
+                self.passed += 1
+            else:
+                self.log(f"❌ FAIL: JWT auth status should require valid JWT token (Status: {response.status_code})", "ERROR")
+                self.failed += 1
+        except Exception as e:
+            self.log(f"❌ FAIL: Error testing JWT auth status: {str(e)}", "ERROR")
+            self.failed += 1
     
     def test_mongodb_integration(self):
         """Test MongoDB integration through health endpoint"""
