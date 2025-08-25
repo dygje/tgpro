@@ -507,7 +507,7 @@ const LogViewer: React.FC = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   size="sm"
-                  leftElement={<Icon as={FiSearch} color={textMuted} ml={3} />}
+                  // leftElement prop doesn't exist in Chakra UI Input
                 />
               </FormControl>
 
