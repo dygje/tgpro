@@ -232,26 +232,72 @@ const components = {
     }
   },
 
-  // Modern Input Design
+  // Linear-style Input Design
   Input: {
+    baseStyle: {
+      field: {
+        borderRadius: '4px',
+        fontSize: '13px',
+        transition: 'all 0.15s ease',
+      }
+    },
     variants: {
       outline: {
         field: {
           borderColor: 'gray.300',
+          bg: 'white',
           _hover: {
             borderColor: 'gray.400',
           },
           _focus: {
-            borderColor: 'brand.500',
-            boxShadow: '0 0 0 1px var(--chakra-colors-brand-500)',
+            borderColor: 'gray.900',
+            boxShadow: '0 0 0 1px var(--chakra-colors-gray-900)',
+            _invalid: {
+              borderColor: 'red.500',
+              boxShadow: '0 0 0 1px var(--chakra-colors-red-500)',
+            }
+          },
+          _placeholder: {
+            color: 'gray.400',
+            fontSize: '13px',
           },
           _dark: {
-            borderColor: 'gray.600',
+            borderColor: 'gray.700',
+            bg: 'gray.900',
             _hover: {
-              borderColor: 'gray.500',
+              borderColor: 'gray.600',
             },
             _focus: {
-              borderColor: 'brand.500',
+              borderColor: 'gray.400',
+              boxShadow: '0 0 0 1px var(--chakra-colors-gray-400)',
+            }
+          }
+        }
+      },
+      filled: {
+        field: {
+          bg: 'gray.50',
+          border: '1px solid',
+          borderColor: 'gray.200',
+          _hover: {
+            bg: 'gray.100',
+            borderColor: 'gray.300',
+          },
+          _focus: {
+            bg: 'white',
+            borderColor: 'gray.900',
+            boxShadow: '0 0 0 1px var(--chakra-colors-gray-900)',
+          },
+          _dark: {
+            bg: 'gray.800',
+            borderColor: 'gray.700',
+            _hover: {
+              bg: 'gray.750',
+              borderColor: 'gray.600',
+            },
+            _focus: {
+              bg: 'gray.900',
+              borderColor: 'gray.400',
             }
           }
         }
@@ -260,16 +306,23 @@ const components = {
     sizes: {
       sm: {
         field: {
-          h: 8,
+          h: 7,
           px: 3,
-          fontSize: 'sm',
+          fontSize: '12px',
         }
       },
       md: {
         field: {
-          h: 10,
+          h: 8,
+          px: 3,
+          fontSize: '13px',
+        }
+      },
+      lg: {
+        field: {
+          h: 9,
           px: 4,
-          fontSize: 'sm',
+          fontSize: '14px',
         }
       }
     }
