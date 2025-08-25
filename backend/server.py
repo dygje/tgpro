@@ -154,6 +154,18 @@ async def lifespan(app: FastAPI):
         if not await auth_service.initialize():
             raise RuntimeError("Failed to initialize authentication service")
         
+        # Initialize WebSocket manager
+        websocket_manager = WebSocketManager(db_service)
+        
+        # Setup WebSocket logging handler
+        ws_log_handler = WebSocketLogHandler(websocket_manager)
+        ws_log_handler.setLevel(logging.INFO)
+        ws_log_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        
+        # Add WebSocket handler to root logger
+        root_logger = logging.getLogger()
+        root_logger.addHandler(ws_log_handler)
+        
         # Inject services into router modules
         config_router_module.config_service = config_service
         auth_router_module.auth_service = auth_service
