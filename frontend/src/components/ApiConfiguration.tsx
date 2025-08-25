@@ -20,6 +20,7 @@ import {
   Link,
   Code,
   Icon,
+  Divider,
 } from '@chakra-ui/react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
