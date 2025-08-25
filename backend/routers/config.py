@@ -6,8 +6,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import logging
 
-from ..models.config import TelegramConfig, ConfigUpdate
-from ..services.config_service import ConfigService
+from models.config import TelegramConfig, ConfigUpdate
+from services.config_service import ConfigService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/config", tags=["configuration"])
