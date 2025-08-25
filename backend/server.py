@@ -620,8 +620,12 @@ async def list_message_files(api_key: str = Depends(verify_api_key)):
         
         message_files = []
         for file_path in messages_dir.glob("*.txt"):
+            with open(file_path, 'r') as f:
+                content = f.read()
+            
             message_files.append({
                 "filename": file_path.name,
+                "content": content,
                 "size": file_path.stat().st_size,
                 "modified": datetime.fromtimestamp(file_path.stat().st_mtime).isoformat()
             })
@@ -629,6 +633,153 @@ async def list_message_files(api_key: str = Depends(verify_api_key)):
         return {"message_files": message_files, "total": len(message_files)}
     except Exception as e:
         logger.error(f"Error reading message files: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
+@app.post("/api/messages")
+async def create_message_file(
+    data: Dict[str, str],
+    api_key: str = Depends(verify_api_key)
+):
+    """Create a new message file"""
+    try:
+        filename = data.get("filename", "").strip()
+        content = data.get("content", "").strip()
+        
+        if not filename:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="filename is required"
+            )
+        
+        if not content:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="content is required"
+            )
+        
+        # Ensure filename ends with .txt
+        if not filename.endswith('.txt'):
+            filename += '.txt'
+        
+        # Validate filename (no path traversal)
+        if '/' in filename or '\\' in filename or '..' in filename:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid filename"
+            )
+        
+        messages_dir = Path("/app/backend/messages")
+        messages_dir.mkdir(exist_ok=True)
+        
+        file_path = messages_dir / filename
+        
+        # Check if file already exists
+        if file_path.exists():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="File already exists"
+            )
+        
+        # Write the message file
+        with open(file_path, 'w') as f:
+            f.write(content)
+        
+        logger.info(f"Created message file: {filename}")
+        return {"message": f"Message file {filename} created successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error creating message file: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
+@app.put("/api/messages/{filename}")
+async def update_message_file(
+    filename: str,
+    data: Dict[str, str],
+    api_key: str = Depends(verify_api_key)
+):
+    """Update an existing message file"""
+    try:
+        content = data.get("content", "").strip()
+        
+        if not content:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="content is required"
+            )
+        
+        # Validate filename
+        if '/' in filename or '\\' in filename or '..' in filename:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid filename"
+            )
+        
+        messages_dir = Path("/app/backend/messages")
+        file_path = messages_dir / filename
+        
+        if not file_path.exists():
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Message file not found"
+            )
+        
+        # Update the message file
+        with open(file_path, 'w') as f:
+            f.write(content)
+        
+        logger.info(f"Updated message file: {filename}")
+        return {"message": f"Message file {filename} updated successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating message file: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
+@app.delete("/api/messages/{filename}")
+async def delete_message_file(
+    filename: str,
+    api_key: str = Depends(verify_api_key)
+):
+    """Delete a message file"""
+    try:
+        # Validate filename
+        if '/' in filename or '\\' in filename or '..' in filename:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid filename"
+            )
+        
+        messages_dir = Path("/app/backend/messages")
+        file_path = messages_dir / filename
+        
+        if not file_path.exists():
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Message file not found"
+            )
+        
+        # Delete the message file
+        file_path.unlink()
+        
+        logger.info(f"Deleted message file: {filename}")
+        return {"message": f"Message file {filename} deleted successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error deleting message file: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e)
