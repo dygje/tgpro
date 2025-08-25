@@ -417,10 +417,10 @@ class BackendMigrationTester:
     def test_api_security_no_token(self):
         """Test API security without Bearer token"""
         try:
-            # Test without Authorization header on a legacy endpoint that requires API key auth
+            # Test without Authorization header on an endpoint that requires API key auth
             no_auth_headers = {"Content-Type": "application/json"}
             
-            response = self.make_request("GET", "/api/config", headers=no_auth_headers)
+            response = self.make_request("GET", "/api/groups", headers=no_auth_headers)
             
             if response.status_code == 401:
                 self.log_test("API Security - No Token", True, 
