@@ -226,7 +226,7 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
 
   if (checkingConfig) {
     return (
-      <Box minH="100vh" bg={bgColor} display="flex" align="center" justify="center">
+      <Flex minH="100vh" bg={bgColor} align="center" justify="center">
         <VStack spacing={4}>
           <Box 
             w={8} 
@@ -251,12 +251,12 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
             Loading TGPro...
           </Text>
         </VStack>
-      </Box>
+      </Flex>
     );
   }
 
   return (
-    <Box minH="100vh" bg={bgColor} display="flex" align="center" justify="center" p={4}>
+    <Flex minH="100vh" bg={bgColor} align="center" justify="center" p={4}>
       <Container maxW="sm">
         <VStack spacing={8}>
           {/* Header */}
