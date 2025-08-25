@@ -263,7 +263,8 @@ async def health_check():
             "encryption_service": encryption_service is not None and encryption_service._fernet is not None,
             "config_service": config_service is not None,
             "auth_service": auth_service is not None and auth_service._jwt_secret is not None,
-            "websocket_manager": websocket_manager is not None
+            "websocket_manager": websocket_manager is not None,
+            "task_service": task_service is not None and task_service.running
         }
     }
 
