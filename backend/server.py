@@ -160,6 +160,7 @@ async def lifespan(app: FastAPI):
         # Inject services into new MongoDB routers
         groups_router_module.db_service = db_service
         messages_router_module.db_service = db_service
+        migration_router_module.db_service = db_service
         
         # Initialize legacy managers for backward compatibility
         config_manager = ConfigManager()
