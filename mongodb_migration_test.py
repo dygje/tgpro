@@ -166,9 +166,9 @@ class MongoDBMigrationTester:
     # ========== MONGODB GROUPS API TESTS ==========
     
     def test_mongodb_groups_list(self):
-        """Test /api/groups GET endpoint - should return groups from MongoDB"""
+        """Test /api/groups/ GET endpoint - should return groups from MongoDB"""
         try:
-            response = self.make_request("GET", "/api/groups")
+            response = self.make_request("GET", "/api/groups/")
             
             if response.status_code == 200:
                 data = response.json()
