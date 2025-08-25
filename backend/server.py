@@ -169,14 +169,14 @@ async def configure_telegram_api(
     config: TelegramAPIConfig,
     api_key: str = Depends(verify_api_key)
 ):
-    """Configure Telegram API credentials"""
+    """Configure Telegram API credentials (API ID and API Hash only)"""
     global telegram_service
     try:
-        # Update configuration with new API credentials
+        # Update configuration with new API credentials only
         current_config = config_manager.config
         current_config["telegram"]["api_id"] = config.api_id
         current_config["telegram"]["api_hash"] = config.api_hash
-        current_config["telegram"]["phone_number"] = config.phone_number
+        # Don't update phone_number here - it will be set during authentication
         
         # Save updated configuration
         config_manager.save_config(current_config)
@@ -186,7 +186,7 @@ async def configure_telegram_api(
         await telegram_service.initialize()
         
         return {
-            "message": "Telegram API configuration updated successfully",
+            "message": "Telegram API credentials configured successfully",
             "configured": True
         }
         
