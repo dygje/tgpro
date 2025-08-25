@@ -1,11 +1,9 @@
-# Add your Telegram group links here, one per line
+# Telegram Groups List
+# Add Telegram group links here, one per line
+# Supported formats:
+# - https://t.me/groupname
+# - @groupname
+#
 # Example:
-# https://t.me/examplegroup1
-# https://t.me/examplegroup2
-# @examplegroup3
-
-# Lines starting with # are comments and will be ignored
-# You can also use usernames starting with @
-https://t.me/testgroup123
-@testgroup456
-https://t.me/test_crud_group
+# https://t.me/examplegroup
+# @anothergroup
