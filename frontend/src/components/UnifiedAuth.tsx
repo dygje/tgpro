@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   Box,
-  Flex,
+  Card,
+  CardBody,
   VStack,
   HStack,
   Text,
@@ -13,37 +14,31 @@ import {
   Alert,
   AlertIcon,
   AlertDescription,
-  Card,
-  CardBody,
+  Flex,
   Heading,
-  useColorModeValue,
-  PinInput,
-  PinInputField,
-  Progress,
-  Link,
-  Code,
-  Icon,
-  Collapse,
   Badge,
-  IconButton,
+  Link,
   Divider,
-  Stack,
+  useColorModeValue,
   Container,
+  SimpleGrid,
+  InputGroup,
+  InputLeftElement,
+  IconButton,
+  Tooltip,
+  Progress,
 } from '@chakra-ui/react';
 import { 
   FiExternalLink, 
-  FiCheck, 
-  FiSettings, 
+  FiPhone, 
+  FiKey, 
   FiShield, 
-  FiKey,
-  FiSmartphone,
-  FiLock,
-  FiZap,
-  FiArrowRight,
-  FiArrowLeft,
-  FiRefreshCw,
+  FiArrowRight, 
+  FiCheck,
+  FiInfo,
+  FiUser,
+  FiHash
 } from 'react-icons/fi';
-import { useForm } from 'react-hook-form';
 import { api } from '../lib/api';
 
 interface UnifiedAuthProps {
