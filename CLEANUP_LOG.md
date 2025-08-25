@@ -19,7 +19,7 @@
 - ✅ `/app/backend_test.py` - Test backend legacy  
 - ✅ `/app/backend_migration_test.py` - Test migration backend yang sudah selesai
 
-### 3. Dependencies yang Tidak Terpakai
+### 4. Dependencies yang Tidak Terpakai
 **Backend** (`requirements.txt`):
 - ✅ `boto3` - AWS SDK (tidak digunakan)
 - ✅ `requests-oauthlib` - OAuth library (tidak digunakan)  
