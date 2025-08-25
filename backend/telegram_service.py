@@ -68,6 +68,35 @@ class TelegramService:
         self.session_dir = Path("/app/backend/telegram_sessions")
         self.session_dir.mkdir(exist_ok=True)
     
+    async def initialize(self):
+        """Initialize the Telegram client with current configuration"""
+        try:
+            config = self.config_manager.get_config()
+            telegram_config = config.get("telegram", {})
+            
+            api_id = telegram_config.get("api_id")
+            api_hash = telegram_config.get("api_hash")
+            
+            if not api_id or not api_hash:
+                logger.warning("Telegram API credentials not configured")
+                return False
+            
+            # Create new client with updated credentials
+            session_path = str(self.session_dir / "telegram_session")
+            self.client = Client(
+                name=session_path,
+                api_id=int(api_id),
+                api_hash=api_hash,
+                workdir=str(self.session_dir)
+            )
+            
+            logger.info("Telegram client initialized with new credentials")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error initializing Telegram client: {e}")
+            return False
+    
     def is_initialized(self) -> bool:
         """Check if service is initialized and authenticated"""
         return self.client is not None and self.is_authenticated
