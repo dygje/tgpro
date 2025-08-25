@@ -195,9 +195,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Backend API Testing"
-    - "Authentication Flow Testing"
-    - "Telegram Service Testing"
+    - "Frontend Integration Testing"
+    - "End-to-End Workflow Testing"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
