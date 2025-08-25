@@ -139,16 +139,16 @@ class BackendTester:
                           description="Verify 2FA password (expected to fail without session_id)")
         
     def test_groups_management(self):
-        """Test groups management endpoints"""
-        self.log("=== TESTING GROUPS MANAGEMENT ===", "INFO")
+        """Test groups management endpoints (MongoDB-based)"""
+        self.log("=== TESTING GROUPS MANAGEMENT (MongoDB) ===", "INFO")
         
         # Test list groups
-        self.test_endpoint("GET", "/groups", description="List all groups from groups.txt")
+        self.test_endpoint("GET", "/groups", description="List all groups from MongoDB")
         
         # Test add group (with unique test data)
         test_group = f"https://t.me/testgroup_{int(time.time())}"
-        group_data = {"group_link": test_group}
-        response = self.test_endpoint("POST", "/groups", data=group_data, description="Add new group to groups.txt")
+        group_data = {"group_link": test_group, "metadata": {"added_by": "api_test"}}
+        response = self.test_endpoint("POST", "/groups", data=group_data, description="Add new group to MongoDB")
         
         # Test add duplicate group (should fail)
         if response and response.status_code == 200:
@@ -156,7 +156,7 @@ class BackendTester:
                               description="Add duplicate group (should fail)")
             
             # Test remove group
-            self.test_endpoint("DELETE", f"/groups/{test_group}", description="Remove group from groups.txt")
+            self.test_endpoint("DELETE", f"/groups/{test_group}", description="Remove group from MongoDB")
         
     def test_messages_management(self):
         """Test messages management endpoints"""
