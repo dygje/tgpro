@@ -35,10 +35,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
 
-  // Theme colors
-  const bgColor = useColorModeValue('gray.50', 'gray.900');
-  const surfaceBg = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  // Linear-style theme colors
+  const bgColor = useColorModeValue('white', 'gray.950');
+  const surfaceBg = useColorModeValue('white', 'gray.900');
+  const borderColor = useColorModeValue('gray.200', 'gray.800');
 
   // Check authentication status on app load
   useEffect(() => {
