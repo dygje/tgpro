@@ -391,13 +391,13 @@ class BackendMigrationTester:
     def test_api_security_invalid_token(self):
         """Test API security with invalid Bearer token"""
         try:
-            # Test with invalid API key
+            # Test with invalid API key on a legacy endpoint that requires API key auth
             invalid_headers = {
                 "Authorization": "Bearer invalid-api-key-12345",
                 "Content-Type": "application/json"
             }
             
-            response = self.make_request("GET", "/api/health", headers=invalid_headers)
+            response = self.make_request("GET", "/api/config", headers=invalid_headers)
             
             if response.status_code == 401:
                 data = response.json()
@@ -417,14 +417,17 @@ class BackendMigrationTester:
     def test_api_security_no_token(self):
         """Test API security without Bearer token"""
         try:
-            # Test without Authorization header
+            # Test without Authorization header on a legacy endpoint that requires API key auth
             no_auth_headers = {"Content-Type": "application/json"}
             
-            response = self.make_request("GET", "/api/health", headers=no_auth_headers)
+            response = self.make_request("GET", "/api/config", headers=no_auth_headers)
             
             if response.status_code == 401:
                 self.log_test("API Security - No Token", True, 
                             "Request without token properly rejected with 401")
+            elif response.status_code == 403:
+                self.log_test("API Security - No Token", True, 
+                            "Request without token properly rejected with 403")
             else:
                 self.log_test("API Security - No Token", False, 
                             f"Request without token not rejected - HTTP {response.status_code}")
