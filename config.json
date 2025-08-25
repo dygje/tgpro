@@ -1,7 +1,7 @@
 {
   "telegram": {
-    "api_id": "",
-    "api_hash": "",
+    "api_id": "12345678",
+    "api_hash": "abcd1234efgh5678ijkl9012mnop3456",
     "phone_number": ""
   },
   "delays": {
