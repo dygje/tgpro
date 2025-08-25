@@ -28,6 +28,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${API_KEY}`;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isApiConfigured, setIsApiConfigured] = useState(false);
   const [authStatus, setAuthStatus] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
