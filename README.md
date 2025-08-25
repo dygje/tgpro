@@ -157,3 +157,66 @@ Edit `/app/config.json` with your credentials:
 - Misuse may result in account restrictions or bans
 - Always respect group rules and member preferences
 - Use the built-in safety features to maintain good account standing
+
+## 📈 Recent Updates & Fixes
+
+### Version 2.1.0 (August 2025)
+- **Security Updates**: Fixed multiple security vulnerabilities in dependencies
+- **Dependency Updates**: 
+  - Updated React Router to v7.5.2+ (fixed DoS and data spoofing vulnerabilities)
+  - Updated Axios to v1.9.0+ (fixed form-data boundary vulnerability)
+  - Added missing babel dependencies for better webpack compatibility
+  - Updated browserslist data for latest browser support
+- **Backend Improvements**:
+  - Added missing PySocks dependency for proper Telegram API connectivity
+  - Updated Python dependencies with security patches
+  - Enhanced error handling and logging
+- **Frontend Enhancements**:
+  - Fixed deprecated webpack dev server configurations
+  - Improved build performance and compatibility
+  - Added proper TypeScript configuration
+- **Production Ready**: All services tested and verified for production deployment
+
+### Key Management Features Added:
+- **Groups Manager**: Web interface for managing Telegram groups
+- **Messages Manager**: Web interface for creating and managing message templates
+- **Enhanced Configuration**: Improved settings management with better validation
+- **Expanded Navigation**: 8-section navigation structure for better organization
+
+## 🔧 Technical Stack
+
+### Backend
+- **Framework**: FastAPI (Python)
+- **Database**: MongoDB with Motor (async driver)
+- **Telegram API**: Pyrofork (MTProto implementation)
+- **Authentication**: JWT with Bearer tokens
+- **Security**: Rate limiting, input validation, CORS protection
+
+### Frontend  
+- **Framework**: React 19+ with modern hooks
+- **Routing**: React Router v7.5.2+
+- **Styling**: Tailwind CSS with custom components
+- **UI Components**: Radix UI primitives
+- **HTTP Client**: Axios v1.9.0+
+- **Build Tool**: CRACO with webpack optimizations
+
+### Infrastructure
+- **Process Management**: Supervisor for service orchestration
+- **Container**: Docker with Kubernetes deployment ready
+- **Monitoring**: Real-time logging and health checks
+- **Environment**: Production-grade configuration management
+
+## 🛡️ Security Features
+
+### Application Security
+- **Input Validation**: Comprehensive validation on all API endpoints
+- **Authentication**: Secure JWT-based authentication with Bearer tokens
+- **CORS Protection**: Configurable CORS policies
+- **Rate Limiting**: Intelligent rate limiting to prevent abuse
+- **Path Traversal Protection**: Secure file operations with path validation
+
+### Telegram Security
+- **Account Protection**: Built-in safety measures to prevent account restrictions
+- **Session Management**: Secure session handling with proper cleanup
+- **API Rate Limiting**: Respect Telegram's rate limits automatically
+- **Error Recovery**: Intelligent error handling and retry mechanisms
