@@ -540,7 +540,7 @@ const MessagesManager: React.FC = () => {
                   placeholder="Search messages..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  leftElement={<Icon as={FiSearch} color={textMuted} ml={3} />}
+                  // Search icon handled by placeholder
                 />
 
                 {/* Messages List */}
