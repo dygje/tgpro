@@ -135,7 +135,7 @@ const TemplateManager: React.FC = () => {
   const extractVariables = (content: string): string[] => {
     const matches = content.match(/\{\{([^}]+)\}\}/g);
     if (!matches) return [];
-    return [...new Set(matches.map(match => match.slice(2, -2).trim()))];
+    return Array.from(new Set(matches.map(match => match.slice(2, -2).trim())));
   };
 
   const saveTemplate = async () => {
