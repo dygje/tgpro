@@ -205,11 +205,11 @@ class TelegramAutomationAPITester:
             f"Status: {status_code}, Response: {data}"
         )
 
-    def test_file_endpoints(self):
-        """Test file management endpoints"""
-        print("🔍 Testing File Management Endpoints...")
+    def test_groups_management(self):
+        """Test Groups Management endpoints (NEW functionality)"""
+        print("🔍 Testing Groups Management Endpoints...")
         
-        # Test list groups
+        # Test list groups (existing endpoint)
         success, data, status_code = self.make_request('GET', 'groups')
         self.log_test(
             "List Groups",
@@ -217,10 +217,221 @@ class TelegramAutomationAPITester:
             f"Status: {status_code}, Groups: {data.get('total', 0)}"
         )
 
-        # Test list message files
+        # Test add valid group with https://t.me/ format
+        group_data = {"group_link": "https://t.me/testgroup123"}
+        success, data, status_code = self.make_request('POST', 'groups', group_data)
+        self.log_test(
+            "Add Group (https format)",
+            status_code in [200, 201],
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test add valid group with @ format
+        group_data = {"group_link": "@testgroup456"}
+        success, data, status_code = self.make_request('POST', 'groups', group_data)
+        self.log_test(
+            "Add Group (@ format)",
+            status_code in [200, 201],
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test add invalid format group (should fail)
+        group_data = {"group_link": "invalid-group-format"}
+        success, data, status_code = self.make_request('POST', 'groups', group_data)
+        self.log_test(
+            "Add Invalid Group Format",
+            status_code == 400,
+            f"Status: {status_code}, Should reject invalid format"
+        )
+
+        # Test add duplicate group (should fail)
+        group_data = {"group_link": "https://t.me/testgroup123"}
+        success, data, status_code = self.make_request('POST', 'groups', group_data)
+        self.log_test(
+            "Add Duplicate Group",
+            status_code == 400,
+            f"Status: {status_code}, Should reject duplicate"
+        )
+
+        # Test add group without group_link (should fail)
+        group_data = {}
+        success, data, status_code = self.make_request('POST', 'groups', group_data)
+        self.log_test(
+            "Add Group Without Link",
+            status_code == 400,
+            f"Status: {status_code}, Should require group_link"
+        )
+
+        # Test remove existing group
+        success, data, status_code = self.make_request('DELETE', 'groups/https://t.me/testgroup123')
+        self.log_test(
+            "Remove Existing Group",
+            status_code in [200, 404],  # 404 is acceptable if group doesn't exist
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test remove non-existent group (should fail)
+        success, data, status_code = self.make_request('DELETE', 'groups/https://t.me/nonexistentgroup999')
+        self.log_test(
+            "Remove Non-existent Group",
+            status_code == 404,
+            f"Status: {status_code}, Should return 404"
+        )
+
+    def test_messages_management(self):
+        """Test Messages Management endpoints (NEW functionality)"""
+        print("🔍 Testing Messages Management Endpoints...")
+        
+        # Test list message files (now includes content)
         success, data, status_code = self.make_request('GET', 'messages')
         self.log_test(
-            "List Message Files",
+            "List Message Files with Content",
+            success and status_code == 200,
+            f"Status: {status_code}, Files: {data.get('total', 0)}"
+        )
+
+        # Test create new message file
+        message_data = {
+            "filename": "test_message_001.txt",
+            "content": "Hello! This is a test message for our automation system. Best regards, Team."
+        }
+        success, data, status_code = self.make_request('POST', 'messages', message_data)
+        self.log_test(
+            "Create Message File",
+            status_code in [200, 201],
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test create message file without .txt extension (should auto-add)
+        message_data = {
+            "filename": "test_message_002",
+            "content": "Another test message without .txt extension."
+        }
+        success, data, status_code = self.make_request('POST', 'messages', message_data)
+        self.log_test(
+            "Create Message File (auto .txt)",
+            status_code in [200, 201],
+            f"Status: {status_code}, Should auto-add .txt extension"
+        )
+
+        # Test create message file with invalid filename (should fail)
+        message_data = {
+            "filename": "../invalid/path.txt",
+            "content": "This should fail due to path traversal"
+        }
+        success, data, status_code = self.make_request('POST', 'messages', message_data)
+        self.log_test(
+            "Create Message File (Invalid Path)",
+            status_code == 400,
+            f"Status: {status_code}, Should reject path traversal"
+        )
+
+        # Test create message file without content (should fail)
+        message_data = {
+            "filename": "empty_message.txt",
+            "content": ""
+        }
+        success, data, status_code = self.make_request('POST', 'messages', message_data)
+        self.log_test(
+            "Create Message File (No Content)",
+            status_code == 400,
+            f"Status: {status_code}, Should require content"
+        )
+
+        # Test create duplicate filename (should fail)
+        message_data = {
+            "filename": "test_message_001.txt",
+            "content": "Duplicate filename test"
+        }
+        success, data, status_code = self.make_request('POST', 'messages', message_data)
+        self.log_test(
+            "Create Duplicate Message File",
+            status_code == 400,
+            f"Status: {status_code}, Should reject duplicate filename"
+        )
+
+        # Test update existing message file
+        update_data = {
+            "content": "Updated content for test message 001. This is the new version."
+        }
+        success, data, status_code = self.make_request('PUT', 'messages/test_message_001.txt', update_data)
+        self.log_test(
+            "Update Message File",
+            status_code in [200, 404],  # 404 acceptable if file doesn't exist
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test update non-existent file (should fail)
+        update_data = {
+            "content": "This file doesn't exist"
+        }
+        success, data, status_code = self.make_request('PUT', 'messages/nonexistent_file.txt', update_data)
+        self.log_test(
+            "Update Non-existent File",
+            status_code == 404,
+            f"Status: {status_code}, Should return 404"
+        )
+
+        # Test update with invalid filename (should fail)
+        update_data = {
+            "content": "Invalid path test"
+        }
+        success, data, status_code = self.make_request('PUT', 'messages/../invalid.txt', update_data)
+        self.log_test(
+            "Update Invalid Filename",
+            status_code == 400,
+            f"Status: {status_code}, Should reject invalid filename"
+        )
+
+        # Test update without content (should fail)
+        update_data = {}
+        success, data, status_code = self.make_request('PUT', 'messages/test_message_001.txt', update_data)
+        self.log_test(
+            "Update Without Content",
+            status_code == 400,
+            f"Status: {status_code}, Should require content"
+        )
+
+        # Test delete message file
+        success, data, status_code = self.make_request('DELETE', 'messages/test_message_001.txt')
+        self.log_test(
+            "Delete Message File",
+            status_code in [200, 404],  # 404 acceptable if file doesn't exist
+            f"Status: {status_code}, Response: {data}"
+        )
+
+        # Test delete non-existent file (should fail)
+        success, data, status_code = self.make_request('DELETE', 'messages/nonexistent_file.txt')
+        self.log_test(
+            "Delete Non-existent File",
+            status_code == 404,
+            f"Status: {status_code}, Should return 404"
+        )
+
+        # Test delete with invalid filename (should fail)
+        success, data, status_code = self.make_request('DELETE', 'messages/../invalid.txt')
+        self.log_test(
+            "Delete Invalid Filename",
+            status_code == 400,
+            f"Status: {status_code}, Should reject invalid filename"
+        )
+
+    def test_file_endpoints(self):
+        """Test legacy file management endpoints for compatibility"""
+        print("🔍 Testing Legacy File Management Endpoints...")
+        
+        # Test list groups (legacy test)
+        success, data, status_code = self.make_request('GET', 'groups')
+        self.log_test(
+            "List Groups (Legacy)",
+            success and status_code == 200,
+            f"Status: {status_code}, Groups: {data.get('total', 0)}"
+        )
+
+        # Test list message files (legacy test)
+        success, data, status_code = self.make_request('GET', 'messages')
+        self.log_test(
+            "List Message Files (Legacy)",
             success and status_code == 200,
             f"Status: {status_code}, Files: {data.get('total', 0)}"
         )
