@@ -1,10 +1,11 @@
 {
   "blacklisted_groups": [
-    "https://t.me/test_group_123",
-    "https://t.me/blacklisted_group_1756130509",
     "https://t.me/blacklisted_group_1756148268",
+    "https://t.me/blacklisted_group_1756130293",
+    "https://t.me/test_group_123",
     "https://t.me/blacklisted_group_1756130484",
-    "https://t.me/blacklisted_group_1756130293"
+    "https://t.me/blacklisted_group_1756130509",
+    "https://t.me/blacklisted_group_1756150315"
   ],
-  "last_updated": "2025-08-25T18:57:48.526243"
+  "last_updated": "2025-08-25T19:31:55.614627"
 }
