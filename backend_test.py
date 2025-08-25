@@ -159,35 +159,30 @@ class BackendTester:
             self.test_endpoint("DELETE", f"/groups/{test_group}", description="Remove group from MongoDB")
         
     def test_messages_management(self):
-        """Test messages management endpoints (MongoDB-based)"""
-        self.log("=== TESTING MESSAGES MANAGEMENT (MongoDB) ===", "INFO")
+        """Test messages management endpoints (File-based - legacy)"""
+        self.log("=== TESTING MESSAGES MANAGEMENT (File-based) ===", "INFO")
         
-        # Test list message templates
-        self.test_endpoint("GET", "/messages", description="List all message templates from MongoDB")
+        # Test list message files
+        self.test_endpoint("GET", "/messages", description="List all message files")
         
-        # Test create message template (with correct data format)
-        test_template_id = f"test_template_{int(time.time())}"
+        # Test create message file (using old format)
+        test_filename = f"test_message_{int(time.time())}"
         message_data = {
-            "template_id": test_template_id,
-            "content": "This is a test message template for API testing.\n\nHello {name}!\nBest regards,\nTelegram Bot",
-            "variables": {"name": ["John", "Jane", "Alex"]}  # This should be correct format
+            "filename": test_filename,
+            "content": "This is a test message for API testing.\n\nHello {name}!\nBest regards,\nTelegram Bot"
         }
-        response = self.test_endpoint("POST", "/messages", data=message_data, description="Create new message template in MongoDB")
+        response = self.test_endpoint("POST", "/messages", data=message_data, description="Create new message file")
         
         if response and response.status_code == 200:
-            # Test update message template
+            # Test update message file
             update_data = {
-                "content": "Updated test message template content.\n\nHi {name}!\nThis template was updated via API.\nCheers!",
-                "variables": {"name": ["John", "Jane", "Alex", "Sarah"]}
+                "content": "Updated test message content.\n\nHi {name}!\nThis message was updated via API.\nCheers!"
             }
-            self.test_endpoint("PUT", f"/messages/{test_template_id}", data=update_data, 
-                              description="Update existing message template in MongoDB")
+            self.test_endpoint("PUT", f"/messages/{test_filename}.txt", data=update_data, 
+                              description="Update existing message file")
             
-            # Test get specific template
-            self.test_endpoint("GET", f"/messages/{test_template_id}", description="Get specific message template from MongoDB")
-            
-            # Test delete message template
-            self.test_endpoint("DELETE", f"/messages/{test_template_id}", description="Delete message template from MongoDB")
+            # Test delete message file
+            self.test_endpoint("DELETE", f"/messages/{test_filename}.txt", description="Delete message file")
         
     def test_templates_management(self):
         """Test templates management endpoints"""
