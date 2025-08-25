@@ -202,11 +202,11 @@ class BackendTester:
         self.test_endpoint("POST", "/templates", data=template_data, description="Create new message template")
         
     def test_blacklist_management(self):
-        """Test blacklist management endpoints (MongoDB-based)"""
-        self.log("=== TESTING BLACKLIST MANAGEMENT (MongoDB) ===", "INFO")
+        """Test blacklist management endpoints (File-based - legacy)"""
+        self.log("=== TESTING BLACKLIST MANAGEMENT (File-based) ===", "INFO")
         
-        # Test get blacklist (using groups router)
-        self.test_endpoint("GET", "/groups/blacklist", description="Get current blacklist status from MongoDB")
+        # Test get blacklist (using old endpoint)
+        self.test_endpoint("GET", "/blacklist", description="Get current blacklist status")
         
         # Test add to permanent blacklist
         test_group = f"https://t.me/blacklisted_group_{int(time.time())}"
@@ -214,13 +214,13 @@ class BackendTester:
             "group_link": test_group,
             "reason": "API testing - automated blacklist entry"
         }
-        response = self.test_endpoint("POST", "/groups/blacklist/permanent", data=blacklist_data, 
-                                     description="Add group to permanent blacklist in MongoDB")
+        response = self.test_endpoint("POST", "/blacklist/permanent", data=blacklist_data, 
+                                     description="Add group to permanent blacklist")
         
         if response and response.status_code == 200:
             # Test remove from permanent blacklist
-            self.test_endpoint("DELETE", f"/groups/blacklist/permanent/{test_group}", 
-                              description="Remove group from permanent blacklist in MongoDB")
+            self.test_endpoint("DELETE", f"/blacklist/permanent/{test_group}", 
+                              description="Remove group from permanent blacklist")
         
     def test_configuration_endpoints(self):
         """Test general configuration endpoints"""
