@@ -155,12 +155,14 @@ function App() {
         {/* Header */}
         <Box
           bg="white"
-          _dark={{ bg: 'gray.800' }}
           borderBottom="1px solid"
           borderColor="gray.200"
-          _dark={{ borderColor: 'gray.700' }}
           px={6}
           py={4}
+          _dark={{ 
+            bg: 'gray.800',
+            borderColor: 'gray.700'
+          }}
         >
           <Flex align="center" justify="space-between">
             <Text fontSize="xl" fontWeight="semibold" color="gray.800" _dark={{ color: 'white' }}>
