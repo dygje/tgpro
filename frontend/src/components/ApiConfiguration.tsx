@@ -19,7 +19,7 @@ import {
   useColorModeValue,
   Link,
   Code,
-  Divider,
+  Icon,
 } from '@chakra-ui/react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
