@@ -145,9 +145,9 @@ class BackendTester:
         # Test list groups
         self.test_endpoint("GET", "/groups", description="List all groups from MongoDB")
         
-        # Test add group (with unique test data)
+        # Test add group (with correct data format)
         test_group = f"https://t.me/testgroup_{int(time.time())}"
-        group_data = {"group_link": test_group, "metadata": {"added_by": "api_test"}}
+        group_data = {"group_link": test_group}  # metadata is optional
         response = self.test_endpoint("POST", "/groups", data=group_data, description="Add new group to MongoDB")
         
         # Test add duplicate group (should fail)
