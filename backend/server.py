@@ -225,6 +225,8 @@ async def request_verification_code(
     api_key: str = Depends(verify_api_key)
 ):
     """Request verification code for phone number"""
+    global telegram_service
+    
     if not telegram_service:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -232,6 +234,19 @@ async def request_verification_code(
         )
     
     try:
+        # If API credentials are provided in the request, update them first
+        if request.api_id and request.api_hash:
+            # Update configuration temporarily for this session
+            current_config = config_manager.config
+            current_config["telegram"]["api_id"] = request.api_id
+            current_config["telegram"]["api_hash"] = request.api_hash
+            current_config["telegram"]["phone_number"] = request.phone_number
+            config_manager.save_config(current_config)
+            
+            # Reinitialize telegram service
+            telegram_service = TelegramService(config_manager, blacklist_manager)
+            await telegram_service.initialize()
+    
         success = await telegram_service.send_verification_code(request.phone_number)
         
         if success:
