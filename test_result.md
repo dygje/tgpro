@@ -273,8 +273,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Groups Management API Enhancement"
-    - "Messages Management API Enhancement"
+    - "Groups Manager Frontend Component"
+    - "Messages Manager Frontend Component"
+    - "Enhanced Configuration Manager"
+    - "Enhanced Navigation Structure"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
