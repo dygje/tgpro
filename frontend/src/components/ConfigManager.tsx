@@ -48,7 +48,6 @@ import { api } from '../lib/api';
 interface TelegramConfig {
   api_id?: number;
   api_hash?: string;
-  phone?: string;
   configured: boolean;
 }
 
