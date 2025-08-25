@@ -65,16 +65,16 @@ apiClient.interceptors.response.use(
 // API helper functions
 export const api = {
   // Generic methods
-  get: <T = any>(url: string, config?: AxiosRequestConfig): Promise<T> =>
+  get: <T = any>(url: string, config?: any): Promise<T> =>
     apiClient.get(url, config).then(res => res.data),
   
-  post: <T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> =>
+  post: <T = any>(url: string, data?: any, config?: any): Promise<T> =>
     apiClient.post(url, data, config).then(res => res.data),
   
-  put: <T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> =>
+  put: <T = any>(url: string, data?: any, config?: any): Promise<T> =>
     apiClient.put(url, data, config).then(res => res.data),
   
-  delete: <T = any>(url: string, config?: AxiosRequestConfig): Promise<T> =>
+  delete: <T = any>(url: string, config?: any): Promise<T> =>
     apiClient.delete(url, config).then(res => res.data),
 
   // Health & Status
