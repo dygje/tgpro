@@ -296,9 +296,9 @@ class MongoDBMigrationTester:
     # ========== MONGODB MESSAGES API TESTS ==========
     
     def test_mongodb_messages_list(self):
-        """Test /api/messages GET endpoint - should return message templates from MongoDB"""
+        """Test /api/messages/ GET endpoint - should return message templates from MongoDB"""
         try:
-            response = self.make_request("GET", "/api/messages")
+            response = self.make_request("GET", "/api/messages/")
             
             if response.status_code == 200:
                 data = response.json()
