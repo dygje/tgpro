@@ -101,7 +101,7 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
                   </Text>
                   <VStack spacing={2} align="start" fontSize="sm" color="blue.700" _dark={{ color: 'blue.300' }}>
                     <Text>1. Visit <Link href="https://my.telegram.org/apps" isExternal color="blue.600" fontWeight="medium">
-                      my.telegram.org/apps <ExternalLinkIcon mx="2px" />
+                      my.telegram.org/apps <Icon as={FiExternalLink} mx="2px" />
                     </Link></Text>
                     <Text>2. Log in with your Telegram account</Text>
                     <Text>3. Create a new application</Text>
