@@ -73,11 +73,11 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
 
   if (checking) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
-            <p className="text-gray-600 mt-4">Checking configuration...</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
+        <div className="card max-w-sm animate-fade-in">
+          <div className="p-8 text-center">
+            <div className="loading-spinner w-8 h-8 mx-auto mb-4"></div>
+            <p className="text-gray-600 text-sm">Checking configuration...</p>
           </div>
         </div>
       </div>
@@ -89,128 +89,138 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Setup Telegram API</h1>
-          <p className="text-gray-600">Configure your Telegram API credentials to get started</p>
-        </div>
-
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
+      <div className="card w-full max-w-lg animate-fade-in">
+        <div className="p-6 sm:p-8">
+          <div className="text-center mb-6">
+            <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div className="ml-3">
-              <h3 className="text-sm font-medium text-blue-800">How to get your API credentials:</h3>
-              <div className="mt-2 text-sm text-blue-700">
-                <ol className="list-decimal list-inside space-y-1">
-                  <li>Visit <a href="https://my.telegram.org/apps" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-900">my.telegram.org/apps</a></li>
-                  <li>Log in with your Telegram account</li>
-                  <li>Create a new application</li>
-                  <li>Copy your api_id and api_hash</li>
-                </ol>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2 font-display">Setup Telegram API</h1>
+            <p className="text-sm text-gray-600 leading-relaxed">Configure your Telegram API credentials to get started</p>
+          </div>
+
+          <div className="alert alert-info mb-6 text-sm">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <div className="font-semibold mb-1">Get your API credentials:</div>
+              <ol className="list-decimal list-inside space-y-1 text-xs opacity-90">
+                <li>Visit <a href="https://my.telegram.org/apps" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">my.telegram.org/apps</a></li>
+                <li>Log in with your Telegram account</li>
+                <li>Create a new application</li>
+                <li>Copy your api_id and api_hash</li>
+              </ol>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="layout-compact">
+            <div className="field">
+              <label htmlFor="api_id" className="block text-sm font-semibold text-gray-700 mb-2">
+                API ID <span className="text-red-500">*</span>
+              </label>
+              <div className="enhanced-input">
+                <input
+                  id="api_id"
+                  type="text"
+                  value={apiId}
+                  onChange={(e) => setApiId(e.target.value)}
+                  placeholder="12345678"
+                  className="api-input"
+                  required
+                  disabled={loading}
+                  data-mono="true"
+                />
               </div>
+              <p className="help-text">Numeric API ID from my.telegram.org</p>
+            </div>
+
+            <div className="field">
+              <label htmlFor="api_hash" className="block text-sm font-semibold text-gray-700 mb-2">
+                API Hash <span className="text-red-500">*</span>
+              </label>
+              <div className="enhanced-input">
+                <input
+                  id="api_hash"
+                  type="password"
+                  value={apiHash}
+                  onChange={(e) => setApiHash(e.target.value)}
+                  placeholder="abcd1234efgh5678..."
+                  className="api-input"
+                  required
+                  disabled={loading}
+                  data-mono="true"
+                />
+              </div>
+              <p className="help-text">32-character API hash string</p>
+            </div>
+
+            <div className="field">
+              <label htmlFor="phone_number" className="block text-sm font-semibold text-gray-700 mb-2">
+                Phone Number <span className="text-red-500">*</span>
+              </label>
+              <div className="enhanced-input">
+                <input
+                  id="phone_number"
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  placeholder="+628229814752"
+                  className="phone-input"
+                  required
+                  disabled={loading}
+                  data-mono="true"
+                />
+              </div>
+              <p className="help-text">Include country code (e.g., +62 for Indonesia)</p>
+            </div>
+
+            {error && (
+              <div className="alert alert-error text-sm">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{error}</span>
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary flex-1 flex items-center justify-center order-2 sm:order-1"
+              >
+                {loading ? (
+                  <>
+                    <div className="loading-spinner w-4 h-4 mr-2"></div>
+                    Configuring...
+                  </>
+                ) : (
+                  'Configure API'
+                )}
+              </button>
+              
+              <button
+                type="button"
+                onClick={onSkip}
+                className="btn-secondary flex-1 order-1 sm:order-2"
+              >
+                Skip for now
+              </button>
+            </div>
+          </form>
+
+          <div className="mt-6 pt-4 border-t border-gray-200/60">
+            <div className="alert alert-warning text-xs">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 15c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+              <span>Your API credentials are stored securely and used only for Telegram server connections.</span>
             </div>
           </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="api_id" className="block text-sm font-medium text-gray-700 mb-2">
-              API ID <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="api_id"
-              type="text"
-              value={apiId}
-              onChange={(e) => setApiId(e.target.value)}
-              placeholder="Your API ID from my.telegram.org"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="api_hash" className="block text-sm font-medium text-gray-700 mb-2">
-              API Hash <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="api_hash"
-              type="password"
-              value={apiHash}
-              onChange={(e) => setApiHash(e.target.value)}
-              placeholder="Your API Hash from my.telegram.org"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="phone_number"
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="+1234567890"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              required
-              disabled={loading}
-            />
-            <p className="text-xs text-gray-500 mt-1">Include country code (e.g., +1 for US, +62 for Indonesia)</p>
-          </div>
-
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-              {error}
-            </div>
-          )}
-
-          <div className="flex space-x-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {loading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Configuring...
-                </>
-              ) : (
-                'Configure API'
-              )}
-            </button>
-            
-            <button
-              type="button"
-              onClick={onSkip}
-              className="px-6 py-3 text-gray-600 hover:text-gray-800 font-medium transition-colors duration-200"
-            >
-              Skip for now
-            </button>
-          </div>
-        </form>
-
-        <div className="mt-6 pt-6 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">
-            Your API credentials are stored locally and used only for connecting to Telegram's servers.
-          </p>
         </div>
       </div>
     </div>
