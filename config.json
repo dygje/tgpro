@@ -1,8 +1,8 @@
 {
   "telegram": {
-    "api_id": "",
-    "api_hash": "",
-    "phone_number": ""
+    "api_id": "87654321",
+    "api_hash": "real1234hash5678",
+    "phone_number": "invalid-phone"
   },
   "delays": {
     "min_delay_msg": 5,
