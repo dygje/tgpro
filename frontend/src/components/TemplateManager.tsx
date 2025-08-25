@@ -530,7 +530,7 @@ const TemplateManager: React.FC = () => {
                   placeholder="Search templates..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  leftElement={<Icon as={FiSearch} color={textMuted} ml={3} />}
+                  // Search icon handled by placeholder
                 />
 
                 {/* Templates List */}
