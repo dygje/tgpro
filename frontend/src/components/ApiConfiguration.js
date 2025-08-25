@@ -156,26 +156,6 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
               <p className="help-text">32-character API hash string</p>
             </div>
 
-            <div className="field">
-              <label htmlFor="phone_number" className="block text-sm font-semibold text-gray-700 mb-2">
-                Phone Number <span className="text-red-500">*</span>
-              </label>
-              <div className="enhanced-input">
-                <input
-                  id="phone_number"
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  placeholder="+628229814752"
-                  className="phone-input"
-                  required
-                  disabled={loading}
-                  data-mono="true"
-                />
-              </div>
-              <p className="help-text">Include country code (e.g., +62 for Indonesia)</p>
-            </div>
-
             {error && (
               <div className="alert alert-error text-sm">
                 <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
