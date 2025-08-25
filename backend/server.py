@@ -70,6 +70,15 @@ class VerifyCodeRequest(BaseModel):
 class TwoFARequest(BaseModel):
     password: str = Field(..., description="2FA password")
 
+class TelegramLoginRequest(BaseModel):
+    id: int = Field(..., description="Telegram user ID")
+    first_name: str = Field(..., description="User's first name")
+    last_name: Optional[str] = Field(None, description="User's last name")
+    username: Optional[str] = Field(None, description="User's username")
+    photo_url: Optional[str] = Field(None, description="User's profile photo URL")
+    auth_date: int = Field(..., description="Authentication timestamp")
+    hash: str = Field(..., description="Data hash from Telegram")
+
 class MessageRequest(BaseModel):
     template_id: str = Field(..., description="Message template identifier")
     recipients: Optional[List[str]] = Field(default=None, description="Specific recipients, or all from groups.txt")
