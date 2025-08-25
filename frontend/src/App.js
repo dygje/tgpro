@@ -5,6 +5,7 @@ import './App.css';
 
 // Components
 import LoginForm from './components/LoginForm';
+import ApiConfiguration from './components/ApiConfiguration';
 import Dashboard from './components/Dashboard';
 import AuthStatus from './components/AuthStatus';
 import MessageSender from './components/MessageSender';
