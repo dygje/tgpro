@@ -39,7 +39,7 @@
 - ✅ Log files lama (`*.log.*`)
 - ✅ Session journal files (`*.session-journal`)
 
-### 5. Folder Kosong
+### 6. Folder Kosong
 - ✅ `/app/tests/` - Folder test kosong (hanya berisi `__init__.py` kosong)
 
 ## 🎯 File dan Komponen yang Dipertahankan
