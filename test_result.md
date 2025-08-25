@@ -225,8 +225,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Frontend Integration Testing"
-    - "End-to-End Workflow Testing"
+    - "Groups Management API Enhancement"
+    - "Messages Management API Enhancement"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
