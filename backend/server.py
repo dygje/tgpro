@@ -164,6 +164,61 @@ async def health_check():
     }
 
 # Authentication endpoints
+@app.post("/api/auth/configure")
+async def configure_telegram_api(
+    config: TelegramAPIConfig,
+    api_key: str = Depends(verify_api_key)
+):
+    """Configure Telegram API credentials"""
+    global telegram_service
+    try:
+        # Update configuration with new API credentials
+        current_config = config_manager.config
+        current_config["telegram"]["api_id"] = config.api_id
+        current_config["telegram"]["api_hash"] = config.api_hash
+        current_config["telegram"]["phone_number"] = config.phone_number
+        
+        # Save updated configuration
+        config_manager.save_config(current_config)
+        
+        # Reinitialize telegram service with new credentials
+        telegram_service = TelegramService(config_manager, blacklist_manager)
+        await telegram_service.initialize()
+        
+        return {
+            "message": "Telegram API configuration updated successfully",
+            "configured": True
+        }
+        
+    except Exception as e:
+        logger.error(f"Error configuring Telegram API: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to configure Telegram API: {str(e)}"
+        )
+
+@app.get("/api/auth/configuration")
+async def get_telegram_configuration(api_key: str = Depends(verify_api_key)):
+    """Get current Telegram API configuration status"""
+    try:
+        config = config_manager.config
+        telegram_config = config.get("telegram", {})
+        
+        # Don't expose sensitive API credentials
+        return {
+            "configured": bool(telegram_config.get("api_id") and telegram_config.get("api_hash")),
+            "phone_number": telegram_config.get("phone_number", ""),
+            "api_id_configured": bool(telegram_config.get("api_id")),
+            "api_hash_configured": bool(telegram_config.get("api_hash"))
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting configuration: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
 @app.post("/api/auth/phone")
 async def request_verification_code(
     request: AuthRequest,
