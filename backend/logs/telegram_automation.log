@@ -41,3 +41,103 @@
 2025-08-25 00:27:13,561 - config_manager - INFO - Configuration loaded from /app/config.json
 2025-08-25 00:27:13,561 - server - INFO - Services initialized successfully
 2025-08-25 00:27:13,563 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:09:43,787 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 01:09:43,787 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 01:09:43,787 - server - INFO - Services initialized successfully
+2025-08-25 01:09:43,789 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:10:39,613 - server - INFO - Services shutdown completed
+2025-08-25 01:10:42,052 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 01:10:42,052 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 01:10:42,052 - server - INFO - Services initialized successfully
+2025-08-25 01:10:42,054 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:12:02,195 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:12:02,195 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:12:02,247 - server - ERROR - Error verifying code: 400: No pending verification
+2025-08-25 01:12:02,297 - server - ERROR - Error verifying 2FA: 400: Invalid 2FA password
+2025-08-25 01:12:02,410 - telegram_service - INFO - Added template: test_template_001
+2025-08-25 01:12:02,515 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 01:12:02,515 - config_manager - INFO - Configuration updated
+2025-08-25 01:12:02,623 - blacklist_manager - WARNING - Added https://t.me/test_group_123 to permanent blacklist: Test blacklist entry
+2025-08-25 01:12:49,121 - telegram_service - INFO - Added template: api_test_template
+2025-08-25 01:12:49,286 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 01:12:49,286 - config_manager - INFO - Configuration updated
+2025-08-25 01:12:49,563 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:12:49,563 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:18:58,664 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:18:58,664 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:19:41,124 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:19:41,124 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:19:48,110 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:19:48,110 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:19:54,252 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:19:54,253 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:28:56,668 - server - INFO - Services shutdown completed
+2025-08-25 01:28:58,668 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 01:28:58,668 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 01:28:58,669 - server - INFO - Services initialized successfully
+2025-08-25 01:28:58,670 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:29:18,119 - server - INFO - Services shutdown completed
+2025-08-25 01:29:20,135 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 01:29:20,136 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 01:29:20,136 - server - INFO - Services initialized successfully
+2025-08-25 01:29:20,138 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:31:48,678 - server - INFO - Services shutdown completed
+2025-08-25 01:31:51,337 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 01:31:51,337 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 01:31:51,337 - server - INFO - Services initialized successfully
+2025-08-25 01:31:51,339 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 01:33:19,391 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:33:19,391 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:33:19,446 - server - ERROR - Error verifying code: 400: No pending verification
+2025-08-25 01:33:19,500 - server - ERROR - Error verifying 2FA: 400: Invalid 2FA password
+2025-08-25 01:33:19,609 - telegram_service - INFO - Added template: test_template_001
+2025-08-25 01:33:19,717 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 01:33:19,717 - config_manager - INFO - Configuration updated
+2025-08-25 01:33:19,819 - blacklist_manager - WARNING - Added https://t.me/test_group_123 to permanent blacklist: Test blacklist entry
+2025-08-25 01:33:19,977 - server - INFO - Added group: https://t.me/testgroup123
+2025-08-25 01:33:20,027 - server - INFO - Added group: @testgroup456
+2025-08-25 01:33:20,128 - server - INFO - Added group: https://t.me/testgroup123
+2025-08-25 01:33:20,390 - server - INFO - Created message file: test_message_001.txt
+2025-08-25 01:33:20,442 - server - INFO - Created message file: test_message_002.txt
+2025-08-25 01:33:20,659 - server - INFO - Updated message file: test_message_001.txt
+2025-08-25 01:33:20,868 - server - INFO - Deleted message file: test_message_001.txt
+2025-08-25 01:33:49,521 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:33:49,521 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:33:49,574 - server - ERROR - Error verifying code: 400: No pending verification
+2025-08-25 01:33:49,626 - server - ERROR - Error verifying 2FA: 400: Invalid 2FA password
+2025-08-25 01:33:49,730 - telegram_service - INFO - Added template: test_template_001
+2025-08-25 01:33:49,836 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 01:33:49,836 - config_manager - INFO - Configuration updated
+2025-08-25 01:33:49,941 - blacklist_manager - WARNING - Added https://t.me/test_group_123 to permanent blacklist: Test blacklist entry
+2025-08-25 01:33:50,098 - server - INFO - Added group: https://t.me/testgroup123
+2025-08-25 01:33:50,149 - server - INFO - Added group: @testgroup456
+2025-08-25 01:33:50,514 - server - INFO - Created message file: test_message_001.txt
+2025-08-25 01:33:50,575 - server - INFO - Created message file: test_message_002.txt
+2025-08-25 01:33:50,784 - server - INFO - Updated message file: test_message_001.txt
+2025-08-25 01:33:50,987 - server - INFO - Deleted message file: test_message_001.txt
+2025-08-25 01:34:11,069 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:34:11,069 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:34:11,127 - server - ERROR - Error verifying code: 400: No pending verification
+2025-08-25 01:34:11,178 - server - ERROR - Error verifying 2FA: 400: Invalid 2FA password
+2025-08-25 01:34:11,284 - telegram_service - INFO - Added template: test_template_001
+2025-08-25 01:34:11,389 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 01:34:11,389 - config_manager - INFO - Configuration updated
+2025-08-25 01:34:11,494 - blacklist_manager - WARNING - Added https://t.me/test_group_123 to permanent blacklist: Test blacklist entry
+2025-08-25 01:34:12,081 - server - INFO - Created message file: test_message_001.txt
+2025-08-25 01:34:12,343 - server - INFO - Updated message file: test_message_001.txt
+2025-08-25 01:34:12,564 - server - INFO - Deleted message file: test_message_001.txt
+2025-08-25 01:34:33,550 - server - INFO - Added group: https://t.me/testgroup123
+2025-08-25 01:34:33,608 - server - INFO - Added group: @testgroup456
+2025-08-25 01:34:33,878 - server - INFO - Created message file: test_automation.txt
+2025-08-25 01:34:33,931 - server - INFO - Updated message file: test_automation.txt
+2025-08-25 01:34:34,042 - server - INFO - Deleted message file: test_automation.txt
+2025-08-25 01:38:25,375 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:38:25,375 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:39:20,443 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:39:20,444 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:41:14,459 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:41:14,459 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:41:19,633 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:41:19,633 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 01:44:38,106 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 01:44:38,106 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
