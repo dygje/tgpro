@@ -12,8 +12,7 @@ import { api } from './lib/api';
 import { AuthStatus as AuthStatusType, TelegramConfig } from './types';
 
 // Components
-import LoginForm from './components/LoginForm';
-import ApiConfiguration from './components/ApiConfiguration';
+import UnifiedAuth from './components/UnifiedAuth';
 import Dashboard from './components/Dashboard';
 import AuthStatus from './components/AuthStatus';
 import MessageSender from './components/MessageSender';
