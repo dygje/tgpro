@@ -525,7 +525,9 @@ class TelegramAutomationAPITester:
         self.test_template_endpoints()
         self.test_config_endpoints()
         self.test_blacklist_endpoints()
-        self.test_file_endpoints()
+        self.test_groups_management()  # NEW: Enhanced Groups Management
+        self.test_messages_management()  # NEW: Enhanced Messages Management
+        self.test_file_endpoints()  # Legacy compatibility tests
         self.test_message_endpoints()
         self.test_logs_endpoint()
         
