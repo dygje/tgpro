@@ -28,6 +28,7 @@ import {
   Tooltip,
   Progress,
   Code,
+  Icon,
 } from '@chakra-ui/react';
 import { 
   FiExternalLink, 
