@@ -95,19 +95,9 @@ function App() {
     );
   }
 
-  // Show API configuration if not configured
-  if (!isApiConfigured) {
-    return (
-      <ApiConfiguration 
-        onConfigured={handleApiConfigured}
-        onSkip={handleApiConfigured}
-      />
-    );
-  }
-
-  // Show login if API is configured but not authenticated
+  // Show unified auth if not authenticated
   if (!isAuthenticated) {
-    return <LoginForm onAuthSuccess={handleAuthSuccess} />;
+    return <UnifiedAuth onAuthSuccess={handleAuthSuccess} />;
   }
 
   // Show main dashboard if authenticated
