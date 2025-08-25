@@ -101,6 +101,7 @@ class TaskStatusResponse(BaseModel):
 db_service = None
 encryption_service = None
 config_service = None
+auth_service = None
 telegram_service = None
 config_manager = None  # Keep for backward compatibility
 blacklist_manager = None
