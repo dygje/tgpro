@@ -294,12 +294,7 @@ const ConfigManager: React.FC = () => {
                         <Text fontSize="xs" color={textMuted}>API Hash:</Text>
                         <Code fontSize="xs">{telegramConfig.api_hash ? '••••••••••••' : 'Not set'}</Code>
                       </HStack>
-                      {telegramConfig.phone && (
-                        <HStack spacing={2}>
-                          <Text fontSize="xs" color={textMuted}>Phone:</Text>
-                          <Code fontSize="xs">{telegramConfig.phone}</Code>
-                        </HStack>
-                      )}
+
                     </SimpleGrid>
                   </VStack>
                 </CardBody>
