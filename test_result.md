@@ -411,9 +411,7 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "Telegram Login Widget Backend Verification"
-    - "Telegram Login Widget Authentication Implementation"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
