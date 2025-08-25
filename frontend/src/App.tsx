@@ -120,9 +120,9 @@ function App() {
     );
   }
 
-  // Show unified auth if not authenticated
+  // Show telegram login if not authenticated
   if (!isAuthenticated) {
-    return <UnifiedAuth onAuthSuccess={handleAuthSuccess} />;
+    return <TelegramLogin onAuthSuccess={handleAuthSuccess} />;
   }
 
   // Show main dashboard if authenticated
