@@ -35,8 +35,29 @@ function App() {
 
   // Check authentication status on app load
   useEffect(() => {
-    checkAuthStatus();
+    initializeApp();
   }, []);
+
+  const initializeApp = async () => {
+    try {
+      await checkApiConfiguration();
+      await checkAuthStatus();
+    } catch (error) {
+      console.error('Error initializing app:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const checkApiConfiguration = async () => {
+    try {
+      const response = await axios.get(`${API}/auth/configuration`);
+      setIsApiConfigured(response.data.configured);
+    } catch (error) {
+      console.error('Error checking API configuration:', error);
+      setIsApiConfigured(false);
+    }
+  };
 
   const checkAuthStatus = async () => {
     try {
@@ -46,9 +67,11 @@ function App() {
     } catch (error) {
       console.error('Error checking auth status:', error);
       setIsAuthenticated(false);
-    } finally {
-      setLoading(false);
     }
+  };
+
+  const handleApiConfigured = () => {
+    setIsApiConfigured(true);
   };
 
   const handleAuthSuccess = () => {
