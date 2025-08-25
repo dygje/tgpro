@@ -177,7 +177,7 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
                     Configuring...
                   </>
                 ) : (
-                  'Configure API'
+                  'Continue'
                 )}
               </button>
               
