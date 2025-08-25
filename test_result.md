@@ -330,8 +330,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "MongoDB Migration and API Integration"
-    - "Production Readiness Verification"
+    - "Phase 2 - WebSocket Real-time System"
+    - "Phase 3 - Async Task Processing"
+    - "WebSocket-Task Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
