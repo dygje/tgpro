@@ -139,8 +139,7 @@ const ConfigManager: React.FC = () => {
     try {
       await api.auth.configure({
         api_id: Number(apiId),
-        api_hash: apiHash,
-        phone: phoneNumber
+        api_hash: apiHash
       });
       
       setSuccess('Telegram configuration saved successfully!');
