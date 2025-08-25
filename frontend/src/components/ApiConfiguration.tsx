@@ -15,18 +15,17 @@ import {
   AlertDescription,
   Card,
   CardBody,
-  CardHeader,
   Heading,
   useColorModeValue,
   Link,
-  Icon,
+  Code,
   Divider,
 } from '@chakra-ui/react';
-import { FiExternalLink, FiSettings } from 'react-icons/fi';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { useForm } from 'react-hook-form';
-import { api } from '@/lib/api';
-import { ApiConfigurationProps } from '@/types/components';
-import { ConfigFormData } from '@/types';
+import { api } from '../lib/api';
+import { ApiConfigurationProps } from '../types/components';
+import { ConfigFormData } from '../types';
 
 const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSkip }) => {
   const [loading, setLoading] = useState(false);
@@ -46,8 +45,8 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
     watch,
   } = useForm<ConfigFormData>();
 
-  const apiId = watch('api_id');
-  const apiHash = watch('api_hash');
+  const watchedValues = watch();
+  const hasChanges = watchedValues.api_id || watchedValues.api_hash;
 
   const onSubmit = async (data: ConfigFormData) => {
     setLoading(true);
@@ -56,38 +55,15 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
 
     try {
       await api.auth.configure({
-        api_id: data.api_id,
+        api_id: Number(data.api_id),
         api_hash: data.api_hash,
       });
-      setSuccess('Telegram API configuration saved successfully!');
+      setSuccess('API configuration saved successfully!');
       setTimeout(() => {
         onConfigured();
       }, 1500);
     } catch (err: any) {
-      setError(err.message || 'Failed to save configuration');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleTestConfig = async () => {
-    if (!apiId || !apiHash) {
-      setError('Please enter both API ID and API Hash before testing');
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      // Test the configuration without saving
-      const response = await api.auth.configure({
-        api_id: apiId,
-        api_hash: apiHash,
-      });
-      setSuccess('Configuration test successful! You can now proceed.');
-    } catch (err: any) {
-      setError(err.message || 'Configuration test failed');
+      setError(err.message || 'Failed to save API configuration');
     } finally {
       setLoading(false);
     }
@@ -97,51 +73,42 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
     <Flex minH="100vh" bgGradient={bgGradient} align="center" justify="center" p={4}>
       <Box w="full" maxW="lg">
         <Card shadow="2xl" bg={cardBg} backdropFilter="blur(10px)">
-          <CardHeader>
-            <VStack spacing={3}>
-              <Icon as={FiSettings} w={8} h={8} color="brand.500" />
-              <Heading size="lg" textAlign="center" color="brand.600">
-                Telegram API Configuration
-              </Heading>
-              <Text fontSize="sm" color="gray.600" textAlign="center">
-                Configure your Telegram API credentials to get started
-              </Text>
-            </VStack>
-          </CardHeader>
-
-          <CardBody pt={0}>
+          <CardBody p={8}>
             <VStack spacing={6} align="stretch">
+              {/* Header */}
+              <VStack spacing={2}>
+                <Heading size="lg" textAlign="center" color="brand.600">
+                  Telegram API Configuration
+                </Heading>
+                <Text fontSize="sm" color="gray.600" textAlign="center">
+                  Configure your Telegram API credentials to get started
+                </Text>
+              </VStack>
+
               {/* Instructions */}
-              <Alert status="info" borderRadius="lg">
-                <AlertIcon />
-                <VStack align="start" spacing={2} fontSize="sm">
-                  <Text fontWeight="medium">How to get your API credentials:</Text>
-                  <VStack align="start" spacing={1} pl={4}>
-                    <Text>1. Visit my.telegram.org/apps</Text>
+              <Box
+                bg="blue.50"
+                _dark={{ bg: 'blue.900' }}
+                p={4}
+                borderRadius="lg"
+                border="1px solid"
+                borderColor="blue.200"
+                _dark={{ borderColor: 'blue.700' }}
+              >
+                <VStack spacing={3} align="start">
+                  <Text fontSize="sm" fontWeight="semibold" color="blue.800" _dark={{ color: 'blue.200' }}>
+                    How to get your API credentials:
+                  </Text>
+                  <VStack spacing={2} align="start" fontSize="sm" color="blue.700" _dark={{ color: 'blue.300' }}>
+                    <Text>1. Visit <Link href="https://my.telegram.org/apps" isExternal color="blue.600" fontWeight="medium">
+                      my.telegram.org/apps <ExternalLinkIcon mx="2px" />
+                    </Link></Text>
                     <Text>2. Log in with your Telegram account</Text>
                     <Text>3. Create a new application</Text>
-                    <Text>4. Copy the API ID and API Hash</Text>
+                    <Text>4. Copy the <Code>API ID</Code> and <Code>API Hash</Code></Text>
                   </VStack>
                 </VStack>
-              </Alert>
-
-              {/* Quick Link */}
-              <Link
-                href="https://my.telegram.org/apps"
-                isExternal
-                color="brand.500"
-                fontWeight="medium"
-                fontSize="sm"
-                textAlign="center"
-                _hover={{ textDecoration: 'none', color: 'brand.600' }}
-              >
-                <HStack justify="center" spacing={2}>
-                  <Text>Open Telegram API Console</Text>
-                  <Icon as={FiExternalLink} w={3} h={3} />
-                </HStack>
-              </Link>
-
-              <Divider />
+              </Box>
 
               {/* Error Alert */}
               {error && (
@@ -159,7 +126,7 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
                 </Alert>
               )}
 
-              {/* Form */}
+              {/* Configuration Form */}
               <form onSubmit={handleSubmit(onSubmit)}>
                 <VStack spacing={4}>
                   <FormControl isInvalid={!!errors.api_id}>
@@ -168,7 +135,7 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
                     </FormLabel>
                     <Input
                       type="number"
-                      placeholder="e.g., 1234567"
+                      placeholder="Enter your API ID (e.g., 1234567)"
                       fontFamily="mono"
                       {...register('api_id', {
                         required: 'API ID is required',
@@ -188,18 +155,14 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
                       API Hash
                     </FormLabel>
                     <Input
-                      type="password"
-                      placeholder="32-character API hash"
+                      type="text"
+                      placeholder="Enter your API Hash (e.g., abcd1234...)"
                       fontFamily="mono"
                       {...register('api_hash', {
                         required: 'API Hash is required',
                         minLength: {
                           value: 32,
-                          message: 'API Hash must be exactly 32 characters',
-                        },
-                        maxLength: {
-                          value: 32,
-                          message: 'API Hash must be exactly 32 characters',
+                          message: 'API Hash must be at least 32 characters',
                         },
                       })}
                     />
@@ -208,52 +171,39 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
                     </FormErrorMessage>
                   </FormControl>
 
-                  {/* Action Buttons */}
                   <VStack spacing={3} w="full" pt={2}>
-                    <HStack spacing={3} w="full">
-                      <Button
-                        variant="outline"
-                        onClick={handleTestConfig}
-                        isLoading={loading}
-                        loadingText="Testing..."
-                        isDisabled={!apiId || !apiHash}
-                        flex={1}
-                      >
-                        Test Config
-                      </Button>
-                      <Button
-                        type="submit"
-                        colorScheme="brand"
-                        isLoading={loading}
-                        loadingText="Saving..."
-                        flex={1}
-                      >
-                        Save & Continue
-                      </Button>
-                    </HStack>
+                    <Button
+                      type="submit"
+                      colorScheme="brand"
+                      size="lg"
+                      w="full"
+                      isLoading={loading}
+                      loadingText="Saving..."
+                      isDisabled={!hasChanges}
+                    >
+                      Save Configuration
+                    </Button>
+
+                    <Divider />
 
                     <Button
                       variant="ghost"
-                      size="sm"
+                      size="md"
                       onClick={onSkip}
-                      color="gray.600"
+                      isDisabled={loading}
                     >
-                      Skip for now (limited functionality)
+                      Skip for now
                     </Button>
                   </VStack>
                 </VStack>
               </form>
 
-              {/* Security Note */}
+              {/* Warning */}
               <Alert status="warning" borderRadius="lg">
                 <AlertIcon />
-                <VStack align="start" fontSize="xs" spacing={1}>
-                  <Text fontWeight="medium">Security Notice:</Text>
-                  <Text>
-                    Your API credentials are encrypted with AES-256 and stored securely in MongoDB.
-                    They are never transmitted in plain text or logged.
-                  </Text>
-                </VStack>
+                <AlertDescription fontSize="xs">
+                  Your API credentials are encrypted and stored securely. Never share them with anyone.
+                </AlertDescription>
               </Alert>
             </VStack>
           </CardBody>

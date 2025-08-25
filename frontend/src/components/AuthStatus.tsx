@@ -1,162 +1,125 @@
 import React from 'react';
 import {
+  Box,
+  Flex,
+  Text,
+  Button,
+  Badge,
   HStack,
   VStack,
-  Text,
-  Badge,
-  Button,
   Icon,
-  Avatar,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
+  Tooltip,
   useColorModeValue,
-  Box,
 } from '@chakra-ui/react';
-import { FiRefreshCw, FiUser } from 'react-icons/fi';
-import { AuthStatusProps } from '@/types/components';
+import {
+  FiUser,
+  FiShield,
+  FiRefreshCw,
+  FiCheckCircle,
+  FiAlertCircle,
+  FiXCircle,
+} from 'react-icons/fi';
+import { AuthStatusProps } from '../types/components';
 
 const AuthStatus: React.FC<AuthStatusProps> = ({ authStatus, onRefresh }) => {
-  const popoverBg = useColorModeValue('white', 'gray.700');
+  const bgColor = useColorModeValue('gray.50', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
 
   if (!authStatus) {
     return (
-      <HStack spacing={2}>
-        <Badge colorScheme="gray" borderRadius="full" px={3} py={1}>
-          Loading...
-        </Badge>
-        <Button
-          size="sm"
-          variant="ghost"
-          onClick={onRefresh}
-          leftIcon={<Icon as={FiRefreshCw} />}
-        >
-          Refresh
-        </Button>
-      </HStack>
+      <Box
+        bg={bgColor}
+        border="1px solid"
+        borderColor={borderColor}
+        borderRadius="lg"
+        p={3}
+      >
+        <HStack spacing={2}>
+          <Icon as={FiXCircle} color="red.500" />
+          <Text fontSize="sm" color="gray.600">
+            Not authenticated
+          </Text>
+        </HStack>
+      </Box>
     );
   }
 
-  const statusColor = authStatus.authenticated ? 'green' : 'red';
-  const statusText = authStatus.authenticated ? 'Connected' : 'Disconnected';
+  const getHealthColor = (level?: string) => {
+    switch (level) {
+      case 'low':
+        return 'green';
+      case 'medium':
+        return 'yellow';
+      case 'high':
+        return 'red';
+      default:
+        return 'gray';
+    }
+  };
+
+  const getHealthIcon = (level?: string) => {
+    switch (level) {
+      case 'low':
+        return FiCheckCircle;
+      case 'medium':
+        return FiAlertCircle;
+      case 'high':
+        return FiXCircle;
+      default:
+        return FiShield;
+    }
+  };
 
   return (
-    <HStack spacing={3}>
-      <Popover placement="bottom-end">
-        <PopoverTrigger>
-          <Button variant="ghost" size="sm" p={2}>
-            <HStack spacing={2}>
-              <Avatar
-                size="sm"
-                icon={<Icon as={FiUser} />}
-                bg={`${statusColor}.500`}
-              />
-              <VStack spacing={0} align="start" display={{ base: 'none', md: 'flex' }}>
-                <Text fontSize="sm" fontWeight="medium" lineHeight="short">
-                  {authStatus.username || authStatus.phone_number || 'Unknown'}
+    <Box
+      bg={bgColor}
+      border="1px solid"
+      borderColor={borderColor}
+      borderRadius="lg"
+      p={3}
+    >
+      <Flex align="center" justify="space-between">
+        <HStack spacing={3}>
+          <Icon as={FiUser} color="green.500" />
+          <VStack align="start" spacing={0}>
+            <Text fontSize="sm" fontWeight="medium" color="gray.900" _dark={{ color: 'white' }}>
+              {authStatus.username || authStatus.phone_number || 'Authenticated'}
+            </Text>
+            {authStatus.account_health && (
+              <HStack spacing={2}>
+                <Icon
+                  as={getHealthIcon(authStatus.account_health.risk_level)}
+                  w={3}
+                  h={3}
+                  color={`${getHealthColor(authStatus.account_health.risk_level)}.500`}
+                />
+                <Text fontSize="xs" color="gray.500">
+                  Risk: {authStatus.account_health.risk_level}
                 </Text>
                 <Badge
-                  colorScheme={statusColor}
-                  size="xs"
+                  size="sm"
+                  colorScheme={getHealthColor(authStatus.account_health.risk_level)}
                   borderRadius="full"
                 >
-                  {statusText}
+                  {authStatus.account_health.success_rate}%
                 </Badge>
-              </VStack>
-            </HStack>
+              </HStack>
+            )}
+          </VStack>
+        </HStack>
+
+        <Tooltip label="Refresh status" placement="left">
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={onRefresh}
+            leftIcon={<Icon as={FiRefreshCw} w={3} h={3} />}
+          >
+            Refresh
           </Button>
-        </PopoverTrigger>
-        <PopoverContent
-          w="280px"
-          bg={popoverBg}
-          borderColor={borderColor}
-          shadow="lg"
-        >
-          <PopoverBody p={4}>
-            <VStack align="stretch" spacing={3}>
-              <Box>
-                <Text fontSize="sm" fontWeight="semibold" mb={2}>
-                  Account Status
-                </Text>
-                <VStack align="stretch" spacing={2} fontSize="sm">
-                  <HStack justify="space-between">
-                    <Text color="gray.600">Status:</Text>
-                    <Badge colorScheme={statusColor} borderRadius="full">
-                      {statusText}
-                    </Badge>
-                  </HStack>
-                  {authStatus.phone_number && (
-                    <HStack justify="space-between">
-                      <Text color="gray.600">Phone:</Text>
-                      <Text>{authStatus.phone_number}</Text>
-                    </HStack>
-                  )}
-                  {authStatus.username && (
-                    <HStack justify="space-between">
-                      <Text color="gray.600">Username:</Text>
-                      <Text>@{authStatus.username}</Text>
-                    </HStack>
-                  )}
-                  {authStatus.user_id && (
-                    <HStack justify="space-between">
-                      <Text color="gray.600">User ID:</Text>
-                      <Text fontFamily="mono" fontSize="xs">
-                        {authStatus.user_id}
-                      </Text>
-                    </HStack>
-                  )}
-                </VStack>
-              </Box>
-
-              {authStatus.account_health && (
-                <Box>
-                  <Text fontSize="sm" fontWeight="semibold" mb={2}>
-                    Account Health
-                  </Text>
-                  <VStack align="stretch" spacing={2} fontSize="sm">
-                    <HStack justify="space-between">
-                      <Text color="gray.600">Risk Level:</Text>
-                      <Badge
-                        colorScheme={
-                          authStatus.account_health.risk_level === 'low' 
-                            ? 'green' 
-                            : authStatus.account_health.risk_level === 'medium' 
-                            ? 'yellow' 
-                            : 'red'
-                        }
-                        borderRadius="full"
-                      >
-                        {authStatus.account_health.risk_level.toUpperCase()}
-                      </Badge>
-                    </HStack>
-                    <HStack justify="space-between">
-                      <Text color="gray.600">Success Rate:</Text>
-                      <Text>{authStatus.account_health.success_rate}%</Text>
-                    </HStack>
-                    <HStack justify="space-between">
-                      <Text color="gray.600">Messages Today:</Text>
-                      <Text>{authStatus.account_health.messages_sent_today}</Text>
-                    </HStack>
-                  </VStack>
-                </Box>
-              )}
-
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={onRefresh}
-                leftIcon={<Icon as={FiRefreshCw} />}
-                w="full"
-              >
-                Refresh Status
-              </Button>
-            </VStack>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </HStack>
+        </Tooltip>
+      </Flex>
+    </Box>
   );
 };
 
