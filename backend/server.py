@@ -105,6 +105,7 @@ encryption_service = None
 config_service = None
 auth_service = None
 websocket_manager = None
+task_service = None
 telegram_service = None
 config_manager = None  # Keep for backward compatibility
 blacklist_manager = None
