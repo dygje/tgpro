@@ -71,53 +71,38 @@ const AuthStatus: React.FC<AuthStatusProps> = ({ authStatus, onRefresh }) => {
   };
 
   return (
-    <Box
-      bg={bgColor}
-      border="1px solid"
-      borderColor={borderColor}
-      borderRadius="lg"
-      p={3}
-    >
-      <Flex align="center" justify="space-between">
-        <HStack spacing={3}>
-          <Icon as={FiUser} color="green.500" />
-          <VStack align="start" spacing={0}>
-            <Text fontSize="sm" fontWeight="medium" color="gray.900" _dark={{ color: 'white' }}>
-              {authStatus.username || authStatus.phone_number || 'Authenticated'}
-            </Text>
-            {authStatus.account_health && (
-              <HStack spacing={2}>
-                <Icon
-                  as={getHealthIcon(authStatus.account_health.risk_level)}
-                  w={3}
-                  h={3}
-                  color={`${getHealthColor(authStatus.account_health.risk_level)}.500`}
-                />
-                <Text fontSize="xs" color="gray.500">
-                  Risk: {authStatus.account_health.risk_level}
-                </Text>
-                <Badge
-                  size="sm"
-                  colorScheme={getHealthColor(authStatus.account_health.risk_level)}
-                  borderRadius="full"
-                >
-                  {authStatus.account_health.success_rate}%
-                </Badge>
-              </HStack>
-            )}
-          </VStack>
+    <HStack spacing={3}>
+      <Badge
+        colorScheme="green"
+        variant="subtle"
+        borderRadius="full"
+        px={2}
+        py={1}
+        fontSize="xs"
+      >
+        <HStack spacing={1}>
+          <Icon as={FiUser} boxSize={2.5} />
+          <Text>
+            {authStatus.username || authStatus.phone_number || 'Authenticated'}
+          </Text>
         </HStack>
-
-        <Tooltip label="Refresh status" placement="left">
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={onRefresh}
-            leftIcon={<Icon as={FiRefreshCw} w={3} h={3} />}
-          >
-            Refresh
-          </Button>
-        </Tooltip>
+      </Badge>
+      
+      {authStatus.account_health && (
+        <Badge
+          colorScheme={getHealthColor(authStatus.account_health.risk_level)}
+          variant="subtle"
+          borderRadius="full"
+          px={2}
+          py={1}
+          fontSize="xs"
+        >
+          <HStack spacing={1}>
+            <Icon as={getHealthIcon(authStatus.account_health.risk_level)} boxSize={2.5} />
+            <Text>{authStatus.account_health.success_rate}%</Text>
+          </HStack>
+        </Badge>
+      )}
       </Flex>
     </Box>
   );
