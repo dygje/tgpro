@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Merefaktor proyek tgpro yang ada di https://github.com/dygje/tgpro menjadi aplikasi otomatisasi Telegram yang lebih aman, skalabel, dan user-friendly menggunakan MTProto API (via Pyrofork). Fokus pada migrasi dari file-based storage (seperti groups.txt dan config.json) ke MongoDB dengan enkripsi AES-256 untuk data sensitif seperti API_ID dan API_HASH, sambil meningkatkan modularitas backend dengan FastAPI dan frontend dengan React TypeScript serta Chakra UI untuk UI responsif."
+user_problem_statement: "UPDATED: Implementasi Telegram Login Widget untuk menggantikan phone-based authentication. Semua user wajib login via Telegram Login (@TGProAuthBot) sebelum masuk ke Dashboard. Flow: Telegram Login → API Configuration → Dashboard. Desain tetap presisi, konsisten, modern, dan minimalis dengan gaya Linear + Vercel."
 
 backend:
   - task: "MongoDB Configuration Migration with AES-256 Encryption"
