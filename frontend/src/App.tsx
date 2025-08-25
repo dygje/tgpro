@@ -55,12 +55,6 @@ function App() {
     }
   };
 
-  const handleApiConfigured = async () => {
-    setIsApiConfigured(true);
-    // After API is configured, check auth status
-    await checkAuthStatus();
-  };
-
   const handleAuthSuccess = () => {
     setIsAuthenticated(true);
     checkAuthStatus();
