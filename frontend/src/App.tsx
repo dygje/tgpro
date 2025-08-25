@@ -35,7 +35,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
 
-  // Linear-style theme colors
+  // Precision theme colors
   const bgColor = useColorModeValue('white', 'gray.950');
   const surfaceBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('gray.200', 'gray.800');
@@ -69,7 +69,7 @@ function App() {
     setActiveTab('dashboard');
   };
 
-  // Loading state
+  // Precision loading state
   if (loading) {
     return (
       <Flex
@@ -77,36 +77,40 @@ function App() {
         bg={bgColor}
         align="center"
         justify="center"
+        p={4}
       >
         <Box
           bg={surfaceBg}
           p={6}
-          borderRadius="md"
+          borderRadius="lg"
           shadow="sm"
           border="1px solid"
           borderColor={borderColor}
-          minW="280px"
+          w="320px"
         >
-          <VStack spacing={4}>
+          <VStack spacing={6}>
             <Box
-              w={10}
-              h={10}
+              w={12}
+              h={12}
               bg="gray.900"
-              borderRadius="md"
+              borderRadius="lg"
               display="flex"
               alignItems="center"
               justifyContent="center"
-              _dark={{
-                bg: "gray.100"
-              }}
+              _dark={{ bg: "gray.100" }}
             >
-              <Spinner size="sm" color={useColorModeValue("white", "black")} thickness="2px" />
+              <Spinner 
+                size="md" 
+                color={useColorModeValue("white", "black")} 
+                thickness="2px"
+                className="spin"
+              />
             </Box>
-            <VStack spacing={1}>
-              <Text fontWeight={600} fontSize="md" color="text-primary">
+            <VStack spacing={2} textAlign="center">
+              <Text fontWeight={600} fontSize="lg" color="text-primary">
                 TGPro
               </Text>
-              <Text color="text-secondary" fontSize="sm">
+              <Text color="text-secondary" fontSize="sm" lineHeight="shorter">
                 Loading automation platform...
               </Text>
             </VStack>
@@ -123,7 +127,7 @@ function App() {
 
   // Show main dashboard if authenticated
   return (
-    <Flex minH="100vh" bg={bgColor}>
+    <Flex minH="100vh" bg={bgColor} className="fade-in">
       <Sidebar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
@@ -131,28 +135,37 @@ function App() {
       />
       
       <Flex flex={1} direction="column" overflow="hidden">
-        {/* Linear-style Header */}
+        {/* Precision Header */}
         <Box
           bg={surfaceBg}
           borderBottom="1px solid"
           borderColor={borderColor}
           px={6}
-          py={3}
+          py={4}
           position="sticky"
           top={0}
-          zIndex={5}
+          zIndex={10}
         >
-          <Flex align="center" justify="space-between">
+          <Flex align="center" justify="space-between" h="32px">
             <VStack align="start" spacing={0}>
-              <Text fontSize="md" fontWeight={600} color="text-primary" lineHeight={1.2}>
-                {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
+              <Text 
+                fontSize="md" 
+                fontWeight={600} 
+                color="text-primary" 
+                lineHeight="shorter"
+              >
+                {getPageTitle(activeTab)}
               </Text>
-              <Text fontSize="sm" color="text-secondary" lineHeight={1.2}>
+              <Text 
+                fontSize="sm" 
+                color="text-secondary" 
+                lineHeight="shorter"
+              >
                 {getPageDescription(activeTab)}
               </Text>
             </VStack>
             
-            <HStack spacing={2}>
+            <HStack spacing={3}>
               <AuthStatus authStatus={authStatus} onRefresh={checkAuthStatus} />
               <IconButton
                 aria-label="Refresh"
@@ -160,43 +173,60 @@ function App() {
                 size="sm"
                 variant="ghost"
                 onClick={checkAuthStatus}
+                isLoading={loading}
                 borderRadius="md"
               />
             </HStack>
           </Flex>
         </Box>
 
-        {/* Main Content Area */}
-        <Box flex={1} overflow="auto">
-          <Container maxW="full" p={4} h="full">
-            {activeTab === 'dashboard' && <Dashboard />}
-            {activeTab === 'messageSender' && <MessageSender />}
-            {activeTab === 'groupsManager' && <GroupsManager />}
-            {activeTab === 'messagesManager' && <MessagesManager />}
-            {activeTab === 'templateManager' && <TemplateManager />}
-            {activeTab === 'blacklistManager' && <BlacklistManager />}
-            {activeTab === 'configManager' && <ConfigManager />}
-            {activeTab === 'logViewer' && <LogViewer />}
+        {/* Main Content Area - Precision Grid */}
+        <Box flex={1} overflow="auto" className="custom-scrollbar">
+          <Container maxW="full" p={6} h="full">
+            <Box className="fade-in">
+              {activeTab === 'dashboard' && <Dashboard />}
+              {activeTab === 'messageSender' && <MessageSender />}
+              {activeTab === 'groupsManager' && <GroupsManager />}
+              {activeTab === 'messagesManager' && <MessagesManager />}
+              {activeTab === 'templateManager' && <TemplateManager />}
+              {activeTab === 'blacklistManager' && <BlacklistManager />}
+              {activeTab === 'configManager' && <ConfigManager />}
+              {activeTab === 'logViewer' && <LogViewer />}
+            </Box>
           </Container>
         </Box>
       </Flex>
     </Flex>
   );
+}
 
-  // Helper function for page descriptions
-  function getPageDescription(tab: string): string {
-    const descriptions: Record<string, string> = {
-      dashboard: 'Overview and system status',
-      messageSender: 'Send automated messages to groups',
-      groupsManager: 'Manage target groups and channels',
-      messagesManager: 'Create and edit message templates',
-      templateManager: 'Template library and variables',
-      blacklistManager: 'Block unwanted contacts',
-      configManager: 'System settings and preferences',
-      logViewer: 'Real-time logs and monitoring',
-    };
-    return descriptions[tab] || '';
-  }
+// Helper functions for page info
+function getPageTitle(tab: string): string {
+  const titles: Record<string, string> = {
+    dashboard: 'Dashboard',
+    messageSender: 'Send Messages',
+    groupsManager: 'Groups Manager',
+    messagesManager: 'Messages Manager',
+    templateManager: 'Template Manager',
+    blacklistManager: 'Blacklist Manager',
+    configManager: 'Configuration',
+    logViewer: 'System Logs',
+  };
+  return titles[tab] || '';
+}
+
+function getPageDescription(tab: string): string {
+  const descriptions: Record<string, string> = {
+    dashboard: 'System overview and analytics',
+    messageSender: 'Send automated messages to groups',
+    groupsManager: 'Manage target groups and channels',
+    messagesManager: 'Create and edit message files',
+    templateManager: 'Message templates and variables',
+    blacklistManager: 'Block unwanted contacts and groups',
+    configManager: 'System settings and preferences',
+    logViewer: 'Real-time monitoring and logs',
+  };
+  return descriptions[tab] || '';
 }
 
 export default App;

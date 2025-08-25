@@ -12,7 +12,6 @@ import {
   IconButton,
   Divider,
   Flex,
-  Collapse,
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -42,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
   const { colorMode, toggleColorMode } = useColorMode();
   const [isCollapsed, setIsCollapsed] = useState(false);
   
-  // Linear-style colors
+  // Precision colors
   const bgColor = useColorModeValue('white', 'gray.950');
   const borderColor = useColorModeValue('gray.200', 'gray.800');
   const activeBg = useColorModeValue('gray.100', 'gray.800');
@@ -53,7 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
 
   const menuSections = [
     {
-      title: 'Main',
+      title: 'Overview',
       items: [
         { id: 'dashboard', label: 'Dashboard', icon: FiHome },
         { id: 'messageSender', label: 'Send Messages', icon: FiSend },
@@ -86,12 +85,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
         variant="ghost"
         size="sm"
         w="full"
-        h="8"
-        px={isCollapsed ? 2 : 3}
+        h="36px"
+        px={isCollapsed ? 3 : 3}
         justifyContent={isCollapsed ? "center" : "flex-start"}
         bg={isActive ? activeBg : 'transparent'}
         color={isActive ? activeColor : textColor}
-        borderRadius="md"
+        borderRadius="lg"
         fontWeight={isActive ? 500 : 400}
         fontSize="sm"
         transition="all 0.15s ease"
@@ -103,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
           bg: activeBg,
         }}
         onClick={() => setActiveTab(item.id)}
-        position="relative"
+        className={isActive ? '' : 'interactive'}
       >
         {isCollapsed ? (
           <Icon size={16} />
@@ -118,8 +117,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
                 size="sm" 
                 colorScheme="green" 
                 variant="subtle"
-                borderRadius="full"
-                px={1.5}
+                borderRadius="md"
+                px={2}
+                py={0.5}
                 fontSize="xs"
                 fontWeight={500}
               >
@@ -138,7 +138,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
     ) : button;
   };
 
-  const sidebarWidth = isCollapsed ? "60px" : "240px";
+  const sidebarWidth = isCollapsed ? "72px" : "256px";
 
   return (
     <Box
@@ -150,36 +150,35 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
       position="sticky"
       top={0}
       left={0}
-      zIndex={10}
+      zIndex={20}
       display="flex"
       flexDirection="column"
       transition="width 0.2s ease"
+      className="slide-in"
     >
-      {/* Header */}
-      <Box p={3} borderBottom="1px solid" borderColor={borderColor}>
-        <Flex align="center" justify="space-between">
+      {/* Header - Precision Layout */}
+      <Box p={4} borderBottom="1px solid" borderColor={borderColor}>
+        <Flex align="center" justify="space-between" h="32px">
           {!isCollapsed && (
-            <HStack spacing={3}>
+            <HStack spacing={3} flex={1}>
               <Box
-                w={7}
-                h={7}
+                w={8}
+                h={8}
                 bg="gray.900"
-                borderRadius="md"
+                borderRadius="lg"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                _dark={{
-                  bg: 'gray.100',
-                }}
+                _dark={{ bg: 'gray.100' }}
               >
-                <FiZap color={useColorModeValue('white', 'black')} size={14} />
+                <FiZap color={useColorModeValue('white', 'black')} size={16} />
               </Box>
               <VStack align="start" spacing={0} flex={1}>
-                <Text fontSize="sm" fontWeight={600} color={textColor} lineHeight={1.2}>
+                <Text fontSize="md" fontWeight={600} color={textColor} lineHeight="shorter">
                   TGPro
                 </Text>
-                <Text fontSize="xs" color={mutedColor} lineHeight={1.2}>
-                  Automation
+                <Text fontSize="xs" color={mutedColor} lineHeight="shorter">
+                  Automation Platform
                 </Text>
               </VStack>
             </HStack>
@@ -209,21 +208,20 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
         
         {/* Collapsed header */}
         {isCollapsed && (
-          <VStack spacing={2} mt={3}>
+          <VStack spacing={3} mt={4}>
             <Tooltip label="TGPro" placement="right">
               <Box
-                w={7}
-                h={7}
+                w={8}
+                h={8}
                 bg="gray.900"
-                borderRadius="md"
+                borderRadius="lg"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                _dark={{
-                  bg: 'gray.100',
-                }}
+                cursor="pointer"
+                _dark={{ bg: 'gray.100' }}
               >
-                <FiZap color={useColorModeValue('white', 'black')} size={14} />
+                <FiZap color={useColorModeValue('white', 'black')} size={16} />
               </Box>
             </Tooltip>
             <Tooltip label="Toggle theme" placement="right">
@@ -240,20 +238,20 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
         )}
       </Box>
 
-      {/* Navigation Menu */}
-      <Box flex={1} p={2} overflowY="auto">
-        <VStack spacing={4} align="stretch">
+      {/* Navigation Menu - Precision Grid */}
+      <Box flex={1} p={3} overflowY="auto" className="custom-scrollbar">
+        <VStack spacing={6} align="stretch">
           {menuSections.map((section, sectionIndex) => (
             <Box key={section.title}>
               {!isCollapsed && (
                 <Text 
                   fontSize="xs" 
-                  fontWeight={500} 
+                  fontWeight={600} 
                   color={mutedColor} 
                   textTransform="uppercase" 
                   letterSpacing="wide"
-                  mb={2}
-                  px={2}
+                  mb={3}
+                  px={3}
                 >
                   {section.title}
                 </Text>
@@ -265,60 +263,64 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
                 ))}
               </VStack>
               
-              {/* Add divider between sections when collapsed */}
+              {/* Precision dividers when collapsed */}
               {isCollapsed && sectionIndex < menuSections.length - 1 && (
-                <Divider my={3} />
+                <Divider my={4} />
               )}
             </Box>
           ))}
         </VStack>
       </Box>
 
-      {/* User Profile & Logout */}
-      <Box p={2} borderTop="1px solid" borderColor={borderColor}>
+      {/* User Profile & Logout - Precision Layout */}
+      <Box p={3} borderTop="1px solid" borderColor={borderColor}>
         {!isCollapsed ? (
-          <VStack spacing={2}>
-            {/* User Profile */}
-            <HStack
+          <VStack spacing={3}>
+            {/* User Profile Card */}
+            <Box
               w="full"
-              p={2}
+              p={3}
               bg={hoverBg}
-              borderRadius="md"
-              spacing={2}
+              borderRadius="lg"
+              border="1px solid"
+              borderColor={borderColor}
             >
-              <Avatar 
-                size="sm" 
-                name="TG User" 
-                bg="gray.600" 
-                color="white"
-                w={6}
-                h={6}
-              />
-              <VStack align="start" spacing={0} flex={1}>
-                <Text fontSize="xs" fontWeight={500} color={textColor} lineHeight={1.2}>
-                  Telegram User
-                </Text>
-                <Text fontSize="xs" color={mutedColor} lineHeight={1.2}>
-                  Authenticated
-                </Text>
-              </VStack>
-              <Badge 
-                colorScheme="green" 
-                variant="subtle" 
-                size="sm"
-                borderRadius="full"
-                w={2}
-                h={2}
-                p={0}
-              />
-            </HStack>
+              <HStack spacing={3}>
+                <Avatar 
+                  size="sm" 
+                  name="TG User" 
+                  bg="gray.600" 
+                  color="white"
+                  w={7}
+                  h={7}
+                />
+                <VStack align="start" spacing={0} flex={1}>
+                  <Text fontSize="sm" fontWeight={500} color={textColor} lineHeight="shorter">
+                    Telegram User
+                  </Text>
+                  <HStack spacing={2}>
+                    <Badge 
+                      colorScheme="green" 
+                      variant="subtle" 
+                      size="sm"
+                      borderRadius="md"
+                    >
+                      Online
+                    </Badge>
+                    <Text fontSize="xs" color={mutedColor} lineHeight="shorter">
+                      Authenticated
+                    </Text>
+                  </HStack>
+                </VStack>
+              </HStack>
+            </Box>
 
             {/* Logout Button */}
             <Button
               variant="ghost"
               size="sm"
               w="full"
-              h="8"
+              h="36px"
               justifyContent="flex-start"
               color={mutedColor}
               fontWeight={400}
@@ -328,27 +330,27 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
                 color: useColorModeValue('red.600', 'red.300'),
               }}
               onClick={onLogout}
-              borderRadius="md"
+              borderRadius="lg"
+              className="interactive"
             >
               <HStack spacing={3}>
                 <FiLogOut size={16} />
-                <Text fontSize="sm">
-                  Sign Out
-                </Text>
+                <Text fontSize="sm">Sign Out</Text>
               </HStack>
             </Button>
           </VStack>
         ) : (
-          <VStack spacing={2}>
+          <VStack spacing={3}>
             <Tooltip label="User profile" placement="right">
               <Avatar 
-                size="sm" 
+                size="md" 
                 name="TG User" 
                 bg="gray.600" 
                 color="white"
-                w={7}
-                h={7}
+                w={8}
+                h={8}
                 cursor="pointer"
+                className="interactive"
               />
             </Tooltip>
             <Tooltip label="Sign out" placement="right">
@@ -364,6 +366,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
                 }}
                 onClick={onLogout}
                 borderRadius="md"
+                className="interactive"
               />
             </Tooltip>
           </VStack>
