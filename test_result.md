@@ -330,7 +330,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Backend API Testing After Frontend Migration"
+    - "Unified Authentication Interface Enhancement"
+    - "Project Cleanup and File Synchronization"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
