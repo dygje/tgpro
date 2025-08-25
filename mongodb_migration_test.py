@@ -647,7 +647,7 @@ class MongoDBMigrationTester:
         """Test that migrated message templates match original file data"""
         try:
             # Get messages from MongoDB API
-            mongodb_response = self.make_request("GET", "/api/messages")
+            mongodb_response = self.make_request("GET", "/api/messages/")
             
             # Get migration status to compare
             status_response = self.make_request("GET", "/api/migration/status")
