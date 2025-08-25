@@ -159,6 +159,10 @@ async def lifespan(app: FastAPI):
         # Initialize WebSocket manager
         websocket_manager = WebSocketManager(db_service)
         
+        # Initialize async task service
+        task_service = AsyncTaskService(db_service, websocket_manager)
+        await task_service.start()
+        
         # Setup WebSocket logging handler
         ws_log_handler = WebSocketLogHandler(websocket_manager)
         ws_log_handler.setLevel(logging.INFO)
