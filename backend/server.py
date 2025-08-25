@@ -226,15 +226,18 @@ from routers.groups import router as groups_router
 from routers.messages import router as messages_router
 from routers.migration import router as migration_router
 from routers.websocket import router as websocket_router
+from routers.tasks import router as tasks_router
 from routers import groups as groups_router_module
 from routers import messages as messages_router_module
 from routers import migration as migration_router_module
 from routers import websocket as websocket_router_module
+from routers import tasks as tasks_router_module
 
 app.include_router(groups_router)
 app.include_router(messages_router)
 app.include_router(migration_router)
 app.include_router(websocket_router)
+app.include_router(tasks_router)
 
 # Health check endpoint
 @app.get("/api/health")
