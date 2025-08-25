@@ -35,7 +35,16 @@ const LoginForm = ({ onAuthSuccess }) => {
       setMessage(response.data.message);
       setStep('code');
     } catch (error) {
-      setError(error.response?.data?.detail || 'Failed to send verification code');
+      const errorMessage = error.response?.data?.detail || 'Failed to send verification code';
+      
+      // Provide more helpful error messages
+      if (errorMessage.includes('api_id') || errorMessage.includes('api_hash')) {
+        setError('Telegram API credentials not configured. Please configure them in the settings first.');
+      } else if (errorMessage.includes('phone')) {
+        setError('Invalid phone number format. Please include country code (e.g., +1234567890)');
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setLoading(false);
     }
@@ -113,185 +122,189 @@ const LoginForm = ({ onAuthSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Telegram Authentication</h1>
-          <p className="text-gray-600">
-            {step === 'phone' && 'Sign in with your Telegram account'}
-            {step === 'code' && 'Enter the verification code sent to your phone'}
-            {step === '2fa' && 'Enter your two-factor authentication password'}
-          </p>
-        </div>
-
-        {/* Step Indicator */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="flex items-center space-x-2">
-            <div className={`w-3 h-3 rounded-full ${step === 'phone' ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
-            <div className={`w-8 h-0.5 ${step !== 'phone' ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
-            <div className={`w-3 h-3 rounded-full ${step === 'code' ? 'bg-blue-500' : step === '2fa' ? 'bg-green-500' : 'bg-gray-300'}`}></div>
-            <div className={`w-8 h-0.5 ${step === '2fa' ? 'bg-green-500' : 'bg-gray-300'}`}></div>
-            <div className={`w-3 h-3 rounded-full ${step === '2fa' ? 'bg-green-500' : 'bg-gray-300'}`}></div>
-          </div>
-        </div>
-
-        {message && (
-          <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
-            {message}
-          </div>
-        )}
-
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 flex items-center">
-            <svg className="w-5 h-5 text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {error}
-          </div>
-        )}
-
-        {/* Phone Step */}
-        {step === 'phone' && (
-          <form onSubmit={handlePhoneSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                placeholder="+1234567890"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                required
-                disabled={loading}
-              />
-              <p className="text-xs text-gray-500 mt-1">Enter your phone number with country code (e.g., +1234567890)</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">
+      <div className="card w-full max-w-md animate-fade-in">
+        <div className="p-6 sm:p-8">
+          <div className="text-center mb-6">
+            <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
             </div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2 font-display">Telegram Authentication</h1>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {step === 'phone' && 'Sign in with your Telegram account'}
+              {step === 'code' && 'Enter the verification code sent to your phone'}
+              {step === '2fa' && 'Enter your two-factor authentication password'}
+            </p>
+          </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {loading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Sending Code...
-                </>
-              ) : (
-                'Send Verification Code'
-              )}
-            </button>
-          </form>
-        )}
+          {/* Step Indicator */}
+          <div className="step-indicator mb-6">
+            <div className={`step-dot ${step === 'phone' ? 'active' : step !== 'phone' ? 'completed' : 'inactive'}`}></div>
+            <div className={`step-line ${step !== 'phone' ? (step === 'code' ? 'active' : 'completed') : 'inactive'}`}></div>
+            <div className={`step-dot ${step === 'code' ? 'active' : step === '2fa' ? 'completed' : 'inactive'}`}></div>
+            <div className={`step-line ${step === '2fa' ? 'active' : 'inactive'}`}></div>
+            <div className={`step-dot ${step === '2fa' ? 'active' : 'inactive'}`}></div>
+          </div>
 
-        {/* Verification Code Step */}
-        {step === 'code' && (
-          <form onSubmit={handleCodeSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="code" className="block text-sm font-medium text-gray-700 mb-2">
-                Verification Code
-              </label>
-              <input
-                id="code"
-                type="text"
-                value={verificationCode}
-                onChange={(e) => setVerificationCode(e.target.value)}
-                placeholder="123456"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-center text-lg font-mono"
-                required
-                disabled={loading}
-                maxLength="6"
-              />
-              <p className="text-xs text-gray-500 mt-1">Enter the 6-digit code sent to {phoneNumber}</p>
+          {message && (
+            <div className="alert alert-success mb-4 text-sm">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{message}</span>
             </div>
+          )}
 
-            <div className="flex space-x-3">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-6 rounded-lg transition-all duration-200"
-              >
-                Back
-              </button>
+          {error && (
+            <div className="alert alert-error mb-4 text-sm">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{error}</span>
+            </div>
+          )}
+
+          {/* Phone Step */}
+          {step === 'phone' && (
+            <form onSubmit={handlePhoneSubmit} className="layout-compact">
+              <div className="field">
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Phone Number
+                </label>
+                <div className="enhanced-input">
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    placeholder="+628229814752"
+                    className="phone-input"
+                    required
+                    disabled={loading}
+                    data-mono="true"
+                  />
+                </div>
+                <p className="help-text">Enter your phone number with country code (e.g., +62 for Indonesia)</p>
+              </div>
+
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="btn-primary w-full flex items-center justify-center"
               >
                 {loading ? (
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <>
+                    <div className="loading-spinner w-4 h-4 mr-2"></div>
+                    Sending Code...
+                  </>
                 ) : (
-                  'Verify Code'
+                  'Send Verification Code'
                 )}
               </button>
-            </div>
-          </form>
-        )}
+            </form>
+          )}
 
-        {/* 2FA Step */}
-        {step === '2fa' && (
-          <form onSubmit={handle2FASubmit} className="space-y-6">
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Two-Factor Authentication Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={twoFAPassword}
-                onChange={(e) => setTwoFAPassword(e.target.value)}
-                placeholder="Enter your 2FA password"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                required
-                disabled={loading}
-              />
-              <p className="text-xs text-gray-500 mt-1">This is the password you set for two-factor authentication in Telegram</p>
-            </div>
+          {/* Verification Code Step */}
+          {step === 'code' && (
+            <form onSubmit={handleCodeSubmit} className="layout-compact">
+              <div className="field">
+                <label htmlFor="code" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Verification Code
+                </label>
+                <div className="enhanced-input">
+                  <input
+                    id="code"
+                    type="text"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    placeholder="123456"
+                    className="verification-input text-center text-lg tracking-wider"
+                    required
+                    disabled={loading}
+                    maxLength="6"
+                    data-mono="true"
+                  />
+                </div>
+                <p className="help-text">Enter the 6-digit code sent to {phoneNumber}</p>
+              </div>
 
-            <div className="flex space-x-3">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-6 rounded-lg transition-all duration-200"
-              >
-                Back
-              </button>
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-              >
-                {loading ? (
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                ) : (
-                  'Complete Login'
-                )}
-              </button>
-            </div>
-          </form>
-        )}
+              <div className="flex space-x-3">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="btn-secondary flex-1"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-primary flex-1 flex items-center justify-center"
+                >
+                  {loading ? (
+                    <div className="loading-spinner w-4 h-4"></div>
+                  ) : (
+                    'Verify Code'
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
 
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">
-            Make sure you have configured your Telegram API credentials
-          </p>
+          {/* 2FA Step */}
+          {step === '2fa' && (
+            <form onSubmit={handle2FASubmit} className="layout-compact">
+              <div className="field">
+                <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Two-Factor Authentication Password
+                </label>
+                <div className="enhanced-input">
+                  <input
+                    id="password"
+                    type="password"
+                    value={twoFAPassword}
+                    onChange={(e) => setTwoFAPassword(e.target.value)}
+                    placeholder="Enter your 2FA password"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+                <p className="help-text">This is the password you set for two-factor authentication in Telegram</p>
+              </div>
+
+              <div className="flex space-x-3">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="btn-secondary flex-1"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg"
+                >
+                  {loading ? (
+                    <div className="loading-spinner w-4 h-4"></div>
+                  ) : (
+                    'Complete Login'
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
+
+          <div className="mt-6 pt-4 border-t border-gray-200/60">
+            <div className="alert alert-info text-xs">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Make sure you have configured your Telegram API credentials first</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
