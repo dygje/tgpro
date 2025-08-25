@@ -80,27 +80,30 @@ function App() {
       >
         <Box
           bg={surfaceBg}
-          p={8}
-          borderRadius="xl"
-          shadow="lg"
+          p={6}
+          borderRadius="md"
+          shadow="sm"
           border="1px solid"
           borderColor={borderColor}
-          minW="300px"
+          minW="280px"
         >
           <VStack spacing={4}>
             <Box
-              w={12}
-              h={12}
-              bg="brand.500"
-              borderRadius="xl"
+              w={10}
+              h={10}
+              bg="gray.900"
+              borderRadius="md"
               display="flex"
               alignItems="center"
               justifyContent="center"
+              _dark={{
+                bg: "gray.100"
+              }}
             >
-              <Spinner size="md" color="white" thickness="3px" />
+              <Spinner size="sm" color={useColorModeValue("white", "black")} thickness="2px" />
             </Box>
             <VStack spacing={1}>
-              <Text fontWeight={600} fontSize="lg" color="text-primary">
+              <Text fontWeight={600} fontSize="md" color="text-primary">
                 TGPro
               </Text>
               <Text color="text-secondary" fontSize="sm">
