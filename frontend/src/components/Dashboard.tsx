@@ -8,16 +8,10 @@ import {
   CardHeader,
   Heading,
   Text,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
   VStack,
   HStack,
   Badge,
   Icon,
-  Progress,
-  Divider,
   Button,
   useColorModeValue,
   Skeleton,
@@ -25,10 +19,16 @@ import {
   AlertIcon,
   AlertDescription,
   Flex,
-  Avatar,
-  AvatarGroup,
   SimpleGrid,
-  Spacer,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  IconButton,
+  Tooltip,
 } from '@chakra-ui/react';
 import {
   FiUsers,
@@ -38,13 +38,17 @@ import {
   FiShield,
   FiServer,
   FiDatabase,
-  FiWifi,
   FiClock,
   FiTrendingUp,
-  FiAlertTriangle,
   FiCheckCircle,
   FiZap,
   FiPlay,
+  FiRefreshCw,
+  FiExternalLink,
+  FiPlus,
+  FiArrowRight,
+  FiCircle,
+  FiInfo,
 } from 'react-icons/fi';
 import { api } from '../lib/api';
 
@@ -76,11 +80,17 @@ const Dashboard: React.FC = () => {
     queue_size: 0,
   });
   const [services, setServices] = useState<ServiceStatus[]>([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedService, setSelectedService] = useState<ServiceStatus | null>(null);
 
-  // Theme
-  const cardBg = useColorModeValue('white', 'gray.800');
-  const statCardBg = useColorModeValue('gray.50', 'gray.750');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  // Linear-style theme
+  const cardBg = useColorModeValue('white', 'gray.900');
+  const borderColor = useColorModeValue('gray.200', 'gray.800');
+  const textPrimary = useColorModeValue('gray.900', 'gray.50');
+  const textSecondary = useColorModeValue('gray.600', 'gray.400');
+  const textMuted = useColorModeValue('gray.500', 'gray.500');
+  const bgSubtle = useColorModeValue('gray.50', 'gray.850');
+  const hoverBg = useColorModeValue('gray.50', 'gray.800');
 
   useEffect(() => {
     fetchDashboardData();
@@ -133,331 +143,427 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  // Compact Stat Card - Linear style
   const StatCard = ({ 
     label, 
     value, 
     icon, 
-    change, 
-    color = 'blue', 
-    isLoading = false,
-    helpText 
+    trend, 
+    trendValue,
+    color = 'gray',
+    isLoading = false 
   }: {
     label: string;
     value: string | number;
     icon: any;
-    change?: string;
+    trend?: 'up' | 'down' | 'neutral';
+    trendValue?: string;
     color?: string;
     isLoading?: boolean;
-    helpText?: string;
   }) => (
-    <Card bg={cardBg} borderWidth="1px" borderColor={borderColor} shadow="sm">
-      <CardBody p={5}>
-        <HStack justify="space-between" mb={3}>
-          <Box
-            p={2}
-            bg={`${color}.100`}
-            color={`${color}.600`}
-            borderRadius="lg"
-            _dark={{
-              bg: `${color}.900`,
-              color: `${color}.300`,
-            }}
-          >
-            <Icon as={icon} boxSize={5} />
-          </Box>
-          {change && (
-            <Badge 
-              colorScheme={change.startsWith('+') ? 'green' : 'red'} 
-              variant="subtle" 
-              borderRadius="full"
-              px={2}
-              fontSize="xs"
-            >
-              {change}
-            </Badge>
-          )}
-        </HStack>
-        
-        <VStack align="start" spacing={1}>
-          {isLoading ? (
-            <Skeleton height="32px" width="80px" />
-          ) : (
-            <Text fontSize="2xl" fontWeight={700} color="text-primary" lineHeight={1}>
-              {value}
+    <Card 
+      bg={cardBg} 
+      borderWidth="1px" 
+      borderColor={borderColor} 
+      shadow="none"
+      _hover={{ 
+        borderColor: useColorModeValue('gray.300', 'gray.700'),
+        shadow: 'sm' 
+      }}
+      transition="all 0.15s ease"
+      cursor="pointer"
+    >
+      <CardBody p={4}>
+        <VStack align="start" spacing={3}>
+          <HStack justify="space-between" w="full">
+            <Icon as={icon} boxSize={4} color={textMuted} />
+            {trend && trendValue && (
+              <HStack spacing={1}>
+                <Icon 
+                  as={trend === 'up' ? FiTrendingUp : trend === 'down' ? FiActivity : FiCircle} 
+                  boxSize={3} 
+                  color={trend === 'up' ? 'green.500' : trend === 'down' ? 'red.500' : textMuted}
+                />
+                <Text 
+                  fontSize="xs" 
+                  color={trend === 'up' ? 'green.500' : trend === 'down' ? 'red.500' : textMuted}
+                  fontWeight={500}
+                >
+                  {trendValue}
+                </Text>
+              </HStack>
+            )}
+          </HStack>
+          
+          <VStack align="start" spacing={1} w="full">
+            {isLoading ? (
+              <Skeleton height="24px" width="60px" />
+            ) : (
+              <Text fontSize="xl" fontWeight={600} color={textPrimary} lineHeight={1}>
+                {value}
+              </Text>
+            )}
+            <Text fontSize="sm" color={textSecondary} fontWeight={400}>
+              {label}
             </Text>
-          )}
-          <Text fontSize="sm" color="text-secondary" fontWeight={500}>
-            {label}
-          </Text>
-          {helpText && (
-            <Text fontSize="xs" color="text-muted">
-              {helpText}
-            </Text>
-          )}
+          </VStack>
         </VStack>
       </CardBody>
     </Card>
   );
 
-  const ServiceCard = ({ service }: { service: ServiceStatus }) => {
+  // Compact Service Card
+  const ServiceCard = ({ service, onClick }: { service: ServiceStatus; onClick: () => void }) => {
     const statusColor = service.status === 'healthy' ? 'green' : 
-                       service.status === 'warning' ? 'yellow' : 'red';
+                       service.status === 'warning' ? 'orange' : 'red';
     
     return (
-      <Box
-        p={4}
+      <Card
         bg={cardBg}
-        border="1px solid"
+        borderWidth="1px"
         borderColor={borderColor}
-        borderRadius="lg"
+        shadow="none"
         _hover={{ 
-          borderColor: `${statusColor}.300`,
-          shadow: 'sm',
+          borderColor: useColorModeValue('gray.300', 'gray.700'),
+          shadow: 'sm' 
         }}
-        transition="all 0.2s"
+        transition="all 0.15s ease"
+        cursor="pointer"
+        onClick={onClick}
       >
-        <HStack justify="space-between" mb={2}>
-          <HStack>
-            <Box
-              w={2}
-              h={2}
-              bg={`${statusColor}.500`}
-              borderRadius="full"
-            />
-            <Text fontSize="sm" fontWeight={600} color="text-primary">
-              {service.name}
-            </Text>
-          </HStack>
-          <Badge 
-            colorScheme={statusColor} 
-            variant="subtle" 
-            size="sm"
-            borderRadius="full"
-          >
-            {service.status}
-          </Badge>
-        </HStack>
-        
-        {service.uptime && (
-          <VStack align="start" spacing={1}>
-            <HStack justify="space-between" w="full">
-              <Text fontSize="xs" color="text-muted">Uptime</Text>
-              <Text fontSize="xs" color="text-secondary" fontWeight={500}>{service.uptime}</Text>
+        <CardBody p={3}>
+          <HStack justify="space-between">
+            <HStack spacing={3}>
+              <Box
+                w={2}
+                h={2}
+                bg={`${statusColor}.500`}
+                borderRadius="full"
+              />
+              <VStack align="start" spacing={0}>
+                <Text fontSize="sm" fontWeight={500} color={textPrimary} lineHeight={1.2}>
+                  {service.name}
+                </Text>
+                <Text fontSize="xs" color={textMuted} lineHeight={1.2}>
+                  {service.uptime}
+                </Text>
+              </VStack>
             </HStack>
-            {service.cpu_usage && (
-              <HStack justify="space-between" w="full">
-                <Text fontSize="xs" color="text-muted">CPU</Text>
-                <Text fontSize="xs" color="text-secondary" fontWeight={500}>{service.cpu_usage}%</Text>
-              </HStack>
-            )}
-            {service.memory_usage && (
-              <HStack justify="space-between" w="full">
-                <Text fontSize="xs" color="text-muted">Memory</Text>
-                <Text fontSize="xs" color="text-secondary" fontWeight={500}>{service.memory_usage}%</Text>
-              </HStack>
-            )}
-          </VStack>
-        )}
-      </Box>
+            
+            <IconButton
+              aria-label="View details"
+              icon={<FiExternalLink />}
+              size="xs"
+              variant="ghost"
+              color={textMuted}
+            />
+          </HStack>
+        </CardBody>
+      </Card>
     );
   };
 
+  // Quick Action Card
+  const QuickActionCard = ({ 
+    title, 
+    description, 
+    icon, 
+    onClick,
+    variant = 'default' 
+  }: {
+    title: string;
+    description: string;
+    icon: any;
+    onClick: () => void;
+    variant?: 'default' | 'primary';
+  }) => (
+    <Card
+      bg={variant === 'primary' ? 'gray.900' : cardBg}
+      borderWidth="1px"
+      borderColor={variant === 'primary' ? 'gray.900' : borderColor}
+      shadow="none"
+      _hover={{ 
+        borderColor: variant === 'primary' ? 'gray.800' : useColorModeValue('gray.300', 'gray.700'),
+        shadow: 'sm' 
+      }}
+      transition="all 0.15s ease"
+      cursor="pointer"
+      onClick={onClick}
+      _dark={{
+        bg: variant === 'primary' ? 'gray.200' : cardBg,
+        borderColor: variant === 'primary' ? 'gray.200' : borderColor,
+      }}
+    >
+      <CardBody p={4}>
+        <VStack align="start" spacing={3}>
+          <HStack spacing={3}>
+            <Icon 
+              as={icon} 
+              boxSize={4} 
+              color={variant === 'primary' ? (useColorModeValue('white', 'black')) : textMuted} 
+            />
+            <VStack align="start" spacing={0} flex={1}>
+              <Text 
+                fontSize="sm" 
+                fontWeight={500} 
+                color={variant === 'primary' ? (useColorModeValue('white', 'black')) : textPrimary}
+                lineHeight={1.2}
+              >
+                {title}
+              </Text>
+              <Text 
+                fontSize="xs" 
+                color={variant === 'primary' ? (useColorModeValue('gray.300', 'gray.600')) : textMuted}
+                lineHeight={1.2}
+              >
+                {description}
+              </Text>
+            </VStack>
+            <Icon 
+              as={FiArrowRight} 
+              boxSize={3} 
+              color={variant === 'primary' ? (useColorModeValue('gray.400', 'gray.600')) : textMuted} 
+            />
+          </HStack>
+        </VStack>
+      </CardBody>
+    </Card>
+  );
+
   return (
-    <VStack spacing={6} align="stretch" h="full">
-      {/* Header Section */}
-      <Flex align="center" justify="space-between">
-        <VStack align="start" spacing={1}>
-          <Heading size="lg" color="text-primary" fontWeight={700}>
+    <VStack spacing={6} align="stretch" h="full" maxW="full">
+      {/* Compact Header */}
+      <HStack justify="space-between" align="center">
+        <VStack align="start" spacing={0}>
+          <Text fontSize="lg" fontWeight={600} color={textPrimary}>
             Dashboard
-          </Heading>
-          <Text color="text-secondary" fontSize="sm">
-            Monitor your Telegram automation performance
+          </Text>
+          <Text fontSize="sm" color={textSecondary}>
+            System overview and quick actions
           </Text>
         </VStack>
         
         <HStack spacing={2}>
-          <Button 
-            size="sm" 
-            variant="outline" 
-            leftIcon={<FiActivity />}
+          <IconButton
+            aria-label="Refresh"
+            icon={<FiRefreshCw />}
+            size="sm"
+            variant="ghost"
             onClick={fetchDashboardData}
             isLoading={loading}
-          >
-            Refresh
-          </Button>
-          <Button 
-            size="sm" 
-            colorScheme="brand" 
-            leftIcon={<FiPlay />}
-          >
-            Quick Start
-          </Button>
+            borderRadius="md"
+          />
         </HStack>
-      </Flex>
+      </HStack>
 
-      {/* System Status Alert */}
+      {/* System Status */}
       {services.length > 0 && services.every(s => s.status === 'healthy') && (
-        <Alert status="success" borderRadius="lg" bg="green.50" borderColor="green.200" borderWidth="1px">
-          <AlertIcon />
+        <Alert status="success" borderRadius="md" bg="green.50" borderColor="green.200" borderWidth="1px">
+          <AlertIcon boxSize={4} />
           <AlertDescription fontSize="sm">
-            All systems operational. Ready for automation tasks.
+            All systems operational
           </AlertDescription>
         </Alert>
       )}
 
-      {/* Stats Grid */}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
-        <StatCard
-          label="Active Groups"
-          value={stats.groups_count}
-          icon={FiUsers}
-          change="+12%"
-          color="blue"
-          isLoading={loading}
-          helpText="Groups configured for messaging"
-        />
-        <StatCard
-          label="Message Templates"
-          value={stats.messages_count}
-          icon={FiMessageSquare}
-          change="+3"
-          color="green"
-          isLoading={loading}
-          helpText="Ready-to-send templates"
-        />
-        <StatCard
-          label="Sent Today"
-          value={stats.sent_today}
-          icon={FiSend}
-          change="+24%"
-          color="orange"
-          isLoading={loading}
-          helpText="Messages delivered successfully"
-        />
-        <StatCard
-          label="Success Rate"
-          value={`${stats.success_rate}%`}
-          icon={FiTrendingUp}
-          change="+2.1%"
-          color="purple"
-          isLoading={loading}
-          helpText="Delivery success rate"
-        />
-      </SimpleGrid>
-
-      {/* Main Content Grid */}
+      {/* Main Grid - Compact Layout */}
       <Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={6} flex={1}>
-        {/* Activity Overview */}
-        <GridItem>
-          <Card bg={cardBg} borderWidth="1px" borderColor={borderColor} h="full">
-            <CardHeader pb={3}>
-              <HStack justify="space-between">
-                <HStack>
-                  <Icon as={FiActivity} color="brand.500" />
-                  <Heading size="md" color="text-primary" fontWeight={600}>
-                    Recent Activity
-                  </Heading>
-                </HStack>
-                <Badge variant="outline" colorScheme="brand">Live</Badge>
-              </HStack>
-            </CardHeader>
-            <CardBody pt={0}>
-              <VStack align="stretch" spacing={4}>
-                {/* Activity Items */}
-                {[
-                  { action: 'Message sent to TechNews Channel', time: '2 min ago', status: 'success' },
-                  { action: 'Added 3 new groups to automation', time: '15 min ago', status: 'info' },
-                  { action: 'Template "Daily Update" created', time: '1 hour ago', status: 'success' },
-                  { action: 'Blacklist updated with 2 contacts', time: '2 hours ago', status: 'warning' },
-                  { action: 'System health check completed', time: '3 hours ago', status: 'success' },
-                ].map((activity, index) => (
-                  <HStack key={index} spacing={3}>
-                    <Box
-                      w={2}
-                      h={2}
-                      bg={activity.status === 'success' ? 'green.500' :
-                          activity.status === 'warning' ? 'orange.500' : 'blue.500'}
-                      borderRadius="full"
-                      flexShrink={0}
-                      mt={2}
-                    />
-                    <VStack align="start" spacing={0} flex={1}>
-                      <Text fontSize="sm" color="text-primary" fontWeight={500}>
-                        {activity.action}
-                      </Text>
-                      <Text fontSize="xs" color="text-muted">
-                        {activity.time}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                ))}
-                
-                <Button variant="ghost" size="sm" mt={2} justifyContent="start">
-                  View all activity
-                </Button>
-              </VStack>
-            </CardBody>
-          </Card>
-        </GridItem>
+        {/* Left Column - Stats & Actions */}
+        <VStack spacing={6} align="stretch">
+          {/* Stats Grid - 2x3 Compact */}
+          <Box>
+            <Text fontSize="sm" fontWeight={500} color={textPrimary} mb={3}>
+              Analytics
+            </Text>
+            <SimpleGrid columns={{ base: 2, md: 3 }} spacing={3}>
+              <StatCard
+                label="Active Groups"
+                value={stats.groups_count}
+                icon={FiUsers}
+                trend="up"
+                trendValue="+12%"
+                isLoading={loading}
+              />
+              <StatCard
+                label="Templates"
+                value={stats.messages_count}
+                icon={FiMessageSquare}
+                trend="up"
+                trendValue="+3"
+                isLoading={loading}
+              />
+              <StatCard
+                label="Sent Today"
+                value={stats.sent_today}
+                icon={FiSend}
+                trend="up"
+                trendValue="+24%"
+                isLoading={loading}
+              />
+              <StatCard
+                label="Success Rate"
+                value={`${stats.success_rate}%`}
+                icon={FiTrendingUp}
+                trend="up"
+                trendValue="+2%"
+                isLoading={loading}
+              />
+              <StatCard
+                label="Blacklisted"
+                value={stats.blacklist_count}
+                icon={FiShield}
+                trend="neutral"
+                trendValue="0"
+                isLoading={loading}
+              />
+              <StatCard
+                label="Queue"
+                value={stats.queue_size}
+                icon={FiClock}
+                trend="neutral"
+                trendValue="0"
+                isLoading={loading}
+              />
+            </SimpleGrid>
+          </Box>
 
-        {/* System Health */}
-        <GridItem>
-          <VStack spacing={4} h="full">
-            {/* System Services */}
-            <Card bg={cardBg} borderWidth="1px" borderColor={borderColor} w="full">
-              <CardHeader pb={3}>
-                <HStack>
-                  <Icon as={FiServer} color="brand.500" />
-                  <Heading size="md" color="text-primary" fontWeight={600}>
-                    System Health
-                  </Heading>
-                </HStack>
-              </CardHeader>
-              <CardBody pt={0}>
-                <VStack spacing={3}>
-                  {loading ? (
-                    Array.from({ length: 3 }).map((_, i) => (
-                      <Skeleton key={i} height="60px" borderRadius="lg" />
-                    ))
-                  ) : (
-                    services.slice(0, 6).map((service, index) => (
-                      <ServiceCard key={index} service={service} />
-                    ))
-                  )}
-                </VStack>
-              </CardBody>
-            </Card>
+          {/* Quick Actions */}
+          <Box>
+            <Text fontSize="sm" fontWeight={500} color={textPrimary} mb={3}>
+              Quick Actions
+            </Text>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3}>
+              <QuickActionCard
+                title="Send Message"
+                description="Start a new automation task"
+                icon={FiSend}
+                onClick={() => {}}
+                variant="primary"
+              />
+              <QuickActionCard
+                title="Add Groups"
+                description="Import new target groups"
+                icon={FiUsers}
+                onClick={() => {}}
+              />
+              <QuickActionCard
+                title="Create Template"
+                description="Build message templates"
+                icon={FiMessageSquare}
+                onClick={() => {}}
+              />
+              <QuickActionCard
+                title="View Logs"
+                description="Monitor system activity"
+                icon={FiActivity}
+                onClick={() => {}}
+              />
+            </SimpleGrid>
+          </Box>
+        </VStack>
 
-            {/* Quick Actions */}
-            <Card bg={cardBg} borderWidth="1px" borderColor={borderColor} w="full">
-              <CardHeader pb={3}>
-                <HStack>
-                  <Icon as={FiZap} color="brand.500" />
-                  <Heading size="md" color="text-primary" fontWeight={600}>
-                    Quick Actions
-                  </Heading>
-                </HStack>
-              </CardHeader>
-              <CardBody pt={0}>
-                <VStack spacing={2}>
-                  <Button variant="ghost" size="sm" w="full" justifyContent="start" leftIcon={<FiSend />}>
-                    Send Test Message
-                  </Button>
-                  <Button variant="ghost" size="sm" w="full" justifyContent="start" leftIcon={<FiUsers />}>
-                    Add New Groups
-                  </Button>
-                  <Button variant="ghost" size="sm" w="full" justifyContent="start" leftIcon={<FiMessageSquare />}>
-                    Create Template
-                  </Button>
-                  <Button variant="ghost" size="sm" w="full" justifyContent="start" leftIcon={<FiShield />}>
-                    Update Blacklist
-                  </Button>
-                </VStack>
-              </CardBody>
-            </Card>
-          </VStack>
-        </GridItem>
+        {/* Right Column - Services & Activity */}
+        <VStack spacing={6} align="stretch">
+          {/* System Services */}
+          <Box>
+            <Text fontSize="sm" fontWeight={500} color={textPrimary} mb={3}>
+              System Health
+            </Text>
+            <VStack spacing={2}>
+              {loading ? (
+                Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} height="48px" borderRadius="md" />
+                ))
+              ) : (
+                services.slice(0, 6).map((service, index) => (
+                  <ServiceCard 
+                    key={index} 
+                    service={service} 
+                    onClick={() => {
+                      setSelectedService(service);
+                      onOpen();
+                    }}
+                  />
+                ))
+              )}
+            </VStack>
+          </Box>
+
+          {/* Recent Activity */}
+          <Box>
+            <Text fontSize="sm" fontWeight={500} color={textPrimary} mb={3}>
+              Recent Activity
+            </Text>
+            <VStack spacing={2} align="stretch">
+              {[
+                { action: 'Message sent to TechNews', time: '2m ago', status: 'success' },
+                { action: 'Added 3 new groups', time: '15m ago', status: 'info' },
+                { action: 'Template created', time: '1h ago', status: 'success' },
+                { action: 'Blacklist updated', time: '2h ago', status: 'warning' },
+              ].map((activity, index) => (
+                <Card key={index} bg={bgSubtle} borderWidth="1px" borderColor={borderColor} shadow="none">
+                  <CardBody p={3}>
+                    <HStack spacing={3}>
+                      <Box
+                        w={2}
+                        h={2}
+                        bg={activity.status === 'success' ? 'green.500' :
+                            activity.status === 'warning' ? 'orange.500' : 'blue.500'}
+                        borderRadius="full"
+                        flexShrink={0}
+                      />
+                      <VStack align="start" spacing={0} flex={1}>
+                        <Text fontSize="sm" color={textPrimary} fontWeight={400} lineHeight={1.2}>
+                          {activity.action}
+                        </Text>
+                        <Text fontSize="xs" color={textMuted} lineHeight={1.2}>
+                          {activity.time}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                  </CardBody>
+                </Card>
+              ))}
+            </VStack>
+          </Box>
+        </VStack>
       </Grid>
+
+      {/* Service Detail Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} size="md">
+        <ModalOverlay />
+        <ModalContent bg={cardBg} borderColor={borderColor}>
+          <ModalHeader fontSize="lg" fontWeight={600}>
+            {selectedService?.name}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            {selectedService && (
+              <VStack spacing={4} align="stretch">
+                <HStack>
+                  <Badge colorScheme="green" variant="subtle">
+                    {selectedService.status}
+                  </Badge>
+                  <Text fontSize="sm" color={textSecondary}>
+                    Uptime: {selectedService.uptime}
+                  </Text>
+                </HStack>
+                
+                <SimpleGrid columns={2} spacing={4}>
+                  <Box>
+                    <Text fontSize="xs" color={textMuted} mb={1}>CPU Usage</Text>
+                    <Text fontSize="lg" fontWeight={600}>{selectedService.cpu_usage}%</Text>
+                  </Box>
+                  <Box>
+                    <Text fontSize="xs" color={textMuted} mb={1}>Memory</Text>
+                    <Text fontSize="lg" fontWeight={600}>{selectedService.memory_usage}%</Text>
+                  </Box>
+                </SimpleGrid>
+              </VStack>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </VStack>
   );
 };
