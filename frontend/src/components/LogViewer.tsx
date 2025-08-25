@@ -265,7 +265,7 @@ const LogViewer: React.FC = () => {
   };
 
   const getUniqueSources = () => {
-    const sources = [...new Set(logs.map(log => log.source))];
+    const sources = Array.from(new Set(logs.map(log => log.source)));
     return sources.sort();
   };
 
