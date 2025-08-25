@@ -30,8 +30,8 @@ import {
   FiSettings,
   FiFileText,
 } from 'react-icons/fi';
-import { api } from '@/lib/api';
-import { DashboardStats, AuthStatus as AuthStatusType, AccountHealth } from '@/types';
+import { api } from '../lib/api';
+import { DashboardStats, AuthStatus as AuthStatusType, AccountHealth } from '../types';
 
 interface ServiceStatusProps {
   name: string;
