@@ -24,7 +24,7 @@ class DatabaseService:
             self.db = self.client[db_name]
             
             # Test connection
-            await self.db.admin.command('ping')
+            await self.client.admin.command('ping')
             logger.info(f"Connected to MongoDB: {db_name}")
             
             # Ensure indexes
