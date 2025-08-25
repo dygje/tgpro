@@ -7,7 +7,6 @@ const API = `${BACKEND_URL}/api`;
 const ApiConfiguration = ({ onConfigured, onSkip }) => {
   const [apiId, setApiId] = useState('');
   const [apiHash, setApiHash] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [configured, setConfigured] = useState(false);
