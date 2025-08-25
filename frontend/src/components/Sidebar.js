@@ -4,6 +4,8 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
   const menuItems = [
     { id: 'dashboard', icon: '📊', label: 'Dashboard' },
     { id: 'messageSender', icon: '📤', label: 'Message Sender' },
+    { id: 'groupsManager', icon: '👥', label: 'Groups' },
+    { id: 'messagesManager', icon: '💬', label: 'Messages' },
     { id: 'templateManager', icon: '📝', label: 'Templates' },
     { id: 'blacklistManager', icon: '🚫', label: 'Blacklist' },
     { id: 'configManager', icon: '⚙️', label: 'Configuration' },
