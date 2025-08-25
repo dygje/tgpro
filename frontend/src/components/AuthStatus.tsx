@@ -22,8 +22,8 @@ import {
 import { AuthStatusProps } from '../types/components';
 
 const AuthStatus: React.FC<AuthStatusProps> = ({ authStatus, onRefresh }) => {
-  const bgColor = useColorModeValue('gray.50', 'gray.700');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const bgColor = useColorModeValue('gray.50', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   if (!authStatus) {
     return (
