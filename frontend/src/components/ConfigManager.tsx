@@ -41,7 +41,6 @@ import {
   FiInfo,
   FiRefreshCw,
   FiSave,
-  FiPhone,
 } from 'react-icons/fi';
 import { api } from '../lib/api';
 
