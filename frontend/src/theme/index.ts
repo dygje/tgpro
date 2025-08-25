@@ -492,20 +492,46 @@ const theme = extendTheme({
   components,
   semanticTokens,
   styles,
-  // Modern shadows
+  // Linear-style shadows - More subtle
   shadows: {
-    xs: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-    sm: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+    none: 'none',
+    xs: '0 1px 2px 0 rgb(0 0 0 / 0.04)',
+    sm: '0 1px 3px 0 rgb(0 0 0 / 0.06)',
+    md: '0 2px 6px 0 rgb(0 0 0 / 0.07)',
+    lg: '0 4px 12px 0 rgb(0 0 0 / 0.08)',
+    xl: '0 8px 24px 0 rgb(0 0 0 / 0.1)',
+    // Linear-specific shadows
+    border: '0 0 0 1px rgb(0 0 0 / 0.08)',
+    focus: '0 0 0 2px rgb(0 0 0 / 0.1)',
   },
-  // Modern border radius
+  // Smaller border radius like Linear
   radii: {
-    sm: '0.375rem',
-    md: '0.5rem',
-    lg: '0.75rem',
-    xl: '1rem',
+    none: '0',
+    sm: '2px',
+    md: '4px',
+    lg: '6px',
+    xl: '8px',
+    '2xl': '12px',
+    full: '9999px',
+  },
+  // Linear-style font sizes
+  fontSizes: {
+    xs: '11px',
+    sm: '12px',
+    md: '13px',
+    lg: '14px',
+    xl: '16px',
+    '2xl': '18px',
+    '3xl': '24px',
+    '4xl': '32px',
+  },
+  // Tighter line heights
+  lineHeights: {
+    shorter: 1.2,
+    short: 1.3,
+    base: 1.4,
+    tall: 1.5,
+    taller: 1.6,
   },
 });
 
