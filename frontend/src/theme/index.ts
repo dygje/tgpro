@@ -1,52 +1,65 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 
-// Modern Color Palette - Inspired by Linear/Notion
+// Linear + Vercel Inspired Color Palette - Minimal & Clean
 const colors = {
   brand: {
-    50: '#f0f4ff',
-    100: '#e0ebff',
-    200: '#c7d8ff',
-    300: '#a3bcff',
-    400: '#7996ff',
-    500: '#5570ff', // Primary brand color
-    600: '#4555d9',
-    700: '#3741b3',
-    800: '#2d3386',
-    900: '#1e2359',
+    50: '#fafafa',
+    100: '#f5f5f5',
+    200: '#e5e5e5',
+    300: '#d4d4d4',
+    400: '#a3a3a3',
+    500: '#171717', // Primary brand color - dark like Linear
+    600: '#0a0a0a',
+    700: '#000000',
+    800: '#000000',
+    900: '#000000',
   },
   gray: {
+    25: '#fdfdfd',
     50: '#fafafa',
-    100: '#f4f4f5',
-    200: '#e4e4e7',
-    300: '#d4d4d8',
-    400: '#a1a1aa',
-    500: '#71717a',
-    600: '#52525b',
-    700: '#3f3f46',
-    800: '#27272a',
-    900: '#18181b',
+    100: '#f5f5f5',
+    200: '#e5e5e5',
+    300: '#d4d4d4',
+    400: '#a3a3a3',
+    500: '#737373',
+    600: '#525252',
+    700: '#404040',
+    800: '#262626',
+    850: '#1a1a1a',
+    900: '#171717',
+    950: '#0a0a0a',
   },
-  // Status colors
-  success: {
+  // Subtle accent colors
+  blue: {
+    50: '#f0f9ff',
+    100: '#e0f2fe', 
+    500: '#0ea5e9',
+    600: '#0284c7',
+  },
+  green: {
     50: '#f0fdf4',
-    500: '#10b981',
-    600: '#059669',
+    100: '#dcfce7',
+    500: '#22c55e',
+    600: '#16a34a',
   },
-  error: {
+  red: {
     50: '#fef2f2',
+    100: '#fee2e2',
     500: '#ef4444',
     600: '#dc2626',
   },
-  warning: {
-    50: '#fffbeb',
-    500: '#f59e0b',
-    600: '#d97706',
+  orange: {
+    50: '#fff7ed',
+    100: '#ffedd5',
+    500: '#f97316',
+    600: '#ea580c',
   },
-  // Surface colors for modern UI
+  // Linear-style surfaces
   surface: {
     primary: '#ffffff',
-    secondary: '#f8fafc',
-    tertiary: '#f1f5f9',
+    secondary: '#fafafa',
+    tertiary: '#f5f5f5',
+    quaternary: '#e5e5e5',
   }
 };
 
