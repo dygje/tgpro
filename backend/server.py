@@ -234,10 +234,12 @@ async def request_verification_code(
         )
     
     try:
+        # Check if API credentials are configured
+        current_config = config_manager.config
+        telegram_config = current_config.get("telegram", {})
+        
         # If API credentials are provided in the request, update them first
         if request.api_id and request.api_hash:
-            # Update configuration temporarily for this session
-            current_config = config_manager.config
             current_config["telegram"]["api_id"] = request.api_id
             current_config["telegram"]["api_hash"] = request.api_hash
             current_config["telegram"]["phone_number"] = request.phone_number
@@ -246,6 +248,22 @@ async def request_verification_code(
             # Reinitialize telegram service
             telegram_service = TelegramService(config_manager, blacklist_manager)
             await telegram_service.initialize()
+        
+        # Check if credentials are available (either from config or request)
+        api_id = telegram_config.get("api_id") or request.api_id
+        api_hash = telegram_config.get("api_hash") or request.api_hash
+        
+        if not api_id or not api_hash:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Telegram API credentials not configured. Please configure your API ID and API Hash in settings first."
+            )
+        
+        if not api_id.strip() or not api_hash.strip() or api_id == "12345678" or api_hash.startswith("abcd1234"):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Please configure valid Telegram API credentials. Visit my.telegram.org/apps to get your real API credentials."
+            )
     
         success = await telegram_service.send_verification_code(request.phone_number)
         
@@ -258,15 +276,31 @@ async def request_verification_code(
         else:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Failed to send verification code"
+                detail="Failed to send verification code. Please check your phone number and API credentials."
             )
             
+    except HTTPException:
+        raise
     except Exception as e:
+        error_message = str(e)
         logger.error(f"Error requesting verification code: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e)
-        )
+        
+        # Provide more specific error messages
+        if "api_id" in error_message.lower() or "api_hash" in error_message.lower():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid Telegram API credentials. Please check your API ID and API Hash."
+            )
+        elif "phone" in error_message.lower():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid phone number format. Please include country code (e.g., +1234567890)."
+            )
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to send verification code. Please check your configuration and try again."
+            )
 
 @app.post("/api/auth/verify")
 async def verify_code(
