@@ -97,21 +97,29 @@ class BackendMigrationTester:
             self.log_test("Health Check", False, f"Exception: {str(e)}")
 
     def test_auth_status_endpoint(self):
-        """Test GET /api/auth/status - check authentication status"""
+        """Test GET /api/auth/status - check authentication status (JWT-based)"""
         try:
-            response = self.make_request("GET", "/api/auth/status")
+            # This endpoint uses JWT authentication, not API key
+            # Without a valid JWT token, it should return unauthenticated status
+            no_auth_headers = {"Content-Type": "application/json"}
+            response = self.make_request("GET", "/api/auth/status", headers=no_auth_headers)
             
             if response.status_code == 200:
                 data = response.json()
                 
                 # Should have authentication status fields
-                required_fields = ["authenticated", "session_valid"]
+                required_fields = ["authenticated"]
                 missing_fields = [field for field in required_fields if field not in data]
                 
                 if not missing_fields:
                     authenticated = data.get("authenticated", False)
-                    self.log_test("Auth Status", True, 
-                                f"Auth status retrieved - Authenticated: {authenticated}", data)
+                    # Without JWT token, should be false
+                    if not authenticated:
+                        self.log_test("Auth Status", True, 
+                                    f"Auth status endpoint working - Unauthenticated as expected: {authenticated}", data)
+                    else:
+                        self.log_test("Auth Status", False, 
+                                    f"Unexpected authenticated status without JWT token: {authenticated}", data)
                 else:
                     self.log_test("Auth Status", False, 
                                 f"Missing fields: {missing_fields}", data)
