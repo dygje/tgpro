@@ -88,12 +88,14 @@ const ApiConfiguration: React.FC<ApiConfigurationProps> = ({ onConfigured, onSki
               {/* Instructions */}
               <Box
                 bg="blue.50"
-                _dark={{ bg: 'blue.900' }}
                 p={4}
                 borderRadius="lg"
                 border="1px solid"
                 borderColor="blue.200"
-                _dark={{ borderColor: 'blue.700' }}
+                _dark={{ 
+                  bg: 'blue.900',
+                  borderColor: 'blue.700'
+                }}
               >
                 <VStack spacing={3} align="start">
                   <Text fontSize="sm" fontWeight="semibold" color="blue.800" _dark={{ color: 'blue.200' }}>
