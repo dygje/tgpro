@@ -138,11 +138,14 @@ backend:
     file: "blacklist_manager.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: true
           agent: "main"
           comment: "MongoDB integration ready. Blacklist management with file-based storage implemented. Collections for permanent and temporary blacklists working."
+        - working: true
+          agent: "testing"
+          comment: "Database and blacklist management tested successfully. Blacklist API endpoints working: GET /api/blacklist returns permanent and temporary blacklists, POST /api/blacklist/permanent adds entries, DELETE removes entries. File-based storage working properly. MongoDB connection established. All CRUD operations functional."
 
 frontend:
   - task: "React Application Startup"
