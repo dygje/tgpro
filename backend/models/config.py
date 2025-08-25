@@ -6,13 +6,16 @@ from pydantic import BaseModel, Field, validator
 
 class TelegramConfig(BaseModel):
     """Telegram API configuration model"""
-    api_id: int = Field(..., gt=0, description="Telegram API ID from my.telegram.org")
-    api_hash: str = Field(..., min_length=32, max_length=32, description="Telegram API Hash from my.telegram.org")
+    api_id: int = Field(0, ge=0, description="Telegram API ID from my.telegram.org")
+    api_hash: str = Field("", min_length=0, description="Telegram API Hash from my.telegram.org")
     phone_number: Optional[str] = Field(None, description="Phone number with country code")
 
     @validator('api_hash')
     def validate_api_hash(cls, v):
-        if not v.isalnum():
+        # Allow empty string for initial configuration
+        if v and len(v) != 32:
+            raise ValueError('API hash must be exactly 32 characters when provided')
+        if v and not v.isalnum():
             raise ValueError('API hash must contain only alphanumeric characters')
         return v
 
