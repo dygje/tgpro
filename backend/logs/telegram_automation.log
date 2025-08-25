@@ -141,3 +141,141 @@
 2025-08-25 01:41:19,633 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
 2025-08-25 01:44:38,106 - telegram_service - ERROR - Telegram API credentials not configured
 2025-08-25 01:44:38,106 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 02:07:22,413 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 02:07:22,414 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 02:07:22,414 - server - INFO - Services initialized successfully
+2025-08-25 02:07:22,416 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 02:09:34,408 - server - INFO - Services shutdown completed
+2025-08-25 02:09:41,406 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 02:09:41,406 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 02:09:41,407 - server - INFO - Services initialized successfully
+2025-08-25 02:09:41,408 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 02:11:08,641 - server - INFO - Services shutdown completed
+2025-08-25 02:11:15,497 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 02:11:15,497 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 02:11:15,498 - server - INFO - Services initialized successfully
+2025-08-25 02:11:15,499 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 02:11:53,674 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 02:11:53,674 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 02:11:53,725 - server - ERROR - Error verifying code: 400: No pending verification
+2025-08-25 02:11:53,781 - server - ERROR - Error verifying 2FA: 400: Invalid 2FA password
+2025-08-25 02:11:53,887 - telegram_service - INFO - Added template: test_template_001
+2025-08-25 02:11:53,991 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 02:11:53,992 - config_manager - INFO - Configuration updated
+2025-08-25 02:11:54,092 - blacklist_manager - WARNING - Added https://t.me/test_group_123 to permanent blacklist: Test blacklist entry
+2025-08-25 02:11:54,676 - server - INFO - Created message file: test_message_001.txt
+2025-08-25 02:11:54,728 - server - INFO - Created message file: test_message_002.txt
+2025-08-25 02:11:54,935 - server - INFO - Updated message file: test_message_001.txt
+2025-08-25 02:11:55,140 - server - INFO - Deleted message file: test_message_001.txt
+2025-08-25 03:12:37,174 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:12:37,175 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:12:37,175 - server - INFO - Services initialized successfully
+2025-08-25 03:12:37,177 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:14:29,561 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 03:14:29,561 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 03:14:34,732 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 03:14:34,732 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 03:16:03,190 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 03:16:03,190 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 03:16:47,843 - server - INFO - Services shutdown completed
+2025-08-25 03:16:54,528 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:16:54,528 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:16:54,528 - server - INFO - Services initialized successfully
+2025-08-25 03:16:54,530 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:17:56,376 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 03:17:56,376 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 03:22:27,139 - server - INFO - Services shutdown completed
+2025-08-25 03:22:29,288 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:22:29,289 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:22:29,289 - server - INFO - Services initialized successfully
+2025-08-25 03:22:29,290 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:23:02,372 - server - INFO - Services shutdown completed
+2025-08-25 03:23:05,145 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:23:05,145 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:23:05,145 - server - INFO - Services initialized successfully
+2025-08-25 03:23:05,147 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:23:59,600 - server - INFO - Services shutdown completed
+2025-08-25 03:24:02,190 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:24:02,190 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:24:02,190 - server - INFO - Services initialized successfully
+2025-08-25 03:24:02,192 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:24:15,343 - server - INFO - Services shutdown completed
+2025-08-25 03:24:22,321 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:24:22,321 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:24:22,321 - server - INFO - Services initialized successfully
+2025-08-25 03:24:22,323 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:24:36,020 - server - INFO - Services shutdown completed
+2025-08-25 03:24:38,593 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:24:38,594 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:24:38,594 - server - INFO - Services initialized successfully
+2025-08-25 03:24:38,596 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:24:47,517 - server - INFO - Services shutdown completed
+2025-08-25 03:24:54,246 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:24:54,246 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:24:54,246 - server - INFO - Services initialized successfully
+2025-08-25 03:24:54,248 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:27:38,526 - server - INFO - Services shutdown completed
+2025-08-25 03:27:45,247 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:27:45,247 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:27:45,248 - server - INFO - Services initialized successfully
+2025-08-25 03:27:45,249 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:29:40,610 - server - INFO - Services shutdown completed
+2025-08-25 03:29:47,741 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:29:47,742 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:29:47,742 - server - INFO - Services initialized successfully
+2025-08-25 03:29:47,744 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:29:52,920 - server - INFO - Services shutdown completed
+2025-08-25 03:30:00,034 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:30:00,034 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:30:00,035 - server - INFO - Services initialized successfully
+2025-08-25 03:30:00,036 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:30:32,409 - telegram_service - ERROR - Telegram API credentials not configured
+2025-08-25 03:30:32,410 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
+2025-08-25 03:31:41,109 - server - INFO - Services shutdown completed
+2025-08-25 03:31:47,933 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:31:47,933 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:31:47,933 - server - INFO - Services initialized successfully
+2025-08-25 03:31:47,935 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:32:05,368 - server - ERROR - Error configuring Telegram API: 'ConfigManager' object has no attribute 'save_config'
+2025-08-25 03:32:35,978 - server - INFO - Services shutdown completed
+2025-08-25 03:32:37,980 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:32:37,980 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:32:37,980 - server - INFO - Services initialized successfully
+2025-08-25 03:32:37,982 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:32:41,490 - server - INFO - Services shutdown completed
+2025-08-25 03:32:43,994 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:32:43,994 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:32:43,994 - server - INFO - Services initialized successfully
+2025-08-25 03:32:43,996 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:33:00,138 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 03:33:00,139 - config_manager - INFO - Configuration saved manually
+2025-08-25 03:33:00,139 - server - ERROR - Error configuring Telegram API: 'TelegramService' object has no attribute 'initialize'
+2025-08-25 03:33:34,900 - server - INFO - Services shutdown completed
+2025-08-25 03:33:36,842 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:33:36,842 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:33:36,842 - server - INFO - Services initialized successfully
+2025-08-25 03:33:36,844 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 03:33:39,852 - server - INFO - Services shutdown completed
+2025-08-25 03:33:42,495 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 03:33:42,495 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 03:33:42,495 - server - INFO - Services initialized successfully
+2025-08-25 03:33:42,497 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 06:59:12,221 - server - INFO - Initializing Telegram Automation Service...
+2025-08-25 06:59:12,222 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-25 06:59:12,223 - server - INFO - Services initialized successfully
+2025-08-25 06:59:12,225 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 07:00:19,150 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-08-25 07:00:19,150 - pyrogram.connection.connection - INFO - Connecting...
+2025-08-25 07:00:19,263 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-08-25 07:00:20,764 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-08-25 07:00:20,764 - pyrogram.connection.connection - INFO - Disconnected
+2025-08-25 07:00:20,825 - pyrogram.connection.connection - INFO - Connecting...
+2025-08-25 07:00:20,938 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-08-25 07:00:20,939 - pyrogram.session.session - INFO - NetworkTask started
+2025-08-25 07:00:21,300 - pyrogram.session.session - INFO - Session initialized: Layer 207
+2025-08-25 07:00:21,300 - pyrogram.session.session - INFO - Device: CPython 3.11.13 - Pyrogram 2.3.68
+2025-08-25 07:00:21,300 - pyrogram.session.session - INFO - System: Linux 6.6.72+ (en)
+2025-08-25 07:00:21,300 - pyrogram.session.session - INFO - Session started
+2025-08-25 07:00:21,312 - pyrogram.session.session - INFO - PingTask started
+2025-08-25 07:00:21,445 - telegram_service - ERROR - Error sending verification code: Telegram says: [400 API_ID_INVALID] (caused by "auth.SendCode") Pyrogram 2.3.68 thinks: The api_id/api_hash combination is invalid
+2025-08-25 07:00:21,445 - server - ERROR - Error requesting verification code: 400: Failed to send verification code
