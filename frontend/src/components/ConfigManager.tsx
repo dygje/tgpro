@@ -84,7 +84,6 @@ const ConfigManager: React.FC = () => {
   // Form state
   const [apiId, setApiId] = useState('');
   const [apiHash, setApiHash] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
   
   // UI state
   const [loading, setLoading] = useState(false);
