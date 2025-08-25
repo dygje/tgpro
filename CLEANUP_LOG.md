@@ -10,7 +10,11 @@
 - ✅ `/app/backend/server.py.backup` - Backup server tanpa MongoDB
 - ✅ `/app/config.json` - Konfigurasi legacy (sekarang menggunakan MongoDB terenkripsi)
 
-### 2. File Testing dan Migration Legacy  
+### 2. Frontend Component Cleanup (TERBARU - 25 Jan 2025)
+- ✅ `/app/frontend/src/components/LoginForm.tsx` - Login form terpisah (diganti UnifiedAuth.tsx)
+- ✅ `/app/frontend/src/components/ApiConfiguration.tsx` - API config terpisah (diganti UnifiedAuth.tsx)
+
+### 3. File Testing dan Migration Legacy  
 - ✅ `/app/mongodb_migration_test.py` - Test migration yang sudah selesai
 - ✅ `/app/backend_test.py` - Test backend legacy  
 - ✅ `/app/backend_migration_test.py` - Test migration backend yang sudah selesai
