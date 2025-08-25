@@ -339,7 +339,7 @@ class MongoDBMigrationTester:
             self.log_test("MongoDB Messages List", False, f"Exception: {str(e)}")
 
     def test_mongodb_messages_create(self):
-        """Test /api/messages POST endpoint - should create message template in MongoDB"""
+        """Test /api/messages/ POST endpoint - should create message template in MongoDB"""
         try:
             test_template = {
                 "template_id": "test_mongodb_template",
@@ -347,7 +347,7 @@ class MongoDBMigrationTester:
                 "variables": {"name": ["Friend", "Buddy", "There"]}
             }
             
-            response = self.make_request("POST", "/api/messages", test_template)
+            response = self.make_request("POST", "/api/messages/", test_template)
             
             if response.status_code == 200:
                 data = response.json()
