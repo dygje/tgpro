@@ -25,7 +25,6 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
       });
       
       setConfigured(response.data.configured);
-      setPhoneNumber(response.data.phone_number || '');
       
       if (response.data.configured) {
         onConfigured();
