@@ -165,12 +165,12 @@ class BackendTester:
         # Test list message templates
         self.test_endpoint("GET", "/messages", description="List all message templates from MongoDB")
         
-        # Test create message template
+        # Test create message template (with correct data format)
         test_template_id = f"test_template_{int(time.time())}"
         message_data = {
             "template_id": test_template_id,
             "content": "This is a test message template for API testing.\n\nHello {name}!\nBest regards,\nTelegram Bot",
-            "variables": {"name": ["John", "Jane", "Alex"]}
+            "variables": {"name": ["John", "Jane", "Alex"]}  # This should be correct format
         }
         response = self.test_endpoint("POST", "/messages", data=message_data, description="Create new message template in MongoDB")
         
