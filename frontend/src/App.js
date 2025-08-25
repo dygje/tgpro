@@ -106,6 +106,8 @@ function App() {
         <main className="flex-1 p-6 overflow-auto">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'messageSender' && <MessageSender />}
+          {activeTab === 'groupsManager' && <GroupsManager />}
+          {activeTab === 'messagesManager' && <MessagesManager />}
           {activeTab === 'templateManager' && <TemplateManager />}
           {activeTab === 'blacklistManager' && <BlacklistManager />}
           {activeTab === 'configManager' && <ConfigManager />}
