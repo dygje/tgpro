@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiResponse, ApiError } from '../types/api';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
