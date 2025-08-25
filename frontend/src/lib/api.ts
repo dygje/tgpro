@@ -17,7 +17,7 @@ const apiClient: AxiosInstance = axios.create({
 
 // Request interceptor
 apiClient.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config) => {
     // Add timestamp to prevent caching
     if (config.method === 'get') {
       config.params = {
