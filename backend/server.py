@@ -123,7 +123,7 @@ async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(sec
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    global db_service, encryption_service, config_service, telegram_service, config_manager, blacklist_manager
+    global db_service, encryption_service, config_service, auth_service, telegram_service, config_manager, blacklist_manager
     
     try:
         logger.info("Initializing Telegram Automation Service with MongoDB...")
@@ -147,13 +147,23 @@ async def lifespan(app: FastAPI):
         if not await config_service.initialize():
             raise RuntimeError("Failed to initialize configuration service")
         
-        # Inject config service into router module
+        # Initialize authentication service
+        auth_service = AuthService(db_service, encryption_service)
+        if not await auth_service.initialize():
+            raise RuntimeError("Failed to initialize authentication service")
+        
+        # Inject services into router modules
         config_router_module.config_service = config_service
+        auth_router_module.auth_service = auth_service
+        auth_router_module.config_service = config_service
         
         # Initialize legacy managers for backward compatibility
         config_manager = ConfigManager()
         blacklist_manager = BlacklistManager()
         telegram_service = TelegramService(config_manager, blacklist_manager)
+        
+        # Inject telegram service into auth router
+        auth_router_module.telegram_service = telegram_service
         
         logger.info("All services initialized successfully")
         yield
