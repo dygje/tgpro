@@ -613,7 +613,7 @@ class MongoDBMigrationTester:
         """Test that migrated groups data matches original file data"""
         try:
             # Get groups from MongoDB API
-            mongodb_response = self.make_request("GET", "/api/groups")
+            mongodb_response = self.make_request("GET", "/api/groups/")
             
             # Get migration status to compare
             status_response = self.make_request("GET", "/api/migration/status")
