@@ -103,8 +103,7 @@ const AuthStatus: React.FC<AuthStatusProps> = ({ authStatus, onRefresh }) => {
           </HStack>
         </Badge>
       )}
-      </Flex>
-    </Box>
+    </HStack>
   );
 };
 
