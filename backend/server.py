@@ -25,6 +25,7 @@ from services.db_service import DatabaseService
 from services.encryption_service import EncryptionService
 from services.config_service import ConfigService
 from services.auth_service import AuthService
+from services.websocket_service import WebSocketManager, WebSocketLogHandler
 from routers.config import router as config_router
 from routers.auth import router as auth_router
 from routers import config as config_router_module
