@@ -168,7 +168,7 @@ function App() {
 
         {/* Main Content Area */}
         <Box flex={1} overflow="auto">
-          <Container maxW="full" p={6} h="full">
+          <Container maxW="full" p={4} h="full">
             {activeTab === 'dashboard' && <Dashboard />}
             {activeTab === 'messageSender' && <MessageSender />}
             {activeTab === 'groupsManager' && <GroupsManager />}
