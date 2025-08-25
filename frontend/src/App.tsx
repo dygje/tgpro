@@ -8,8 +8,8 @@ import {
   useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
-import { api } from '@/lib/api';
-import { AuthStatus as AuthStatusType, TelegramConfig } from '@/types';
+import { api } from './lib/api';
+import { AuthStatus as AuthStatusType, TelegramConfig } from './types';
 
 // Components
 import LoginForm from './components/LoginForm';
