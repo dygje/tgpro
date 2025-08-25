@@ -483,3 +483,739 @@ api_hash
 2025-08-25 10:55:13,867 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
 2025-08-25 10:55:18,955 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
 2025-08-25 10:58:18,721 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-25 11:10:41,927 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:10:42,022 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:10:42,221 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:10:42,234 - services.encryption_service - INFO - New encryption key generated and stored
+2025-08-25 11:10:42,234 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:10:42,236 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:10:42,237 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:10:42,237 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:10:42,239 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:10:42,239 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:10:42,240 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:10:42,240 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:10:42,241 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:10:42,241 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:10:42,241 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:10:42,246 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:10:42,248 - services.auth_service - INFO - New JWT secret generated and stored
+2025-08-25 11:10:42,248 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:10:42,248 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:10:42,312 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:10:42,312 - server - INFO - All services initialized successfully
+2025-08-25 11:10:42,316 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:16:38,218 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:16:38,218 - server - INFO - Services shutdown completed
+2025-08-25 11:16:45,134 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:16:45,222 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:16:45,231 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:16:45,234 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:16:45,235 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:16:45,307 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:16:45,308 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:16:45,309 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:16:45,309 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:16:45,310 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:16:45,310 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:16:45,311 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:16:45,311 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:16:45,311 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:16:45,315 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:16:45,316 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:16:45,316 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:16:45,317 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:16:45,317 - server - INFO - All services initialized successfully
+2025-08-25 11:16:45,319 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:16:49,631 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:16:49,631 - server - INFO - Services shutdown completed
+2025-08-25 11:16:51,354 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:16:51,361 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:16:51,365 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:16:51,366 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:16:51,367 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:16:51,368 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:16:51,368 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:16:51,369 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:16:51,369 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:16:51,369 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:16:51,369 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:16:51,370 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:16:51,370 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:16:51,371 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:16:51,374 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:16:51,375 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:16:51,375 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:16:51,376 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:16:51,376 - server - INFO - All services initialized successfully
+2025-08-25 11:16:51,379 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:16:55,892 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:16:55,892 - server - INFO - Services shutdown completed
+2025-08-25 11:16:58,231 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:16:58,238 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:16:58,242 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:16:58,243 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:16:58,244 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:16:58,245 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:16:58,245 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:16:58,246 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:16:58,246 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:16:58,247 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:16:58,247 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:16:58,248 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:16:58,248 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:16:58,248 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:16:58,251 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:16:58,252 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:16:58,252 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:16:58,253 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:16:58,253 - server - INFO - All services initialized successfully
+2025-08-25 11:16:58,255 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:17:02,216 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:17:02,216 - server - INFO - Services shutdown completed
+2025-08-25 11:17:04,218 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:17:04,225 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:17:04,229 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:17:04,230 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:17:04,230 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:17:04,231 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:17:04,232 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:17:04,232 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:17:04,232 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:17:04,233 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:17:04,233 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:17:04,234 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:17:04,234 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:17:04,234 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:17:04,237 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:17:04,238 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:17:04,238 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:17:04,239 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:17:04,239 - server - INFO - All services initialized successfully
+2025-08-25 11:17:04,241 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:17:31,304 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:17:31,304 - server - INFO - Services shutdown completed
+2025-08-25 11:17:37,109 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:17:37,116 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:17:37,120 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:17:37,121 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:17:37,122 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:17:37,122 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:17:37,123 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:17:37,123 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:17:37,123 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:17:37,124 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:17:37,124 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:17:37,125 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:17:37,125 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:17:37,125 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:17:37,129 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:17:37,129 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:17:37,130 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:17:37,130 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:17:37,131 - server - INFO - All services initialized successfully
+2025-08-25 11:17:37,132 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:17:44,751 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:17:44,751 - server - INFO - Services shutdown completed
+2025-08-25 11:17:46,785 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:17:46,792 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:17:46,798 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:17:46,800 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:17:46,801 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:17:46,802 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:17:46,802 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:17:46,803 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:17:46,803 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:17:46,804 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:17:46,805 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:17:46,805 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:17:46,805 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:17:46,806 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:17:46,811 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:17:46,812 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:17:46,812 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:17:46,813 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:17:46,813 - server - INFO - All services initialized successfully
+2025-08-25 11:17:46,814 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:17:50,425 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:17:50,425 - server - INFO - Services shutdown completed
+2025-08-25 11:17:56,848 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:17:56,909 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:17:56,913 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:17:56,914 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:17:56,915 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:17:56,916 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:17:56,916 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:17:56,917 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:17:56,917 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:17:56,918 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:17:56,918 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:17:56,919 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:17:56,919 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:17:56,919 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:17:56,922 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:17:56,923 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:17:56,923 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:17:56,924 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:17:56,925 - server - INFO - All services initialized successfully
+2025-08-25 11:17:56,926 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:20:41,187 - utils.migration - INFO - Starting full data migration from files to MongoDB...
+2025-08-25 11:20:41,187 - utils.migration - INFO - Migrating groups...
+2025-08-25 11:20:41,189 - services.db_service - INFO - Group added: https://t.me/test_mongodb_group
+2025-08-25 11:20:41,189 - utils.migration - INFO - Migrated group: https://t.me/test_mongodb_group
+2025-08-25 11:20:41,189 - utils.migration - INFO - Groups migration completed. Migrated 1 groups
+2025-08-25 11:20:41,189 - utils.migration - INFO - Migrating message templates...
+2025-08-25 11:20:41,192 - services.db_service - INFO - Message template added: 2
+2025-08-25 11:20:41,192 - utils.migration - INFO - Migrated message template: 2
+2025-08-25 11:20:41,193 - services.db_service - INFO - Message template added: 1
+2025-08-25 11:20:41,193 - utils.migration - INFO - Migrated message template: 1
+2025-08-25 11:20:41,194 - services.db_service - INFO - Message template added: 4
+2025-08-25 11:20:41,194 - utils.migration - INFO - Migrated message template: 4
+2025-08-25 11:20:41,195 - services.db_service - INFO - Message template added: test_message_002
+2025-08-25 11:20:41,195 - utils.migration - INFO - Migrated message template: test_message_002
+2025-08-25 11:20:41,196 - services.db_service - INFO - Message template added: 3
+2025-08-25 11:20:41,196 - utils.migration - INFO - Migrated message template: 3
+2025-08-25 11:20:41,197 - services.db_service - INFO - Message template added: sample_template
+2025-08-25 11:20:41,197 - utils.migration - INFO - Migrated message template: sample_template
+2025-08-25 11:20:41,197 - utils.migration - INFO - Messages migration completed. Migrated 6 templates
+2025-08-25 11:20:41,197 - utils.migration - INFO - Migrating blacklists...
+2025-08-25 11:20:41,197 - utils.migration - INFO - Blacklists migration completed. Migrated 0 entries
+2025-08-25 11:20:41,197 - utils.migration - INFO - Migration completed
+2025-08-25 11:20:41,197 - utils.migration - INFO - Migration results: {'groups': True, 'messages': True, 'blacklists': True}
+2025-08-25 11:20:41,199 - routers.migration - INFO - Migration completed via API
+2025-08-25 11:20:41,869 - services.db_service - INFO - Added https://t.me/test_mongodb_blacklist to permanent blacklist
+2025-08-25 11:20:41,869 - routers.groups - INFO - Added https://t.me/test_mongodb_blacklist to permanent blacklist
+2025-08-25 11:20:41,919 - services.db_service - INFO - Added https://t.me/test_mongodb_blacklist_remove to permanent blacklist
+2025-08-25 11:20:41,919 - routers.groups - INFO - Added https://t.me/test_mongodb_blacklist_remove to permanent blacklist
+2025-08-25 11:22:18,408 - utils.migration - INFO - Starting full data migration from files to MongoDB...
+2025-08-25 11:22:18,408 - utils.migration - INFO - Migrating groups...
+2025-08-25 11:22:18,409 - utils.migration - INFO - Group already exists in MongoDB: https://t.me/test_mongodb_group
+2025-08-25 11:22:18,409 - utils.migration - INFO - Groups migration completed. Migrated 0 groups
+2025-08-25 11:22:18,409 - utils.migration - INFO - Migrating message templates...
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: 2
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: 1
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: 4
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: test_message_002
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: 3
+2025-08-25 11:22:18,410 - utils.migration - INFO - Template already exists in MongoDB: sample_template
+2025-08-25 11:22:18,410 - utils.migration - INFO - Messages migration completed. Migrated 0 templates
+2025-08-25 11:22:18,411 - utils.migration - INFO - Migrating blacklists...
+2025-08-25 11:22:18,411 - utils.migration - INFO - Blacklists migration completed. Migrated 0 entries
+2025-08-25 11:22:18,411 - utils.migration - INFO - Migration completed
+2025-08-25 11:22:18,411 - utils.migration - INFO - Migration results: {'groups': True, 'messages': True, 'blacklists': True}
+2025-08-25 11:22:18,413 - routers.migration - INFO - Migration completed via API
+2025-08-25 11:22:18,519 - services.db_service - INFO - Group added: https://t.me/test_mongodb_add_group
+2025-08-25 11:22:18,519 - routers.groups - INFO - Added group to MongoDB: https://t.me/test_mongodb_add_group
+2025-08-25 11:22:18,573 - services.db_service - INFO - Group added: https://t.me/test_mongodb_delete_group
+2025-08-25 11:22:18,573 - routers.groups - INFO - Added group to MongoDB: https://t.me/test_mongodb_delete_group
+2025-08-25 11:22:18,729 - services.db_service - INFO - Message template added: test_mongodb_template
+2025-08-25 11:22:18,729 - routers.messages - INFO - Created message template in MongoDB: test_mongodb_template
+2025-08-25 11:22:18,781 - services.db_service - INFO - Message template added: test_mongodb_update_template
+2025-08-25 11:22:18,781 - routers.messages - INFO - Created message template in MongoDB: test_mongodb_update_template
+2025-08-25 11:22:18,831 - services.db_service - INFO - Message template updated: test_mongodb_update_template
+2025-08-25 11:22:18,832 - routers.messages - INFO - Updated message template in MongoDB: test_mongodb_update_template
+2025-08-25 11:22:18,896 - services.db_service - INFO - Message template added: test_mongodb_delete_template
+2025-08-25 11:22:18,896 - routers.messages - INFO - Created message template in MongoDB: test_mongodb_delete_template
+2025-08-25 11:22:18,948 - services.db_service - INFO - Message template removed: test_mongodb_delete_template
+2025-08-25 11:22:18,948 - routers.messages - INFO - Deleted message template from MongoDB: test_mongodb_delete_template
+2025-08-25 11:22:19,057 - services.db_service - INFO - Added https://t.me/test_mongodb_blacklist to permanent blacklist
+2025-08-25 11:22:19,057 - routers.groups - INFO - Added https://t.me/test_mongodb_blacklist to permanent blacklist
+2025-08-25 11:22:19,108 - services.db_service - INFO - Added https://t.me/test_mongodb_blacklist_remove to permanent blacklist
+2025-08-25 11:22:19,108 - routers.groups - INFO - Added https://t.me/test_mongodb_blacklist_remove to permanent blacklist
+2025-08-25 11:24:31,099 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:24:31,099 - server - INFO - Services shutdown completed
+2025-08-25 11:24:37,127 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:24:37,140 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:24:37,145 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:24:37,146 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:24:37,207 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:24:37,209 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:24:37,209 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:24:37,210 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:24:37,210 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:24:37,211 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:24:37,211 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:24:37,212 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:24:37,212 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:24:37,212 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:24:37,219 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:24:37,222 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:24:37,222 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:24:37,223 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:24:37,223 - server - INFO - All services initialized successfully
+2025-08-25 11:24:37,225 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:25:29,086 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:25:29,087 - server - INFO - Services shutdown completed
+2025-08-25 11:25:35,432 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:25:35,440 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:25:35,445 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:25:35,446 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:25:35,447 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:25:35,448 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:25:35,448 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:25:35,507 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:25:35,507 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:25:35,508 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:25:35,508 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:25:35,509 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:25:35,509 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:25:35,509 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:25:35,513 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:25:35,514 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:25:35,514 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:25:35,514 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:25:35,515 - server - INFO - All services initialized successfully
+2025-08-25 11:25:35,516 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:25:53,359 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:25:53,359 - server - INFO - Services shutdown completed
+2025-08-25 11:26:00,147 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:26:00,154 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:26:00,157 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:26:00,158 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:26:00,159 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:26:00,160 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:26:00,160 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:26:00,161 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:26:00,161 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:26:00,162 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:26:00,162 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:26:00,163 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:26:00,163 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:26:00,163 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:26:00,166 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:26:00,167 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:26:00,167 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:26:00,168 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:26:00,168 - server - INFO - All services initialized successfully
+2025-08-25 11:26:00,171 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:26:28,126 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:26:28,126 - server - INFO - Services shutdown completed
+2025-08-25 11:26:30,252 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:26:30,259 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:26:30,262 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:26:30,264 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:26:30,265 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:26:30,266 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:26:30,266 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:26:30,267 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:26:30,267 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:26:30,268 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:26:30,268 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:26:30,268 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:26:30,269 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:26:30,269 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:26:30,272 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:26:30,273 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:26:30,273 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:26:30,274 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:26:30,274 - server - INFO - All services initialized successfully
+2025-08-25 11:26:30,275 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:26:36,290 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:26:36,290 - server - INFO - Services shutdown completed
+2025-08-25 11:26:38,713 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:26:38,720 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:26:38,723 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:26:38,724 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:26:38,725 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:26:38,726 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:26:38,726 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:26:38,727 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:26:38,727 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:26:38,728 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:26:38,728 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:26:38,729 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:26:38,729 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:26:38,729 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:26:38,732 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:26:38,733 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:26:38,733 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:26:38,734 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:26:38,734 - server - INFO - All services initialized successfully
+2025-08-25 11:26:38,736 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:26:42,243 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:26:42,243 - server - INFO - Services shutdown completed
+2025-08-25 11:26:44,641 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:26:44,648 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:26:44,651 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:26:44,652 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:26:44,653 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:26:44,654 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:26:44,654 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:26:44,655 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:26:44,655 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:26:44,656 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:26:44,656 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:26:44,656 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:26:44,656 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:26:44,657 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:26:44,660 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:26:44,661 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:26:44,661 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:26:44,662 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:26:44,662 - server - INFO - All services initialized successfully
+2025-08-25 11:26:44,664 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:26:49,218 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:26:49,218 - server - INFO - Services shutdown completed
+2025-08-25 11:26:51,542 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:26:51,549 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:26:51,552 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:26:51,553 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:26:51,554 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:26:51,555 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:26:51,555 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:26:51,556 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:26:51,556 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:26:51,557 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:26:51,557 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:26:51,558 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:26:51,558 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:26:51,558 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:26:51,562 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:26:51,563 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:26:51,563 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:26:51,564 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:26:51,564 - server - INFO - All services initialized successfully
+2025-08-25 11:26:51,565 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:26:59,682 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:26:59,682 - server - INFO - Services shutdown completed
+2025-08-25 11:27:01,955 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:27:01,962 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:27:01,965 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:27:01,966 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:27:01,967 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:27:01,968 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:27:01,968 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:27:01,969 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:27:01,969 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:27:01,970 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:27:01,970 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:27:01,970 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:27:01,970 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:27:01,971 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:27:01,974 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:27:01,975 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:27:01,975 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:27:01,976 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:27:01,976 - server - INFO - All services initialized successfully
+2025-08-25 11:27:01,979 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:27:05,887 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:27:05,887 - server - INFO - Services shutdown completed
+2025-08-25 11:27:07,893 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:27:07,899 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:27:07,902 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:27:07,903 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:27:07,904 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:27:07,907 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:27:07,907 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:27:07,908 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:27:07,908 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:27:07,908 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:27:07,909 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:27:07,909 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:27:07,909 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:27:07,910 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:27:07,913 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:27:07,914 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:27:07,914 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:27:07,915 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:27:07,915 - server - INFO - All services initialized successfully
+2025-08-25 11:27:07,919 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:27:12,326 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:27:12,326 - server - INFO - Services shutdown completed
+2025-08-25 11:27:19,120 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:27:19,128 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:27:19,132 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:27:19,134 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:27:19,135 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:27:19,136 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:27:19,136 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:27:19,137 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:27:19,137 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:27:19,138 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:27:19,138 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:27:19,139 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:27:19,139 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:27:19,139 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:27:19,143 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:27:19,144 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:27:19,144 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:27:19,145 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:27:19,145 - server - INFO - All services initialized successfully
+2025-08-25 11:27:19,149 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:28:17,783 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:28:17,783 - server - INFO - Services shutdown completed
+2025-08-25 11:28:17,784 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:28:17,784 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:28:24,734 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:28:24,740 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:28:24,744 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:28:24,745 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:28:24,746 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:28:24,746 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:28:24,747 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:28:24,747 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:28:24,747 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:28:24,748 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:28:24,748 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:28:24,749 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:28:24,749 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:28:24,749 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:28:24,752 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:28:24,753 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:28:24,753 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:28:24,754 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:28:24,754 - server - INFO - All services initialized successfully
+2025-08-25 11:28:24,757 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:01,125 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:01,125 - server - INFO - Services shutdown completed
+2025-08-25 11:29:07,579 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:07,607 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:07,611 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:07,612 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:07,613 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:07,614 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:07,614 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:07,615 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:07,615 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:07,615 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:07,616 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:07,616 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:07,616 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:07,616 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:07,620 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:07,621 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:07,621 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:07,621 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:07,622 - server - INFO - All services initialized successfully
+2025-08-25 11:29:07,625 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:13,538 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:13,538 - server - INFO - Services shutdown completed
+2025-08-25 11:29:13,539 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:13,539 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:15,563 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:15,569 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:15,573 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:15,574 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:15,575 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:15,576 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:15,576 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:15,577 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:15,577 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:15,577 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:15,577 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:15,578 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:15,578 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:15,578 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:15,582 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:15,582 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:15,583 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:15,584 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:15,584 - server - INFO - All services initialized successfully
+2025-08-25 11:29:15,587 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:23,515 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:23,515 - server - INFO - Services shutdown completed
+2025-08-25 11:29:25,564 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:25,571 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:25,574 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:25,575 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:25,576 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:25,577 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:25,577 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:25,578 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:25,578 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:25,578 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:25,578 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:25,579 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:25,579 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:25,579 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:25,582 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:25,583 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:25,583 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:25,584 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:25,584 - server - INFO - All services initialized successfully
+2025-08-25 11:29:25,588 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:29,810 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:29,810 - server - INFO - Services shutdown completed
+2025-08-25 11:29:31,958 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:31,964 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:31,968 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:31,969 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:31,970 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:31,971 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:31,971 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:31,971 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:31,971 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:31,972 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:31,972 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:31,973 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:31,973 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:31,973 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:31,976 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:31,977 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:31,977 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:31,978 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:31,978 - server - INFO - All services initialized successfully
+2025-08-25 11:29:31,982 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:40,999 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:40,999 - server - INFO - Services shutdown completed
+2025-08-25 11:29:41,007 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:41,007 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:43,376 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:43,383 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:43,387 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:43,388 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:43,389 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:43,390 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:43,390 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:43,391 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:43,391 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:43,392 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:43,392 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:43,393 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:43,393 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:43,393 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:43,396 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:43,397 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:43,397 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:43,398 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:43,399 - server - INFO - All services initialized successfully
+2025-08-25 11:29:43,408 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:49,221 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:49,221 - server - INFO - Services shutdown completed
+2025-08-25 11:29:49,222 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:49,222 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:51,288 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:51,295 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:51,299 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:51,307 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:51,308 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:51,309 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:51,309 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:51,310 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:51,310 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:51,311 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:51,311 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:51,312 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:51,312 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:51,312 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:51,317 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:51,318 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:51,318 - services.async_task_service - INFO - Starting async task service
+2025-08-25 11:29:51,318 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-25 11:29:51,318 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-25 11:29:51,318 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-25 11:29:51,319 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:51,320 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:51,320 - server - INFO - All services initialized successfully
+2025-08-25 11:29:51,324 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:29:55,635 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:29:55,635 - server - INFO - Services shutdown completed
+2025-08-25 11:29:55,636 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:55,636 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:29:57,795 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:29:57,801 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:29:57,805 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:29:57,806 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:29:57,807 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:29:57,807 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:29:57,808 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:29:57,808 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:29:57,808 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:29:57,809 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:29:57,809 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:29:57,810 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:29:57,810 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:29:57,810 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:29:57,813 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:29:57,814 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:29:57,814 - services.async_task_service - INFO - Starting async task service
+2025-08-25 11:29:57,814 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-25 11:29:57,815 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-25 11:29:57,815 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-25 11:29:57,815 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:29:57,816 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:29:57,816 - server - INFO - All services initialized successfully
+2025-08-25 11:29:57,820 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:30:04,533 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:30:04,533 - server - INFO - Services shutdown completed
+2025-08-25 11:30:04,534 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:30:04,534 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-25 11:30:06,766 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:30:06,773 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:30:06,776 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:30:06,777 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:30:06,778 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:30:06,779 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:30:06,779 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:30:06,780 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:30:06,780 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:30:06,780 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:30:06,780 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:30:06,781 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:30:06,781 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:30:06,781 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:30:06,785 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:30:06,785 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:30:06,785 - services.async_task_service - INFO - Starting async task service
+2025-08-25 11:30:06,786 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-25 11:30:06,786 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-25 11:30:06,786 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-25 11:30:06,787 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:30:06,787 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:30:06,788 - server - INFO - All services initialized successfully
+2025-08-25 11:30:06,791 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:30:14,308 - services.async_task_service - INFO - Stopping async task service
+2025-08-25 11:30:14,309 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-25 11:30:14,310 - server - INFO - Services shutdown completed
+2025-08-25 11:30:21,854 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-25 11:30:21,908 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-25 11:30:21,912 - services.db_service - INFO - Database indexes created successfully
+2025-08-25 11:30:21,913 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-25 11:30:21,914 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-25 11:30:21,915 - services.db_service - INFO - Config delays saved successfully
+2025-08-25 11:30:21,915 - services.config_service - INFO - Migrated delays configuration
+2025-08-25 11:30:21,916 - services.db_service - INFO - Config safety saved successfully
+2025-08-25 11:30:21,916 - services.config_service - INFO - Migrated safety configuration
+2025-08-25 11:30:21,917 - services.db_service - INFO - Config paths saved successfully
+2025-08-25 11:30:21,917 - services.config_service - INFO - Migrated paths configuration
+2025-08-25 11:30:21,918 - services.db_service - INFO - Config logging saved successfully
+2025-08-25 11:30:21,918 - services.config_service - INFO - Migrated logging configuration
+2025-08-25 11:30:21,918 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-25 11:30:21,922 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-25 11:30:21,922 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-25 11:30:21,923 - services.async_task_service - INFO - Starting async task service
+2025-08-25 11:30:21,923 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-25 11:30:21,923 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-25 11:30:21,923 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-25 11:30:21,924 - config_manager - INFO - Config file not found, using defaults
+2025-08-25 11:30:21,925 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-25 11:30:21,926 - server - INFO - All services initialized successfully
+2025-08-25 11:30:21,929 - blacklist_manager - INFO - Loaded 1 permanently blacklisted groups
+2025-08-25 11:34:45,924 - services.websocket_service - INFO - WebSocket client connected: logs-32908dc2 (type: logs)
+2025-08-25 11:34:45,929 - services.websocket_service - ERROR - Error sending to client logs-32908dc2: received 1000 (OK); then sent 1000 (OK)
+2025-08-25 11:34:45,929 - services.websocket_service - INFO - WebSocket client disconnected: logs-32908dc2
+2025-08-25 11:34:45,929 - services.websocket_service - ERROR - Error broadcasting to client logs-32908dc2: received 1000 (OK); then sent 1000 (OK)
+2025-08-25 11:34:45,929 - services.websocket_service - ERROR - Error processing message queue: dictionary changed size during iteration
+2025-08-25 11:34:45,932 - routers.websocket - INFO - Log WebSocket client disconnected: logs-32908dc2
+2025-08-25 11:34:45,979 - services.websocket_service - INFO - WebSocket client connected: monitoring-1e719b1e (type: monitoring)
+2025-08-25 11:34:47,996 - routers.websocket - INFO - Monitoring WebSocket client disconnected: monitoring-1e719b1e
+2025-08-25 11:34:47,996 - services.websocket_service - INFO - WebSocket client disconnected: monitoring-1e719b1e
+2025-08-25 11:34:48,073 - services.websocket_service - INFO - WebSocket client connected: tasks-85cb3cbf (type: tasks)
+2025-08-25 11:34:48,084 - routers.websocket - INFO - Tasks WebSocket client disconnected: tasks-85cb3cbf
+2025-08-25 11:34:48,084 - services.websocket_service - INFO - WebSocket client disconnected: tasks-85cb3cbf
+2025-08-25 11:34:48,275 - services.async_task_service - INFO - Worker worker-0 processing task: 164d0cee-184c-40ca-9ad2-673bd3a22315 (message_sending)
+2025-08-25 11:34:48,277 - services.async_task_service - INFO - Created task: 164d0cee-184c-40ca-9ad2-673bd3a22315 (message_sending)
+2025-08-25 11:34:48,330 - services.async_task_service - INFO - Worker worker-1 processing task: b2f2cfac-5042-412d-ace5-6a982555bc90 (bulk_message)
+2025-08-25 11:34:48,332 - services.async_task_service - INFO - Created task: b2f2cfac-5042-412d-ace5-6a982555bc90 (bulk_message)
+2025-08-25 11:34:48,383 - services.async_task_service - INFO - Worker worker-2 processing task: 3ce1a86a-14cb-4655-9fea-26fd9889310b (group_management)
+2025-08-25 11:34:48,384 - services.async_task_service - INFO - Created task: 3ce1a86a-14cb-4655-9fea-26fd9889310b (group_management)
+2025-08-25 11:34:50,589 - services.async_task_service - INFO - Cancelled task: 164d0cee-184c-40ca-9ad2-673bd3a22315
+2025-08-25 11:34:50,734 - services.websocket_service - INFO - WebSocket client connected: tasks-d1758c0c (type: tasks)
+2025-08-25 11:34:50,794 - services.async_task_service - INFO - Created task: 08472760-8b1f-47c2-bf6b-2e30d6155720 (message_sending)
+2025-08-25 11:34:50,799 - routers.websocket - INFO - Tasks WebSocket client disconnected: tasks-d1758c0c
+2025-08-25 11:34:50,799 - services.websocket_service - INFO - WebSocket client disconnected: tasks-d1758c0c
+2025-08-25 11:34:51,285 - services.async_task_service - INFO - Task completed: 164d0cee-184c-40ca-9ad2-673bd3a22315
+2025-08-25 11:34:51,285 - services.async_task_service - INFO - Worker worker-0 processing task: 08472760-8b1f-47c2-bf6b-2e30d6155720 (message_sending)
+2025-08-25 11:34:52,290 - services.async_task_service - INFO - Task completed: 08472760-8b1f-47c2-bf6b-2e30d6155720
+2025-08-25 11:34:52,892 - services.async_task_service - INFO - Task completed: 3ce1a86a-14cb-4655-9fea-26fd9889310b
+2025-08-25 11:35:00,343 - services.async_task_service - INFO - Task completed: b2f2cfac-5042-412d-ace5-6a982555bc90
