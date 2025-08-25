@@ -203,14 +203,14 @@ class MongoDBMigrationTester:
             self.log_test("MongoDB Groups List", False, f"Exception: {str(e)}")
 
     def test_mongodb_groups_add(self):
-        """Test /api/groups POST endpoint - should add group to MongoDB"""
+        """Test /api/groups/ POST endpoint - should add group to MongoDB"""
         try:
             test_group = {
                 "group_link": "https://t.me/test_mongodb_add_group",
-                "metadata": {"test": True, "added_via": "api_test"}
+                "metadata": {"test": "true", "added_via": "api_test"}
             }
             
-            response = self.make_request("POST", "/api/groups", test_group)
+            response = self.make_request("POST", "/api/groups/", test_group)
             
             if response.status_code == 200:
                 data = response.json()
