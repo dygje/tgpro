@@ -74,24 +74,39 @@ function App() {
     return (
       <Flex
         minH="100vh"
-        bgGradient={bgGradient}
+        bg={bgColor}
         align="center"
         justify="center"
       >
         <Box
-          bg={cardBg}
+          bg={surfaceBg}
           p={8}
           borderRadius="xl"
-          shadow="xl"
-          backdropFilter="blur(10px)"
+          shadow="lg"
           border="1px solid"
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderColor={borderColor}
+          minW="300px"
         >
           <VStack spacing={4}>
-            <Spinner size="lg" color="brand.500" thickness="4px" />
-            <Text color="gray.600" fontSize="sm">
-              Loading Telegram Automation...
-            </Text>
+            <Box
+              w={12}
+              h={12}
+              bg="brand.500"
+              borderRadius="xl"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Spinner size="md" color="white" thickness="3px" />
+            </Box>
+            <VStack spacing={1}>
+              <Text fontWeight={600} fontSize="lg" color="text-primary">
+                TGPro
+              </Text>
+              <Text color="text-secondary" fontSize="sm">
+                Loading automation platform...
+              </Text>
+            </VStack>
           </VStack>
         </Box>
       </Flex>
