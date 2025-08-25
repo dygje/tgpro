@@ -8,6 +8,8 @@ import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import AuthStatus from './components/AuthStatus';
 import MessageSender from './components/MessageSender';
+import GroupsManager from './components/GroupsManager';
+import MessagesManager from './components/MessagesManager';
 import TemplateManager from './components/TemplateManager';
 import BlacklistManager from './components/BlacklistManager';
 import ConfigManager from './components/ConfigManager';
