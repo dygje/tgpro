@@ -31,12 +31,12 @@ const AuthStatus: React.FC<AuthStatusProps> = ({ authStatus, onRefresh }) => {
         bg={bgColor}
         border="1px solid"
         borderColor={borderColor}
-        borderRadius="lg"
-        p={3}
+        borderRadius="md"
+        p={2}
       >
         <HStack spacing={2}>
-          <Icon as={FiXCircle} color="red.500" />
-          <Text fontSize="sm" color="gray.600">
+          <Icon as={FiXCircle} color="red.500" boxSize={3} />
+          <Text fontSize="xs" color="text-secondary">
             Not authenticated
           </Text>
         </HStack>
