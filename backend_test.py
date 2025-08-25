@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 
 class TelegramAutomationAPITester:
-    def __init__(self, base_url="https://code-revitalizer.preview.emergentagent.com"):
+    def __init__(self, base_url="https://readme-refresh-2.preview.emergentagent.com"):
         self.base_url = base_url
         self.api_key = "telegram-automation-key-2025"
         self.headers = {
