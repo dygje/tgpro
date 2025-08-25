@@ -41,7 +41,9 @@ function App() {
   const initializeApp = async () => {
     try {
       await checkApiConfiguration();
-      await checkAuthStatus();
+      if (isApiConfigured) {
+        await checkAuthStatus();
+      }
     } catch (error) {
       console.error('Error initializing app:', error);
     } finally {
@@ -52,10 +54,13 @@ function App() {
   const checkApiConfiguration = async () => {
     try {
       const response = await axios.get(`${API}/auth/configuration`);
-      setIsApiConfigured(response.data.configured);
+      const configured = response.data.configured;
+      setIsApiConfigured(configured);
+      return configured;
     } catch (error) {
       console.error('Error checking API configuration:', error);
       setIsApiConfigured(false);
+      return false;
     }
   };
 
@@ -70,8 +75,10 @@ function App() {
     }
   };
 
-  const handleApiConfigured = () => {
+  const handleApiConfigured = async () => {
     setIsApiConfigured(true);
+    // After API is configured, check auth status
+    await checkAuthStatus();
   };
 
   const handleAuthSuccess = () => {
@@ -87,10 +94,12 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Telegram Automation...</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
+        <div className="card max-w-sm animate-fade-in">
+          <div className="p-8 text-center">
+            <div className="loading-spinner w-8 h-8 mx-auto mb-4"></div>
+            <p className="text-gray-600 text-sm">Loading Telegram Automation...</p>
+          </div>
         </div>
       </div>
     );
@@ -106,22 +115,12 @@ function App() {
     );
   }
 
+  // Show login if API is configured but not authenticated
   if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gray-900">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-md mx-auto">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white mb-2">Telegram Automation</h1>
-              <p className="text-gray-400">MTProto API Message Sender</p>
-            </div>
-            <LoginForm onAuthSuccess={handleAuthSuccess} />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoginForm onAuthSuccess={handleAuthSuccess} />;
   }
 
+  // Show main dashboard if authenticated
   return (
     <div className="min-h-screen bg-gray-900 flex">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} onLogout={handleLogout} />
@@ -130,7 +129,7 @@ function App() {
         {/* Header */}
         <header className="bg-gray-800 border-b border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-semibold text-white">
+            <h1 className="text-xl font-semibold text-white font-display">
               {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
             </h1>
             <AuthStatus authStatus={authStatus} onRefresh={checkAuthStatus} />
@@ -138,7 +137,7 @@ function App() {
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6 overflow-auto custom-scrollbar">
           {activeTab === 'dashboard' && <Dashboard />}
           {activeTab === 'messageSender' && <MessageSender />}
           {activeTab === 'groupsManager' && <GroupsManager />}
