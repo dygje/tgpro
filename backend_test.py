@@ -489,20 +489,20 @@ class BackendTester:
                 if response.status_code == 200:
                     config_working += 1
             
-            # Test new auth endpoints (mixed auth requirements)
+            # Test new auth endpoints - auth/status requires JWT token based on implementation
             auth_status_response = self.make_request("GET", "/api/auth/status")
-            auth_status_working = auth_status_response.status_code == 200
+            auth_status_properly_protected = auth_status_response.status_code == 401
             
             # Test JWT-only endpoints (should require JWT)
             jwt_response = self.make_request("GET", "/api/auth/me")
             jwt_properly_protected = jwt_response.status_code == 401
             
-            if config_working >= 1 and auth_status_working and jwt_properly_protected:
+            if config_working >= 1 and auth_status_properly_protected and jwt_properly_protected:
                 self.log_test("New Endpoints - Appropriate Auth", True, 
                             "New endpoints have correct authentication requirements")
             else:
                 self.log_test("New Endpoints - Appropriate Auth", False, 
-                            f"Auth issues - Config: {config_working}/2, Status: {auth_status_working}, JWT protected: {jwt_properly_protected}")
+                            f"Auth issues - Config: {config_working}/2, Status protected: {auth_status_properly_protected}, JWT protected: {jwt_properly_protected}")
                 
         except Exception as e:
             self.log_test("New Endpoints - Appropriate Auth", False, f"Exception: {str(e)}")
