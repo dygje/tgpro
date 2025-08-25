@@ -7,7 +7,12 @@ import {
   Text,
   useColorModeValue,
   VStack,
+  HStack,
+  Container,
+  Badge,
+  IconButton,
 } from '@chakra-ui/react';
+import { FiRefreshCw } from 'react-icons/fi';
 import { api } from './lib/api';
 import { AuthStatus as AuthStatusType, TelegramConfig } from './types';
 
