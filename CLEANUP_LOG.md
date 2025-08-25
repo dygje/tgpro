@@ -33,7 +33,7 @@
 **Frontend** (`package.json`):
 - ✅ `cra-template` - Create React App template (tidak diperlukan lagi)
 
-### 4. Cache dan File Temporary
+### 5. Cache dan File Temporary
 - ✅ Semua folder `__pycache__` dan file `*.pyc`
 - ✅ `/app/yarn.lock` (duplikat dari `/app/frontend/yarn.lock`)
 - ✅ Log files lama (`*.log.*`)
