@@ -189,7 +189,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
       setSuccess('Authentication successful!');
       setTimeout(() => onAuthSuccess(), 1000);
     } catch (err: any) {
-      setError(err.message || 'Invalid 2FA password');
+      const errorMessage = typeof err === 'string' ? err : (err?.message || err?.details?.message || 'Invalid 2FA password');
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
