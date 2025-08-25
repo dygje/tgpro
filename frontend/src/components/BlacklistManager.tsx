@@ -501,7 +501,7 @@ const BlacklistManager: React.FC = () => {
               placeholder="Search blacklist entries..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              leftElement={<Icon as={FiSearch} color={textMuted} ml={3} />}
+              // Search icon handled by placeholder
             />
 
             {/* Blacklist Tabs */}
