@@ -396,7 +396,7 @@ class MongoDBMigrationTester:
                 "content": "Original content",
                 "variables": {}
             }
-            create_response = self.make_request("POST", "/api/messages", create_data)
+            create_response = self.make_request("POST", "/api/messages/", create_data)
             
             # Then update it
             update_data = {
