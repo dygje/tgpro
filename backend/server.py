@@ -125,7 +125,7 @@ async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(sec
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    global db_service, encryption_service, config_service, auth_service, telegram_service, config_manager, blacklist_manager
+    global db_service, encryption_service, config_service, auth_service, websocket_manager, telegram_service, config_manager, blacklist_manager
     
     try:
         logger.info("Initializing Telegram Automation Service with MongoDB...")
