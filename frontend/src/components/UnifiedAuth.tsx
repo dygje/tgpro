@@ -131,7 +131,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
       setSuccess('Verification code sent');
       setCurrentStep('verify');
     } catch (err: any) {
-      setError(err.message || 'Failed to send verification code');
+      const errorMessage = typeof err === 'string' ? err : (err?.message || err?.details?.message || 'Failed to send verification code');
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
