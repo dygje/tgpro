@@ -26,11 +26,13 @@ A comprehensive Telegram automation application that uses MTProto API (not Bot A
 - **Configuration Management**: Easy config editing through web interface
 - **Log Viewer**: Real-time log viewing with filtering
 - **Template Editor**: Visual template creation and management
+- **Groups Manager**: Add, remove and manage Telegram groups
+- **Messages Manager**: Create, edit and manage message files
 
 ## 📋 Requirements
 
-- Python 3.9+
-- Node.js 16+
+- Python 3.11+ (Recommended)
+- Node.js 18+ (Recommended)
 - MongoDB (for data storage)
 - Telegram API credentials (api_id and api_hash)
 
