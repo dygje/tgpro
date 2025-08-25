@@ -207,16 +207,14 @@ const textStyles = {
 const layerStyles = {
   card: {
     bg: 'white',
-    _dark: {
-      bg: 'gray.800',
-    },
     border: '1px solid',
     borderColor: 'gray.200',
-    _dark: {
-      borderColor: 'gray.700',
-    },
     borderRadius: 'xl',
     shadow: 'sm',
+    _dark: {
+      bg: 'gray.800',
+      borderColor: 'gray.700',
+    },
     _hover: {
       shadow: 'lg',
     },
@@ -224,12 +222,10 @@ const layerStyles = {
   },
   sidebar: {
     bg: 'white',
-    _dark: {
-      bg: 'gray.800',
-    },
     borderRight: '1px solid',
     borderColor: 'gray.200',
     _dark: {
+      bg: 'gray.800',
       borderColor: 'gray.700',
     },
   },
