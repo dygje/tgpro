@@ -509,6 +509,107 @@ async def list_groups(api_key: str = Depends(verify_api_key)):
             detail=str(e)
         )
 
+@app.post("/api/groups")
+async def add_group(
+    data: Dict[str, str],
+    api_key: str = Depends(verify_api_key)
+):
+    """Add a group to groups.txt"""
+    try:
+        group_link = data.get("group_link", "").strip()
+        if not group_link:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="group_link is required"
+            )
+        
+        # Validate group link format
+        if not (group_link.startswith("https://t.me/") or group_link.startswith("@")):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid group link format. Use https://t.me/groupname or @groupname"
+            )
+        
+        groups_file = Path("/app/backend/groups.txt")
+        
+        # Read existing groups
+        existing_groups = []
+        if groups_file.exists():
+            with open(groups_file, 'r') as f:
+                existing_groups = [line.strip() for line in f.readlines()]
+        
+        # Check if group already exists
+        if group_link in existing_groups:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Group already exists in the list"
+            )
+        
+        # Add new group
+        with open(groups_file, 'a') as f:
+            f.write(f"{group_link}\n")
+        
+        logger.info(f"Added group: {group_link}")
+        return {"message": f"Group {group_link} added successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error adding group: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
+@app.delete("/api/groups/{group_link:path}")
+async def remove_group(
+    group_link: str,
+    api_key: str = Depends(verify_api_key)
+):
+    """Remove a group from groups.txt"""
+    try:
+        groups_file = Path("/app/backend/groups.txt")
+        if not groups_file.exists():
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Groups file not found"
+            )
+        
+        # Read all lines
+        with open(groups_file, 'r') as f:
+            lines = f.readlines()
+        
+        # Filter out the group to remove
+        updated_lines = []
+        found = False
+        for line in lines:
+            if line.strip() == group_link:
+                found = True
+                continue
+            updated_lines.append(line)
+        
+        if not found:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Group not found in the list"
+            )
+        
+        # Write back the updated content
+        with open(groups_file, 'w') as f:
+            f.writelines(updated_lines)
+        
+        logger.info(f"Removed group: {group_link}")
+        return {"message": f"Group {group_link} removed successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error removing group: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
+
 @app.get("/api/messages")
 async def list_message_files(api_key: str = Depends(verify_api_key)):
     """List all message files in messages/ directory"""
