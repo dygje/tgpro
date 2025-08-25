@@ -40,9 +40,12 @@ class BackendMigrationTester:
     def make_request(self, method: str, endpoint: str, data: Dict = None, headers: Dict = None) -> requests.Response:
         """Make HTTP request with error handling"""
         url = f"{self.base_url}{endpoint}"
-        request_headers = self.headers.copy()
-        if headers:
-            request_headers.update(headers)
+        
+        # Use custom headers if provided, otherwise use default headers
+        if headers is not None:
+            request_headers = headers
+        else:
+            request_headers = self.headers.copy()
             
         try:
             if method.upper() == "GET":
