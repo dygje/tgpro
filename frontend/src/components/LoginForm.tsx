@@ -30,9 +30,9 @@ import {
   useSteps,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { api } from '@/lib/api';
-import { LoginFormProps } from '@/types/components';
-import { LoginFormData } from '@/types';
+import { api } from '../lib/api';
+import { LoginFormProps } from '../types/components';
+import { LoginFormData } from '../types';
 
 const steps = [
   { title: 'Phone Number' },
