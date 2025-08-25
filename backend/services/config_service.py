@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 
 from .db_service import DatabaseService
 from .encryption_service import EncryptionService
-from ..models.config import AppConfig, TelegramConfig, ConfigUpdate
+from models.config import AppConfig, TelegramConfig, ConfigUpdate
 
 logger = logging.getLogger(__name__)
 
