@@ -447,17 +447,39 @@ const config: ThemeConfig = {
   useSystemColorMode: true,
 };
 
-// Global Styles
+// Linear-style Global Styles
 const styles = {
   global: (props: any) => ({
     body: {
-      bg: props.colorMode === 'dark' ? 'gray.900' : 'gray.50',
-      color: props.colorMode === 'dark' ? 'gray.100' : 'gray.900',
-      fontSize: 'sm',
-      lineHeight: 1.5,
+      bg: props.colorMode === 'dark' ? 'gray.950' : 'white', // Pure white like Linear
+      color: props.colorMode === 'dark' ? 'gray.50' : 'gray.900',
+      fontSize: '13px', // Smaller default font
+      lineHeight: 1.4,   // Tighter line height
+      fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"', // Inter font features
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
     },
     '*': {
-      borderColor: props.colorMode === 'dark' ? 'gray.700' : 'gray.200',
+      borderColor: props.colorMode === 'dark' ? 'gray.800' : 'gray.200',
+    },
+    // Typography improvements
+    'h1, h2, h3, h4, h5, h6': {
+      fontWeight: 600,
+      letterSpacing: '-0.02em', // Tighter letter spacing
+    },
+    // Scrollbar styling
+    '::-webkit-scrollbar': {
+      width: '6px',
+    },
+    '::-webkit-scrollbar-track': {
+      bg: 'transparent',
+    },
+    '::-webkit-scrollbar-thumb': {
+      bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.300',
+      borderRadius: '3px',
+    },
+    '::-webkit-scrollbar-thumb:hover': {
+      bg: props.colorMode === 'dark' ? 'gray.600' : 'gray.400',
     }
   })
 };
