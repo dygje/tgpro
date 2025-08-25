@@ -201,6 +201,8 @@ async def lifespan(app: FastAPI):
         raise
     finally:
         # Shutdown
+        if task_service:
+            await task_service.stop()
         if telegram_service:
             await telegram_service.shutdown()
         if db_service:
