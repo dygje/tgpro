@@ -131,31 +131,28 @@ function App() {
       />
       
       <Flex flex={1} direction="column" overflow="hidden">
-        {/* Modern Header */}
+        {/* Linear-style Header */}
         <Box
           bg={surfaceBg}
           borderBottom="1px solid"
           borderColor={borderColor}
           px={6}
-          py={4}
+          py={3}
           position="sticky"
           top={0}
           zIndex={5}
-          backdropFilter="blur(10px)"
         >
           <Flex align="center" justify="space-between">
-            <HStack spacing={4}>
-              <VStack align="start" spacing={0}>
-                <Text fontSize="lg" fontWeight={700} color="text-primary" lineHeight={1.2}>
-                  {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
-                </Text>
-                <Text fontSize="xs" color="text-secondary" lineHeight={1.2}>
-                  {getPageDescription(activeTab)}
-                </Text>
-              </VStack>
-            </HStack>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="md" fontWeight={600} color="text-primary" lineHeight={1.2}>
+                {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
+              </Text>
+              <Text fontSize="sm" color="text-secondary" lineHeight={1.2}>
+                {getPageDescription(activeTab)}
+              </Text>
+            </VStack>
             
-            <HStack spacing={3}>
+            <HStack spacing={2}>
               <AuthStatus authStatus={authStatus} onRefresh={checkAuthStatus} />
               <IconButton
                 aria-label="Refresh"
