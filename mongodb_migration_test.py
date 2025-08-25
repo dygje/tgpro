@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 
 # Configuration
-BACKEND_URL = "https://telegram-automation.preview.emergentagent.com"
+BACKEND_URL = "https://tgpro-refactor.preview.emergentagent.com"
 API_KEY = "telegram-automation-key-2025"
 
 class MongoDBMigrationTester:
