@@ -84,7 +84,7 @@ export const api = {
   auth: {
     status: () => api.get('/auth/status'),
     configuration: () => api.get('/auth/configuration'),
-    configure: (data: { api_id: number; api_hash: string; telegram_user?: any }) => 
+    configure: (data: { api_id: number; api_hash: string; telegram_user?: any; phone?: string }) => 
       api.post('/auth/configure', data),
     telegramLogin: (data: { 
       id: number; 
