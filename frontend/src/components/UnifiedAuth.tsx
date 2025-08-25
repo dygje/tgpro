@@ -109,7 +109,8 @@ const UnifiedAuth: React.FC<UnifiedAuthProps> = ({ onAuthSuccess }) => {
       setSuccess('API configured successfully');
       setCurrentStep('phone');
     } catch (err: any) {
-      setError(err.message || 'Failed to configure API');
+      const errorMessage = typeof err === 'string' ? err : (err?.message || err?.details?.message || 'Failed to configure API');
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
