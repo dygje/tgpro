@@ -322,15 +322,7 @@ const ConfigManager: React.FC = () => {
                   fontFamily="mono"
                 />
               </FormControl>
-              <FormControl>
-                <FormLabel fontSize="sm" fontWeight={500}>Phone Number</FormLabel>
-                <Input
-                  placeholder="+1234567890"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  fontFamily="mono"
-                />
-              </FormControl>
+
             </SimpleGrid>
 
             <Button
