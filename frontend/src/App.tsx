@@ -120,48 +120,84 @@ function App() {
 
   // Show main dashboard if authenticated
   return (
-    <Flex minH="100vh" bg="gray.50" _dark={{ bg: 'gray.900' }}>
+    <Flex minH="100vh" bg={bgColor}>
       <Sidebar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
         onLogout={handleLogout} 
       />
       
-      <Flex flex={1} direction="column">
-        {/* Header */}
+      <Flex flex={1} direction="column" overflow="hidden">
+        {/* Modern Header */}
         <Box
-          bg="white"
+          bg={surfaceBg}
           borderBottom="1px solid"
-          borderColor="gray.200"
+          borderColor={borderColor}
           px={6}
           py={4}
-          _dark={{ 
-            bg: 'gray.800',
-            borderColor: 'gray.700'
-          }}
+          position="sticky"
+          top={0}
+          zIndex={5}
+          backdropFilter="blur(10px)"
+          bg={useColorModeValue('white/95', 'gray.800/95')}
         >
           <Flex align="center" justify="space-between">
-            <Text fontSize="xl" fontWeight="semibold" color="gray.800" _dark={{ color: 'white' }}>
-              {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
-            </Text>
-            <AuthStatus authStatus={authStatus} onRefresh={checkAuthStatus} />
+            <HStack spacing={4}>
+              <VStack align="start" spacing={0}>
+                <Text fontSize="lg" fontWeight={700} color="text-primary" lineHeight={1.2}>
+                  {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}
+                </Text>
+                <Text fontSize="xs" color="text-secondary" lineHeight={1.2}>
+                  {getPageDescription(activeTab)}
+                </Text>
+              </VStack>
+            </HStack>
+            
+            <HStack spacing={3}>
+              <AuthStatus authStatus={authStatus} onRefresh={checkAuthStatus} />
+              <IconButton
+                aria-label="Refresh"
+                icon={<FiRefreshCw />}
+                size="sm"
+                variant="ghost"
+                onClick={checkAuthStatus}
+                borderRadius="md"
+              />
+            </HStack>
           </Flex>
         </Box>
 
-        {/* Main Content */}
-        <Box flex={1} p={6} overflowY="auto">
-          {activeTab === 'dashboard' && <Dashboard />}
-          {activeTab === 'messageSender' && <MessageSender />}
-          {activeTab === 'groupsManager' && <GroupsManager />}
-          {activeTab === 'messagesManager' && <MessagesManager />}
-          {activeTab === 'templateManager' && <TemplateManager />}
-          {activeTab === 'blacklistManager' && <BlacklistManager />}
-          {activeTab === 'configManager' && <ConfigManager />}
-          {activeTab === 'logViewer' && <LogViewer />}
+        {/* Main Content Area */}
+        <Box flex={1} overflow="auto">
+          <Container maxW="full" p={6} h="full">
+            {activeTab === 'dashboard' && <Dashboard />}
+            {activeTab === 'messageSender' && <MessageSender />}
+            {activeTab === 'groupsManager' && <GroupsManager />}
+            {activeTab === 'messagesManager' && <MessagesManager />}
+            {activeTab === 'templateManager' && <TemplateManager />}
+            {activeTab === 'blacklistManager' && <BlacklistManager />}
+            {activeTab === 'configManager' && <ConfigManager />}
+            {activeTab === 'logViewer' && <LogViewer />}
+          </Container>
         </Box>
       </Flex>
     </Flex>
   );
+
+  // Helper function for page descriptions
+  function getPageDescription(tab: string): string {
+    const descriptions: Record<string, string> = {
+      dashboard: 'Overview and system status',
+      messageSender: 'Send automated messages to groups',
+      groupsManager: 'Manage target groups and channels',
+      messagesManager: 'Create and edit message templates',
+      templateManager: 'Template library and variables',
+      blacklistManager: 'Block unwanted contacts',
+      configManager: 'System settings and preferences',
+      logViewer: 'Real-time logs and monitoring',
+    };
+    return descriptions[tab] || '';
+  }
 }
 
 export default App;
