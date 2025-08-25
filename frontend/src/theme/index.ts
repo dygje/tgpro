@@ -134,17 +134,15 @@ const components = {
     baseStyle: {
       container: {
         bg: 'white',
-        _dark: {
-          bg: 'gray.800',
-        },
         p: 6,
         borderRadius: 'xl',
         border: '1px solid',
         borderColor: 'gray.200',
+        shadow: 'sm',
         _dark: {
+          bg: 'gray.800',
           borderColor: 'gray.700',
         },
-        shadow: 'sm',
         _hover: {
           shadow: 'lg',
         },
