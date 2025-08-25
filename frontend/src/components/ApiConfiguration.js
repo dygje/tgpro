@@ -97,7 +97,7 @@ const ApiConfiguration = ({ onConfigured, onSkip }) => {
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2 font-display">Setup Telegram API</h1>
-            <p className="text-sm text-gray-600 leading-relaxed">Configure your Telegram API credentials to get started</p>
+            <p className="text-sm text-gray-600 leading-relaxed">Configure your Telegram API credentials first</p>
           </div>
 
           <div className="alert alert-info mb-6 text-sm">
