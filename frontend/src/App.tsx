@@ -36,11 +36,9 @@ function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
 
   // Theme colors
-  const bgGradient = useColorModeValue(
-    'linear(to-br, blue.50, indigo.50)', 
-    'linear(to-br, gray.900, blue.900)'
-  );
-  const cardBg = useColorModeValue('white', 'gray.800');
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
+  const surfaceBg = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   // Check authentication status on app load
   useEffect(() => {
