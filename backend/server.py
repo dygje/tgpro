@@ -199,6 +199,15 @@ app.add_middleware(
 app.include_router(config_router)
 app.include_router(auth_router)
 
+# Import and include new MongoDB routers
+from routers.groups import router as groups_router
+from routers.messages import router as messages_router
+from routers import groups as groups_router_module
+from routers import messages as messages_router_module
+
+app.include_router(groups_router)
+app.include_router(messages_router)
+
 # Health check endpoint
 @app.get("/api/health")
 async def health_check():
