@@ -81,38 +81,42 @@ function App() {
       >
         <Box
           bg={surfaceBg}
-          p={6}
-          borderRadius="lg"
-          shadow="sm"
+          p={8}
+          borderRadius="2xl"
+          shadow="xl"
           border="1px solid"
           borderColor={borderColor}
-          w="320px"
+          w="400px"
         >
           <VStack spacing={6}>
             <Box
-              w={12}
-              h={12}
+              w={16}
+              h={16}
               bg="gray.900"
-              borderRadius="lg"
+              borderRadius="2xl"
               display="flex"
               alignItems="center"
               justifyContent="center"
               _dark={{ bg: "gray.100" }}
+              shadow="lg"
             >
               <Spinner 
-                size="md" 
+                size="lg" 
                 color={useColorModeValue("white", "black")} 
-                thickness="2px"
+                thickness="3px"
                 className="spin"
               />
             </Box>
-            <VStack spacing={2} textAlign="center">
-              <Text fontWeight={600} fontSize="lg" color="text-primary">
+            <VStack spacing={3} textAlign="center">
+              <Text fontWeight={600} fontSize="xl" color="text-primary">
                 TGPro
               </Text>
-              <Text color="text-secondary" fontSize="sm" lineHeight="shorter">
+              <Text color="text-secondary" fontSize="md" lineHeight="base">
                 Loading automation platform...
               </Text>
+              <Badge colorScheme="blue" variant="subtle" px={3} py={1} borderRadius="full">
+                Initializing Services
+              </Badge>
             </VStack>
           </VStack>
         </Box>
