@@ -169,14 +169,12 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
       case 'telegram':
         return {
           title: 'Login with Telegram',
-          description: 'Authenticate using your Telegram account',
-          progress: 50,
+          description: 'Secure authentication via Telegram',
         };
       case 'api-config':
         return {
           title: 'API Configuration',
-          description: 'Set up your Telegram API credentials',
-          progress: 100,
+          description: 'Connect your Telegram API credentials',
         };
     }
   };
