@@ -184,18 +184,19 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
   return (
     <Flex minH="100vh" bg={bgColor} align="center" justify="center" p={6}>
       <Container maxW="lg">
-        <VStack spacing={10}>
+        <VStack spacing={8}>
           {/* Header */}
           <VStack spacing={4} textAlign="center">
             <Box
               w={16}
               h={16}
               bg="gray.900"
-              borderRadius="xl"
+              borderRadius="2xl"
               display="flex"
               alignItems="center"
               justifyContent="center"
               _dark={{ bg: "gray.100" }}
+              shadow="lg"
             >
               <FiShield color={useColorModeValue("white", "black")} size={32} />
             </Box>
@@ -206,52 +207,72 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
               <Text fontSize="lg" color={textSecondary} fontWeight={500}>
                 Telegram Automation Platform
               </Text>
-              <Badge colorScheme="blue" variant="subtle" px={3} py={1} borderRadius="full">
-                Secure Telegram Authentication
+              <Badge 
+                colorScheme="blue" 
+                variant="subtle" 
+                px={4} 
+                py={2} 
+                borderRadius="full"
+                fontSize="sm"
+              >
+                🔒 Secure Authentication
               </Badge>
             </VStack>
           </VStack>
 
           {/* Main Card */}
-          <Card w="full" maxW="md" shadow="xl" borderRadius="2xl" border="1px solid" borderColor={borderColor}>
+          <Card 
+            w="full" 
+            maxW="md" 
+            shadow="xl" 
+            borderRadius="2xl" 
+            border="1px solid" 
+            borderColor={borderColor}
+            bg={cardBg}
+          >
             <CardBody p={8}>
-              <VStack spacing={8}>
-                {/* Progress */}
-                <Box w="full">
-                  <HStack justify="space-between" mb={3}>
-                    <Text fontSize="md" fontWeight={600} color={textPrimary}>
+              <VStack spacing={6}>
+                {/* Step Header - Clean without progress bar */}
+                <VStack spacing={3} w="full" textAlign="center">
+                  <HStack spacing={3}>
+                    <Icon 
+                      as={currentStep === 'telegram' ? FiLock : FiKey} 
+                      boxSize={5} 
+                      color="blue.500" 
+                    />
+                    <Text fontSize="lg" fontWeight={600} color={textPrimary}>
                       {stepInfo.title}
                     </Text>
-                    <Text fontSize="sm" color={textMuted}>
-                      {stepInfo.progress}%
-                    </Text>
                   </HStack>
-                  <Progress 
-                    value={stepInfo.progress} 
-                    size="lg"
-                    borderRadius="full" 
-                    bg={useColorModeValue('gray.100', 'gray.800')}
-                    sx={{
-                      '& > div': {
-                        bg: 'linear-gradient(135deg, #0088cc 0%, #0066aa 100%)',
-                      }
-                    }}
-                  />
-                  <Text fontSize="sm" color={textSecondary} mt={3}>
+                  <Text fontSize="sm" color={textSecondary} maxW="sm" lineHeight="base">
                     {stepInfo.description}
                   </Text>
-                </Box>
+                </VStack>
 
                 {/* Messages */}
                 {error && (
-                  <Alert status="error" borderRadius="xl" bg="red.50" borderColor="red.200" borderWidth="1px">
+                  <Alert 
+                    status="error" 
+                    borderRadius="xl" 
+                    bg="red.50" 
+                    borderColor="red.200" 
+                    borderWidth="1px"
+                    _dark={{ bg: "red.900", borderColor: "red.700" }}
+                  >
                     <AlertIcon />
                     <AlertDescription fontSize="sm">{error}</AlertDescription>
                   </Alert>
                 )}
 
                 {success && (
-                  <Alert status="success" borderRadius="xl" bg="green.50" borderColor="green.200" borderWidth="1px">
+                  <Alert 
+                    status="success" 
+                    borderRadius="xl" 
+                    bg="green.50" 
+                    borderColor="green.200" 
+                    borderWidth="1px"
+                    _dark={{ bg: "green.900", borderColor: "green.700" }}
+                  >
                     <AlertIcon />
                     <AlertDescription fontSize="sm">{success}</AlertDescription>
                   </Alert>
@@ -260,7 +281,7 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
                 {/* Telegram Login Step */}
                 {currentStep === 'telegram' && (
                   <VStack spacing={6} w="full">
-                    {/* Info Box */}
+                    {/* Security Info */}
                     <Box 
                       p={4} 
                       bg={inputBg} 
@@ -269,45 +290,67 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
                       borderColor={borderColor}
                       w="full"
                     >
-                      <HStack spacing={3} mb={3}>
-                        <Icon as={FiInfo} boxSize={4} color="blue.500" />
-                        <Text fontSize="sm" fontWeight={600} color={textPrimary}>
-                          Secure Login
-                        </Text>
-                      </HStack>
-                      <VStack spacing={2} align="start" fontSize="sm" color={textSecondary}>
-                        <Text>• Click the button below to login with Telegram</Text>
-                        <Text>• Your identity will be verified securely</Text>
-                        <Text>• No passwords or sensitive data required</Text>
+                      <VStack spacing={3} align="start">
+                        <HStack spacing={3}>
+                          <Icon as={FiInfo} boxSize={4} color="blue.500" />
+                          <Text fontSize="sm" fontWeight={600} color={textPrimary}>
+                            Secure Telegram Authentication
+                          </Text>
+                        </HStack>
+                        <VStack spacing={2} align="start" fontSize="sm" color={textSecondary}>
+                          <HStack spacing={2}>
+                            <Box w={1} h={1} bg="blue.500" borderRadius="full" mt={2} />
+                            <Text>Click button below to authenticate with your Telegram account</Text>
+                          </HStack>
+                          <HStack spacing={2}>
+                            <Box w={1} h={1} bg="blue.500" borderRadius="full" mt={2} />
+                            <Text>Your identity is verified securely through Telegram servers</Text>
+                          </HStack>
+                          <HStack spacing={2}>
+                            <Box w={1} h={1} bg="blue.500" borderRadius="full" mt={2} />
+                            <Text>No passwords or sensitive data required</Text>
+                          </HStack>
+                        </VStack>
                       </VStack>
                     </Box>
 
                     {/* Telegram Widget Container */}
-                    <Box w="full" textAlign="center">
-                      <div 
-                        id="telegram-login-container" 
-                        style={{ 
-                          display: 'flex', 
-                          justifyContent: 'center',
-                          minHeight: '40px'
-                        }}
-                      />
-                    </Box>
-
-                    {loading && (
-                      <Box textAlign="center" p={4}>
-                        <Text fontSize="sm" color={textSecondary}>
-                          Verifying Telegram authentication...
-                        </Text>
+                    <VStack spacing={4} w="full">
+                      <Box w="full" textAlign="center" py={4}>
+                        <div 
+                          id="telegram-login-container" 
+                          style={{ 
+                            display: 'flex', 
+                            justifyContent: 'center',
+                            minHeight: '46px'
+                          }}
+                        />
                       </Box>
-                    )}
+                      
+                      {loading && (
+                        <Box textAlign="center" py={3}>
+                          <HStack spacing={2} justify="center">
+                            <Box
+                              w={2}
+                              h={2}
+                              bg="blue.500"
+                              borderRadius="full"
+                              className="spin"
+                            />
+                            <Text fontSize="sm" color={textSecondary}>
+                              Verifying Telegram authentication...
+                            </Text>
+                          </HStack>
+                        </Box>
+                      )}
+                    </VStack>
                   </VStack>
                 )}
 
                 {/* API Configuration Step */}
                 {currentStep === 'api-config' && telegramUser && (
                   <VStack spacing={6} w="full">
-                    {/* User Info */}
+                    {/* User Profile */}
                     <Box 
                       p={4} 
                       bg={inputBg} 
@@ -316,40 +359,47 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
                       borderColor={borderColor}
                       w="full"
                     >
-                      <HStack spacing={3} mb={3}>
-                        <Icon as={FiUser} boxSize={4} color="green.500" />
-                        <Text fontSize="sm" fontWeight={600} color={textPrimary}>
-                          Logged in as
-                        </Text>
-                      </HStack>
-                      <HStack spacing={3}>
-                        {telegramUser.photo_url && (
-                          <Box
-                            w={8}
-                            h={8}
-                            borderRadius="full"
-                            bg="gray.300"
-                            bgImage={telegramUser.photo_url}
-                            bgSize="cover"
-                            bgPosition="center"
-                          />
-                        )}
-                        <VStack align="start" spacing={0}>
+                      <VStack spacing={3} align="start">
+                        <HStack spacing={3}>
+                          <Icon as={FiUser} boxSize={4} color="green.500" />
                           <Text fontSize="sm" fontWeight={600} color={textPrimary}>
-                            {telegramUser.first_name} {telegramUser.last_name || ''}
+                            Successfully Authenticated
                           </Text>
-                          {telegramUser.username && (
-                            <Text fontSize="xs" color={textSecondary}>
-                              @{telegramUser.username}
-                            </Text>
+                        </HStack>
+                        <HStack spacing={3} w="full">
+                          {telegramUser.photo_url && (
+                            <Box
+                              w={10}
+                              h={10}
+                              borderRadius="full"
+                              bg="gray.300"
+                              bgImage={telegramUser.photo_url}
+                              bgSize="cover"
+                              bgPosition="center"
+                              border="2px solid"
+                              borderColor={borderColor}
+                            />
                           )}
-                        </VStack>
-                      </HStack>
+                          <VStack align="start" spacing={0} flex={1}>
+                            <Text fontSize="md" fontWeight={600} color={textPrimary}>
+                              {telegramUser.first_name} {telegramUser.last_name || ''}
+                            </Text>
+                            {telegramUser.username && (
+                              <Text fontSize="sm" color={textSecondary}>
+                                @{telegramUser.username}
+                              </Text>
+                            )}
+                          </VStack>
+                          <Badge colorScheme="green" variant="subtle">
+                            Verified
+                          </Badge>
+                        </HStack>
+                      </VStack>
                     </Box>
 
                     <Divider />
 
-                    {/* API Configuration Info */}
+                    {/* API Setup Guide */}
                     <Box 
                       p={4} 
                       bg={inputBg} 
@@ -358,83 +408,120 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
                       borderColor={borderColor}
                       w="full"
                     >
-                      <HStack spacing={3} mb={3}>
-                        <Icon as={FiInfo} boxSize={4} color="blue.500" />
-                        <Text fontSize="sm" fontWeight={600} color={textPrimary}>
-                          Setup API Credentials
-                        </Text>
-                      </HStack>
-                      <VStack spacing={2} align="start" fontSize="sm" color={textSecondary}>
-                        <Text>1. Visit my.telegram.org/apps</Text>
-                        <Text>2. Create a new application</Text>
-                        <Text>3. Copy your API ID and API Hash below</Text>
+                      <VStack spacing={3} align="start">
+                        <HStack spacing={3}>
+                          <Icon as={FiInfo} boxSize={4} color="blue.500" />
+                          <Text fontSize="sm" fontWeight={600} color={textPrimary}>
+                            Setup API Credentials
+                          </Text>
+                        </HStack>
+                        <VStack spacing={2} align="start" fontSize="sm" color={textSecondary}>
+                          <HStack spacing={2}>
+                            <Text fontWeight={500} color="blue.500">1.</Text>
+                            <Text>Visit <Text as="span" fontWeight={500} color={textPrimary}>my.telegram.org/apps</Text></Text>
+                          </HStack>
+                          <HStack spacing={2}>
+                            <Text fontWeight={500} color="blue.500">2.</Text>
+                            <Text>Create a new application with any name</Text>
+                          </HStack>
+                          <HStack spacing={2}>
+                            <Text fontWeight={500} color="blue.500">3.</Text>
+                            <Text>Copy your API ID and API Hash to the fields below</Text>
+                          </HStack>
+                        </VStack>
                       </VStack>
                     </Box>
 
-                    {/* API Inputs */}
-                    <SimpleGrid columns={2} spacing={4} w="full">
-                      <FormControl>
-                        <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
-                          API ID
-                        </FormLabel>
-                        <InputGroup>
-                          <InputLeftElement>
-                            <Icon as={FiHash} color={textMuted} boxSize={4} />
-                          </InputLeftElement>
-                          <Input
-                            placeholder="12345678"
-                            value={apiId}
-                            onChange={(e) => setApiId(e.target.value)}
-                            variant="filled"
-                            fontSize="sm"
-                            fontFamily="mono"
-                            bg={inputBg}
-                            borderRadius="xl"
-                          />
-                        </InputGroup>
-                      </FormControl>
-                      <FormControl>
-                        <FormLabel fontSize="sm" fontWeight={600} color={textSecondary}>
-                          API Hash
-                        </FormLabel>
-                        <InputGroup>
-                          <InputLeftElement>
-                            <Icon as={FiKey} color={textMuted} boxSize={4} />
-                          </InputLeftElement>
-                          <Input
-                            placeholder="abcd1234..."
-                            value={apiHash}
-                            onChange={(e) => setApiHash(e.target.value)}
-                            variant="filled"
-                            fontSize="sm"
-                            fontFamily="mono"
-                            bg={inputBg}
-                            borderRadius="xl"
-                          />
-                        </InputGroup>
-                      </FormControl>
-                    </SimpleGrid>
+                    {/* API Inputs - Enhanced Layout */}
+                    <VStack spacing={4} w="full">
+                      <SimpleGrid columns={2} spacing={4} w="full">
+                        <FormControl>
+                          <FormLabel fontSize="sm" fontWeight={500} color={textSecondary} mb={2}>
+                            API ID
+                          </FormLabel>
+                          <InputGroup>
+                            <InputLeftElement>
+                              <Icon as={FiHash} color={textMuted} boxSize={4} />
+                            </InputLeftElement>
+                            <Input
+                              placeholder="12345678"
+                              value={apiId}
+                              onChange={(e) => setApiId(e.target.value)}
+                              variant="filled"
+                              fontSize="sm"
+                              fontFamily="mono"
+                              bg={inputBg}
+                              borderRadius="lg"
+                              border="1px solid"
+                              borderColor={borderColor}
+                              _hover={{
+                                borderColor: useColorModeValue('gray.400', 'gray.600'),
+                              }}
+                              _focus={{
+                                borderColor: 'blue.500',
+                                boxShadow: '0 0 0 1px var(--chakra-colors-blue-500)',
+                                bg: useColorModeValue('white', 'gray.800'),
+                              }}
+                            />
+                          </InputGroup>
+                        </FormControl>
+                        
+                        <FormControl>
+                          <FormLabel fontSize="sm" fontWeight={500} color={textSecondary} mb={2}>
+                            API Hash
+                          </FormLabel>
+                          <InputGroup>
+                            <InputLeftElement>
+                              <Icon as={FiKey} color={textMuted} boxSize={4} />
+                            </InputLeftElement>
+                            <Input
+                              placeholder="abcd1234ef567890"
+                              value={apiHash}
+                              onChange={(e) => setApiHash(e.target.value)}
+                              variant="filled"
+                              fontSize="sm"
+                              fontFamily="mono"
+                              bg={inputBg}
+                              borderRadius="lg"
+                              border="1px solid"
+                              borderColor={borderColor}
+                              _hover={{
+                                borderColor: useColorModeValue('gray.400', 'gray.600'),
+                              }}
+                              _focus={{
+                                borderColor: 'blue.500',
+                                boxShadow: '0 0 0 1px var(--chakra-colors-blue-500)',
+                                bg: useColorModeValue('white', 'gray.800'),
+                              }}
+                            />
+                          </InputGroup>
+                        </FormControl>
+                      </SimpleGrid>
 
-                    <Button
-                      onClick={handleApiConfig}
-                      isLoading={loading}
-                      loadingText="Configuring..."
-                      w="full"
-                      size="lg"
-                      borderRadius="xl"
-                      bg="linear-gradient(135deg, #10b981 0%, #059669 100%)"
-                      color="white"
-                      _hover={{
-                        bg: "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)",
-                        transform: "translateY(-1px)",
-                      }}
-                      _active={{
-                        transform: "translateY(0)",
-                      }}
-                      rightIcon={<FiCheck />}
-                    >
-                      Complete Setup
-                    </Button>
+                      <Button
+                        onClick={handleApiConfig}
+                        isLoading={loading}
+                        loadingText="Setting up..."
+                        w="full"
+                        size="lg"
+                        borderRadius="lg"
+                        bg="linear-gradient(135deg, #10b981 0%, #059669 100%)"
+                        color="white"
+                        fontWeight={500}
+                        _hover={{
+                          bg: "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)",
+                          transform: "translateY(-1px)",
+                          shadow: "lg",
+                        }}
+                        _active={{
+                          transform: "translateY(0)",
+                        }}
+                        rightIcon={<FiArrowRight />}
+                        disabled={!apiId || !apiHash}
+                      >
+                        Complete Setup
+                      </Button>
+                    </VStack>
                   </VStack>
                 )}
               </VStack>
@@ -442,10 +529,14 @@ const TelegramLogin: React.FC<TelegramLoginProps> = ({ onAuthSuccess }) => {
           </Card>
 
           {/* Footer */}
-          <Text fontSize="sm" color={textMuted} textAlign="center" maxW="md">
-            Secure authentication powered by Telegram. 
-            Your credentials are encrypted and stored securely.
-          </Text>
+          <VStack spacing={2} textAlign="center">
+            <Text fontSize="sm" color={textMuted} maxW="md">
+              Secure authentication powered by Telegram
+            </Text>
+            <Text fontSize="xs" color={textMuted}>
+              Your credentials are encrypted and stored securely
+            </Text>
+          </VStack>
         </VStack>
       </Container>
     </Flex>
