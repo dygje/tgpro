@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Dict, Any
 
 # Configuration
-BACKEND_URL = "https://tgpro-login.preview.emergentagent.com/api"
+BACKEND_URL = "https://ui-enhancement-25.preview.emergentagent.com/api"
 API_KEY = "telegram-automation-key-2025"
 BOT_TOKEN = "7400143812:AAHVS-Wr40Y4GgtgfymzBmVUvUiBazMbozI"
 HEADERS = {
