@@ -2063,3 +2063,129 @@ api_hash
 2025-08-26 03:44:44,010 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
 2025-08-26 03:45:14,499 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
 2025-08-26 03:45:14,804 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:21:08,260 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 04:21:08,268 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 04:21:08,481 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 04:21:08,483 - services.encryption_service - INFO - New encryption key generated and stored
+2025-08-26 04:21:08,484 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 04:21:08,529 - services.config_service - INFO - Migrating configuration from config.json to MongoDB...
+2025-08-26 04:21:08,532 - services.db_service - INFO - Config telegram saved successfully
+2025-08-26 04:21:08,533 - services.config_service - INFO - Migrated encrypted Telegram configuration
+2025-08-26 04:21:08,534 - services.db_service - INFO - Config delays saved successfully
+2025-08-26 04:21:08,534 - services.config_service - INFO - Migrated delays configuration
+2025-08-26 04:21:08,535 - services.db_service - INFO - Config safety saved successfully
+2025-08-26 04:21:08,535 - services.config_service - INFO - Migrated safety configuration
+2025-08-26 04:21:08,536 - services.db_service - INFO - Config paths saved successfully
+2025-08-26 04:21:08,536 - services.config_service - INFO - Migrated paths configuration
+2025-08-26 04:21:08,537 - services.db_service - INFO - Config logging saved successfully
+2025-08-26 04:21:08,537 - services.config_service - INFO - Migrated logging configuration
+2025-08-26 04:21:08,537 - services.config_service - INFO - Old config backed up to /app/config.json.backup
+2025-08-26 04:21:08,541 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 04:21:08,544 - services.auth_service - INFO - New JWT secret generated and stored
+2025-08-26 04:21:08,545 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 04:21:08,545 - services.async_task_service - INFO - Starting async task service
+2025-08-26 04:21:08,545 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 04:21:08,545 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 04:21:08,545 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 04:21:08,546 - config_manager - INFO - Config file not found, using defaults
+2025-08-26 04:21:08,547 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-26 04:21:08,547 - server - INFO - All services initialized successfully
+2025-08-26 04:21:08,551 - blacklist_manager - INFO - Loaded 6 permanently blacklisted groups
+2025-08-26 04:22:03,557 - services.async_task_service - INFO - Stopping async task service
+2025-08-26 04:22:03,734 - services.async_task_service - INFO - Task worker worker-0 stopped
+2025-08-26 04:22:03,734 - services.async_task_service - INFO - Task worker worker-1 stopped
+2025-08-26 04:22:03,734 - services.async_task_service - INFO - Task worker worker-2 stopped
+2025-08-26 04:22:33,591 - services.db_service - ERROR - Error adding log: localhost:27017: [Errno 111] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 68ad3634753dd7074a334ab5, topology_type: Single, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused')>]>
+2025-08-26 04:22:33,591 - services.db_service - ERROR - Error adding log: localhost:27017: [Errno 111] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 68ad3634753dd7074a334ab5, topology_type: Single, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused')>]>
+2025-08-26 04:22:40,245 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 04:22:40,253 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 04:22:40,256 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 04:22:40,259 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 04:22:40,261 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 04:22:40,267 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 04:22:40,268 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 04:22:40,268 - services.async_task_service - INFO - Starting async task service
+2025-08-26 04:22:40,268 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 04:22:40,268 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 04:22:40,269 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 04:22:40,271 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 04:22:40,272 - server - INFO - All services initialized successfully
+2025-08-26 04:22:40,328 - blacklist_manager - INFO - Loaded 6 permanently blacklisted groups
+2025-08-26 04:30:11,617 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:30:11,722 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-26 04:30:11,722 - config_manager - INFO - Configuration saved manually
+2025-08-26 04:30:11,723 - telegram_service - INFO - Telegram client initialized with new credentials
+2025-08-26 04:30:11,981 - server - INFO - Added group: https://t.me/testgroup_1756182611
+2025-08-26 04:30:12,196 - server - INFO - Created message file: test_message_1756182612.txt
+2025-08-26 04:30:12,401 - telegram_service - INFO - Added template: test_template_1756182612
+2025-08-26 04:30:12,502 - blacklist_manager - WARNING - Added https://t.me/blacklisted_group_1756182612 to permanent blacklist: API testing - automated blacklist entry
+2025-08-26 04:30:12,652 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-26 04:30:12,652 - config_manager - INFO - Configuration updated
+2025-08-26 04:30:12,853 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:30:13,054 - services.async_task_service - INFO - Worker worker-0 processing task: 625fb288-debd-497d-9c9e-f6e3182af674 (message_sending)
+2025-08-26 04:30:13,056 - services.async_task_service - INFO - Created task: 625fb288-debd-497d-9c9e-f6e3182af674 (message_sending)
+2025-08-26 04:30:14,060 - services.async_task_service - INFO - Task completed: 625fb288-debd-497d-9c9e-f6e3182af674
+2025-08-26 04:30:58,927 - server - INFO - Telegram login successful for user: John (ID: 987654321)
+2025-08-26 04:30:59,081 - server - INFO - Telegram login successful for user: Alice (ID: 111111111)
+2025-08-26 04:30:59,131 - server - INFO - Telegram login successful for user: Bob (ID: 222222222)
+2025-08-26 04:30:59,182 - server - INFO - Telegram login successful for user: Charlie (ID: 333333333)
+2025-08-26 04:30:59,283 - config_manager - INFO - Configuration saved to /app/config.json
+2025-08-26 04:30:59,283 - config_manager - INFO - Configuration saved manually
+2025-08-26 04:30:59,283 - telegram_service - INFO - Telegram client initialized with new credentials
+2025-08-26 04:35:04,363 - services.async_task_service - INFO - Stopping async task service
+2025-08-26 04:35:04,365 - telegram_service - ERROR - Error disconnecting client: Client is already disconnected
+2025-08-26 04:35:04,366 - services.db_service - INFO - Disconnected from MongoDB
+2025-08-26 04:35:04,366 - server - INFO - Services shutdown completed
+2025-08-26 04:35:04,367 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-26 04:35:04,367 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-26 04:35:04,367 - services.db_service - ERROR - Error adding log: Cannot use MongoClient after close
+2025-08-26 04:35:11,428 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 04:35:11,435 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 04:35:11,439 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 04:35:11,440 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 04:35:11,441 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 04:35:11,447 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 04:35:11,448 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 04:35:11,448 - services.async_task_service - INFO - Starting async task service
+2025-08-26 04:35:11,448 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 04:35:11,448 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 04:35:11,448 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 04:35:11,449 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 04:35:11,449 - server - INFO - All services initialized successfully
+2025-08-26 04:35:11,451 - blacklist_manager - INFO - Loaded 7 permanently blacklisted groups
+2025-08-26 04:36:57,216 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:36:57,527 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:37:18,054 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:37:18,358 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:37:21,942 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 04:37:22,246 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 05:12:36,459 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 05:12:36,792 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 05:59:47,660 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 05:59:47,674 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 05:59:47,678 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 05:59:47,713 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 05:59:47,718 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 05:59:47,732 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 05:59:47,733 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 05:59:47,733 - services.async_task_service - INFO - Starting async task service
+2025-08-26 05:59:47,733 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 05:59:47,733 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 05:59:47,733 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 05:59:47,739 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 05:59:47,740 - server - INFO - All services initialized successfully
+2025-08-26 05:59:47,743 - blacklist_manager - INFO - Loaded 7 permanently blacklisted groups
+2025-08-26 06:15:55,203 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 06:15:55,216 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 06:15:55,219 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 06:15:55,223 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 06:15:55,227 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 06:15:55,233 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 06:15:55,234 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 06:15:55,234 - services.async_task_service - INFO - Starting async task service
+2025-08-26 06:15:55,234 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 06:15:55,235 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 06:15:55,235 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 06:15:55,245 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 06:15:55,246 - server - INFO - All services initialized successfully
+2025-08-26 06:15:55,272 - blacklist_manager - INFO - Loaded 7 permanently blacklisted groups
