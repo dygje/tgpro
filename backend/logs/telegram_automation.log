@@ -2024,3 +2024,42 @@ api_hash
 2025-08-25 19:58:20,293 - server - INFO - Telegram login successful for user: dckelm (ID: 5429156859)
 2025-08-25 20:15:15,131 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
 2025-08-25 20:15:15,437 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 01:15:14,252 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 01:15:14,271 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 01:15:14,276 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 01:15:14,283 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 01:15:14,288 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 01:15:14,295 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 01:15:14,297 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 01:15:14,297 - services.async_task_service - INFO - Starting async task service
+2025-08-26 01:15:14,297 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 01:15:14,299 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 01:15:14,300 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 01:15:14,315 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 01:15:14,315 - server - INFO - All services initialized successfully
+2025-08-26 01:15:14,319 - blacklist_manager - INFO - Loaded 6 permanently blacklisted groups
+2025-08-26 01:15:31,138 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 01:15:31,451 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 01:15:52,377 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 01:15:52,385 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:44:00,662 - server - INFO - Initializing Telegram Automation Service with MongoDB...
+2025-08-26 03:44:00,704 - services.db_service - INFO - Connected to MongoDB: telegram_automation
+2025-08-26 03:44:00,708 - services.db_service - INFO - Database indexes created successfully
+2025-08-26 03:44:00,714 - services.encryption_service - INFO - Encryption service initialized successfully
+2025-08-26 03:44:00,719 - services.config_service - INFO - Configuration already exists in database, skipping migration
+2025-08-26 03:44:00,726 - services.config_service - INFO - Configuration service initialized successfully
+2025-08-26 03:44:00,727 - services.auth_service - INFO - Authentication service initialized successfully
+2025-08-26 03:44:00,728 - services.async_task_service - INFO - Starting async task service
+2025-08-26 03:44:00,728 - services.async_task_service - INFO - Task worker worker-0 started
+2025-08-26 03:44:00,730 - services.async_task_service - INFO - Task worker worker-1 started
+2025-08-26 03:44:00,730 - services.async_task_service - INFO - Task worker worker-2 started
+2025-08-26 03:44:00,739 - config_manager - INFO - Configuration loaded from /app/config.json
+2025-08-26 03:44:00,740 - server - INFO - All services initialized successfully
+2025-08-26 03:44:00,743 - blacklist_manager - INFO - Loaded 6 permanently blacklisted groups
+2025-08-26 03:44:21,750 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:44:22,063 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:44:30,286 - server - INFO - Telegram login successful for user: dckelm (ID: 5429156859)
+2025-08-26 03:44:43,681 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:44:44,010 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:45:14,499 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
+2025-08-26 03:45:14,804 - services.auth_service - WARNING - Invalid JWT token: Not enough segments
