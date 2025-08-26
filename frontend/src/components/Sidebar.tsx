@@ -215,12 +215,13 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout }) 
                 w={8}
                 h={8}
                 bg="gray.900"
-                borderRadius="lg"
+                borderRadius="xl"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
                 cursor="pointer"
                 _dark={{ bg: 'gray.100' }}
+                shadow="sm"
               >
                 <FiZap color={useColorModeValue('white', 'black')} size={16} />
               </Box>
