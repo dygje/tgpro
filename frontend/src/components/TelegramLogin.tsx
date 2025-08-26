@@ -22,7 +22,6 @@ import {
   InputGroup,
   InputLeftElement,
   Icon,
-  Progress,
   Divider,
 } from '@chakra-ui/react';
 import { 
@@ -33,6 +32,7 @@ import {
   FiUser,
   FiCheck,
   FiInfo,
+  FiLock,
 } from 'react-icons/fi';
 import { api } from '../lib/api';
 
