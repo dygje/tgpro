@@ -1,70 +1,242 @@
-# Getting Started with Create React App
+# TGPro Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Modern React TypeScript frontend untuk TGPro - Telegram Automation Platform. Dibangun dengan React 19, TypeScript, dan Chakra UI dengan Linear + Vercel design system.
 
-## Available Scripts
+## 🎨 Design System
 
-In the project directory, you can run:
+### UI Framework
+- **React 19** dengan TypeScript untuk type safety
+- **Chakra UI** dengan custom theme
+- **Linear + Vercel** inspired design
+- **Responsive design** untuk semua device
 
-### `npm start`
+### Theme Features
+- **Custom Color Palette** - Monochrome dengan accent colors
+- **Typography System** - Inter + JetBrains Mono fonts
+- **Component Variants** - Konsisten styling across components  
+- **Dark/Light Mode** - Built-in theme switching
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠 Development
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Quick Start
+```bash
+# Install dependencies
+yarn install
 
-### `npm test`
+# Start development server
+yarn start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Build for production
+yarn build
+```
 
-### `npm run build`
+### Environment Setup
+```bash
+# Required environment variables in .env
+REACT_APP_BACKEND_URL=https://your-backend-url.com/api
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Project Structure
+```
+src/
+├── components/          # UI Components
+│   ├── TelegramLogin.tsx    # Authentication
+│   ├── Dashboard.tsx        # Main dashboard
+│   ├── Sidebar.tsx          # Navigation
+│   └── ...
+├── hooks/              # Custom React hooks
+├── lib/                # Utilities & API client
+├── theme/              # Chakra UI theme
+├── types/              # TypeScript definitions
+└── App.tsx             # Main application
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Authentication
+- **Telegram Login Widget** integration
+- **Progressive authentication** flow
+- **JWT token** management
+- **Secure credential** handling
 
-### `npm run eject`
+### Real-time Features
+- **WebSocket** integration untuk live updates
+- **Real-time dashboard** metrics
+- **Live logging** dan monitoring
+- **Task progress** tracking
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Management Interfaces
+- **Groups Manager** - Manage Telegram groups
+- **Messages Manager** - Create dan edit messages  
+- **Template Manager** - Dynamic message templates
+- **Config Manager** - System configuration
+- **Log Viewer** - Real-time logs dengan filtering
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🎯 Component Architecture
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Core Components
+- `App.tsx` - Main application dan routing
+- `TelegramLogin.tsx` - Authentication flow
+- `Dashboard.tsx` - Main dashboard dengan metrics
+- `Sidebar.tsx` - Collapsible navigation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Management Components  
+- `GroupsManager.tsx` - Group management
+- `MessagesManager.tsx` - Message file management
+- `TemplateManager.tsx` - Template creation
+- `ConfigManager.tsx` - System configuration
 
-## Learn More
+### Utilities
+- `api.ts` - HTTP client dengan Axios
+- `useApi.ts` - API hooks
+- `useWebSocket.ts` - WebSocket integration
+- `theme/index.ts` - Chakra UI theme
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📱 Responsive Design
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Breakpoints
+```typescript
+// Chakra UI breakpoints
+base: '0px'     // Mobile
+sm: '480px'     // Small mobile  
+md: '768px'     // Tablet
+lg: '992px'     // Desktop
+xl: '1280px'    // Large desktop
+```
 
-### Code Splitting
+### Layout Adaptations
+- **Mobile**: Single column layout, collapsible sidebar
+- **Tablet**: Adaptive grid, touch-friendly interactions
+- **Desktop**: Multi-column layout, hover states
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔧 Build Configuration
 
-### Analyzing the Bundle Size
+### Dependencies
+```json
+{
+  "react": "^19.0.0",
+  "typescript": "^5.9.2", 
+  "@chakra-ui/react": "^2.8.2",
+  "react-router-dom": "^7.5.2",
+  "axios": "^1.9.0",
+  "framer-motion": "^10.16.16"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Build Scripts
+- `yarn start` - Development server (port 3000)
+- `yarn build` - Production build
+- `yarn test` - Run tests (jika ada)
 
-### Making a Progressive Web App
+### Performance Optimizations
+- **Tree shaking** untuk bundle size
+- **Code splitting** dengan React Router
+- **Lazy loading** components
+- **Memoization** untuk expensive components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🎨 Styling Guidelines
 
-### Advanced Configuration
+### Component Patterns
+```typescript
+// Consistent spacing
+<VStack spacing={4}>
+<HStack spacing={3}>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+// Color system
+color="text-primary"
+bg="bg-surface" 
+borderColor="border-primary"
 
-### Deployment
+// Typography
+fontSize="sm" fontWeight={500}
+fontFamily="mono" // untuk technical content
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Design Tokens
+- **Spacing**: 4px base unit (1, 2, 3, 4, 6, 8)
+- **Colors**: Semantic tokens (text-primary, bg-surface, dll)
+- **Typography**: Inter untuk UI, JetBrains Mono untuk code
+- **Borders**: 4-8px radius, 1px solid borders
 
-### `npm run build` fails to minify
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Component Testing
+- Unit tests dengan React Testing Library
+- Integration tests untuk API calls
+- E2E tests dengan Playwright (via testing agent)
+
+### Manual Testing Checklist
+- ✅ Authentication flow
+- ✅ Navigation dan routing
+- ✅ Form validation
+- ✅ Real-time updates
+- ✅ Responsive design
+- ✅ Dark/light mode
+- ✅ API integration
+
+## 🔒 Security
+
+### Authentication
+- **JWT tokens** untuk session management
+- **Bearer token** untuk API calls
+- **Secure cookie** storage
+- **Auto-logout** pada token expiry
+
+### Data Protection
+- **Input sanitization** untuk forms
+- **XSS protection** dengan React
+- **CSRF protection** via backend
+- **Secure API** communication
+
+## 📈 Performance Metrics
+
+### Bundle Size Targets
+- **Initial bundle**: <500KB gzipped
+- **Vendor chunks**: Cached efficiently
+- **Code splitting**: Route-based splitting
+- **Tree shaking**: Unused code removal
+
+### Runtime Performance
+- **First Contentful Paint**: <2s
+- **Largest Contentful Paint**: <2.5s
+- **Time to Interactive**: <3s
+- **Cumulative Layout Shift**: <0.1
+
+## 🚀 Deployment
+
+### Production Build
+```bash
+yarn build
+```
+
+### Environment Variables
+```bash
+# Production settings
+REACT_APP_BACKEND_URL=https://api.yourdomain.com/api
+GENERATE_SOURCEMAP=false
+```
+
+### Build Optimization
+- Minified JavaScript dan CSS
+- Image optimization
+- Service worker untuk caching
+- Gzip compression
+
+## 🤝 Contributing
+
+### Code Style
+- **TypeScript strict mode** enabled
+- **ESLint** untuk code quality  
+- **Prettier** untuk formatting (if configured)
+- **Conventional commits** untuk git messages
+
+### Component Development
+1. Create component di `src/components/`
+2. Add TypeScript types di `src/types/`
+3. Export dari `index.ts` files
+4. Update theme jika perlu customization
+5. Test responsiveness dan accessibility
+
+---
+
+**🎨 Modern UI/UX** • **⚡ High Performance** • **📱 Responsive Design** • **🔒 Secure Authentication**
